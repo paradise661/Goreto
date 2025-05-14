@@ -9,16 +9,15 @@
                                     src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
                         </div>
                     </div>
-                    <form class="">
+                    <form class="custom-search-form">
                         <div class="input-group">
-                            <input class="form-control search-input" type="search"
-                                placeholder="What decor are you looking for?" aria-label="Search">
-                            <button class="btn btn-primary" type="submit">
-                                Search
-                            </button>
+                          <input class="form-control search-input" type="search"
+                            placeholder="What decor are you looking for?" aria-label="Search">
+                          <button class="btn custom-btn" type="submit">
+                            Search
+                          </button>
                         </div>
-                    </form>
-
+                      </form>
                     <div class="button-part d-flex align-items-center gap-5">
                         <a href="">
                             <div>
@@ -49,7 +48,6 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="ri-menu-line"></i>
             </button>
-
             <!-- Collapsible Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
@@ -81,7 +79,6 @@
                                     <li><a class="dropdown-item" href="#">Diapers</a></li>
                                     <li><a class="dropdown-item" href="#">General Hygience</a></li>
                                     <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-
                                 </div>
                                 <!-- Birthday Gifts -->
                                 <div class="col-md-4">
@@ -94,7 +91,6 @@
 
                                 </div>
                             </div>
-
                         </ul>
                     </li>
                     <li class="nav-item dropdown mega-dropdown nav-text">
@@ -159,15 +155,12 @@
                                 <!-- Personal Care -->
                                 <div class="col-md-4">
                                     <h4 class="header-title">Device</h4>
-
                                     <li><a class="dropdown-item" href="#">Baby & Infant Supplements
                                         </a></li>
                                     <li><a class="dropdown-item" href="#">Diapers</a></li>
                                     <li><a class="dropdown-item" href="#">General Hygience</a></li>
                                     <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-
                                 </div>
-
                                 <!-- Digestive Health -->
                                 <div class="col-md-4">
                                     <h4 class="header-title">Digestive Health</h4>
@@ -198,9 +191,7 @@
                                     <li><a class="dropdown-item" href="#">Family Care</a></li>
                                     <li><a class="dropdown-item" href="#">General Hygience</a></li>
                                     <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-
                                 </div>
-
                                 <!-- Digestive Health -->
                                 <div class="col-md-4">
                                     <h4 class="header-title">Family Care</h4>
@@ -208,9 +199,7 @@
                                     <li><a class="dropdown-item" href="#">baby & Infant Supplements</a></li>
                                     <li><a class="dropdown-item" href="#">Mens Cares</a></li>
                                     <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-
                                 </div>
-
                                 <!-- Digestive Health -->
                                 <div class="col-md-4">
                                     <h4 class="header-title">Digestive Health</h4>
@@ -220,10 +209,8 @@
                                     <li><a class="dropdown-item" href="#">General Hygience</a></li>
                                     <li><a class="dropdown-item" href="#">Mens Cares</a></li>
                                 </div>
-
                                 <!-- Image Section (Only on Large Screens) -->
                             </div>
-
                         </ul>
                     </li>
                 </ul>
