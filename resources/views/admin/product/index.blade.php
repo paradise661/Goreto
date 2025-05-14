@@ -20,6 +20,8 @@
                         <tr>
                             <th style="width: 3%">SN</th>
                             <th>Name</th>
+                            <th>Parent Category</th>
+                            <th>Category</th>
                             <th style="text-align: center">Status</th>
                             <th style="text-align: end">Actions</th>
                         </tr>
@@ -29,6 +31,31 @@
                             <tr>
                                 <td><strong>{{ $key + $products->firstItem() }}</strong></td>
                                 <td><strong>{{ $product->name ?? '' }}</strong></td>
+                                <td>
+                                    @if ($product->category->isNotEmpty())
+                                        @foreach ($product->category as $category)
+                                            @if ($category->parent)
+                                                {{ $category->parent->name }}<br>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        N/A
+                                    @endif
+                                <td>
+                                    @php
+                                        $selectedCategories = $product->category;
+                                    @endphp
+
+                                    @if ($selectedCategories->isNotEmpty())
+                                        @php
+                                            $lastSelectedCategory = $selectedCategories->last(); // Get last selected category
+                                        @endphp
+                                        <span class="badge bg-info">{{ $lastSelectedCategory->name }}</span>
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+
                                 <td style="text-align: center"><span
                                         class="badge {{ $product->status == 0 ? 'bg-label-danger' : 'bg-label-success' }}">{{ $product->status == 0 ? 'Draft' : 'Published' }}</span>
                                 </td>

@@ -26,6 +26,9 @@ return new class extends Migration
             $table->double('mrp')->nullable();
             $table->integer('parent_id')->nullable();
 
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('set null');
+
 
             $table->longText('specification')->nullable();
             $table->longText('education')->nullable();

@@ -30,13 +30,31 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $brands = Brand::where('status', 1)->where('parent_id', 0)->get();
+        $brands = Brand::where('status', 1)->where('parent_id', null)->get();
         $divisions = Division::where('status', 1)->get();
-        $categories = Category::where('status', 1)->where('parent_id', 0)->get();
+        $categories = Category::where('status', 1)->where('parent_id', null)->get();
         $brandProducts = [];
         $categoryProducts = [];
         $divisionProducts = [];
         return view('admin.product.create', compact('brands', 'categories', 'brandProducts', 'categoryProducts', 'divisions', 'divisionProducts'));
+    }
+
+    /**
+     * Helper function to get all category IDs with ancestors.
+     */
+    private function getAllCategoryWithAncestors(array $categoryIds): array
+    {
+        $allIds = collect($categoryIds);
+        foreach ($categoryIds as $categoryId) {
+            $category = Category::find($categoryId);
+            while ($category && $category->parent_id) {
+                $category = Category::find($category->parent_id);
+                if ($category) {
+                    $allIds->push($category->id);
+                }
+            }
+        }
+        return $allIds->unique()->toArray();
     }
 
     /**
@@ -45,33 +63,28 @@ class ProductController extends Controller
     public function store(StoreGlobalRequest $request)
     {
         $input = $request->all();
-        $product =  Product::create($input);
+        $product = Product::create($input);
         $product->update(['slug' => Str::slug($request->name)]);
 
+        // Attach selected brands and categories to the product
         $product->brands()->attach($request->brand);
-        $product->category()->attach($request->category);
+
+        // Get all selected categories and their ancestors
+        $categoryIds = $this->getAllCategoryWithAncestors($request->category ?? []);
+        $product->category()->attach($categoryIds);
 
         return redirect()->route('products.edit', $product->id)->with('message', 'Created Successfully');
     }
-
-    /**
-     * Display the specified resource.
-     */
-    // public function show(Product $product)
-    // {
-    //     //
-    // }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Product $product)
     {
-        $brands = Brand::where('status', 1)->where('parent_id', 0)->get();
+        $brands = Brand::where('status', 1)->where('parent_id', null)->get();
         $divisions = Division::where('status', 1)->get();
-        $categories = Category::where('status', 1)->where('parent_id', 0)->get();
+        $categories = Category::where('status', 1)->where('parent_id', null)->get();
         $brandProducts = ProductBrand::where('product_id', $product->id)->pluck('brand_id')->toArray();
-
         $categoryProducts = ProductCategory::where('product_id', $product->id)->pluck('category_id')->toArray();
         $divisionProducts = $product->division_id ? [$product->division_id] : [];
 
@@ -84,14 +97,17 @@ class ProductController extends Controller
     public function update(UpdateGlobalRequest $request, Product $product)
     {
         $input = $request->all();
-
         $input['slug'] = $request->slug ? make_slug($request->slug) : make_slug($request->name);
         $product->update($input);
 
+        // Detach previous relationships and attach new ones
         $product->brands()->detach();
         $product->brands()->attach($request->brand);
-        $product->category()->detach();
-        $product->category()->attach($request->category);
+
+        // Get all selected categories and their ancestors
+        $categoryIds = $this->getAllCategoryWithAncestors($request->category ?? []);
+        $product->category()->detach(); // Detach old categories
+        $product->category()->attach($categoryIds); // Attach new categories
 
         return redirect()->route('products.edit', $product->id)->with('message', 'Update Successfully');
     }
@@ -107,6 +123,9 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('message', 'Delete Successfully');
     }
 
+    /**
+     * Duplicate a product (including associated categories and brands).
+     */
     public function repli($pdid)
     {
         $products = Product::find($pdid);
@@ -125,6 +144,7 @@ class ProductController extends Controller
                 $newcats->save();
             }
         }
+
         if ($productbrands) {
             foreach ($productbrands as $rbrand) {
                 $newbrands = $rbrand->replicate();
@@ -133,6 +153,6 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->route('products.index')->with('message', 'Delete Successfully');
+        return redirect()->route('products.index')->with('message', 'Product copied successfully');
     }
 }

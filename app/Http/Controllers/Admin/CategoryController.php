@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('parent_id', 0)->oldest('name')->paginate(20);
+        $categories = Category::where('parent_id', null)->oldest('name')->paginate(20);
         return view('admin.category.index', compact('categories'));
     }
 
@@ -24,7 +24,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categorys = Category::where('parent_id', 0)->get();
+        $categorys = Category::where('parent_id', null)->get();
         $categoryParents = [];
         return view('admin.category.create', compact(['categorys', 'categoryParents']));
     }
@@ -35,7 +35,7 @@ class CategoryController extends Controller
     public function store(StoreGlobalRequest $request)
     {
         $input = $request->all();
-        $input['parent_id'] = $request->parent_id ?? 0;
+        $input['parent_id'] = $request->parent_id ?? null;
 
         $slug = make_slug($request->name);
         $category = Category::create($input);
@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        $categorys = Category::where('parent_id', 0)->get();
+        $categorys = Category::where('parent_id', null)->get();
         $categoryParents = [$category->parent_id];
         return view('admin.category.edit', compact(['category', 'categorys', 'categoryParents']));
     }
@@ -95,7 +95,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        Category::where('parent_id', $category->id)->update(['status' => 0, 'parent_id' => 0]);
+        Category::where('parent_id', $category->id)->update(['status' => 0, 'parent_id' => null]);
         $category->delete();
         return redirect()->route('category.index')->with('message', 'Delete Successfully');
     }
