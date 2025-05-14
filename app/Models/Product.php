@@ -25,11 +25,12 @@ class Product extends Model
         'contraindication',
         'dosage',
         'effects',
-
         'seo_title',
         'seo_description',
         'seo_keywords',
         'seo_schema',
+        'parent_id',
+        'category_id',
     ];
 
     public function brands()
@@ -41,13 +42,21 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
     }
-    public function parent()
-    {
-        return $this->belongsTo(Category::class, 'parent_id');
-    }
 
-    public function children()
+    /**
+     * Assign selected category along with all its ancestors (parent, grandparent).
+     */
+    public function syncAllCategories(array $selectedCategoryIds)
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        $finalCategoryIds = collect($selectedCategoryIds)->flatMap(function ($id) {
+            $category = Category::with('parent.parent')->find($id);
+            return collect([
+                $category?->id,
+                $category?->parent?->id,
+                $category?->parent?->parent?->id,
+            ])->filter();
+        })->unique();
+
+        $this->category()->sync($finalCategoryIds);
     }
 }

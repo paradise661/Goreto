@@ -19,13 +19,17 @@ return new class extends Migration
             $table->longText('short_description')->nullable();
             $table->string('slug')->nullable();
             $table->boolean('status')->default(0);
-            $table->integer('parent_id')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
 
             $table->string('seo_title')->nullable();
             $table->text('seo_description')->nullable();
             $table->text('seo_keywords')->nullable();
             $table->longText('seo_schema')->nullable();
             $table->timestamps();
+            $table->foreign('parent_id')
+            ->references('id')
+            ->on('categories')
+            ->onDelete('cascade');
         });
     }
 
