@@ -9,7 +9,7 @@
                          </div>
 
                          <div class="site-descrption  fotter-css py-2">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, exercitationem!
+                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, exercitationem!
                          </div>
                      </div>
                  </div>
@@ -50,34 +50,24 @@
                          </li>
                      </ul>
                  </div>
-
                  <div class="col-lg-3 col-6 mb-3 mt-lg-0 mt-3">
                      <h5 class="fotter-headings ">Our Services</h5>
                      <ul class="nav flex-column fotter-text fotter-css">
+                         <li class="nav-item mb-2">
+                             <a href="" class="nav-link p-0">Prescription Dispensing
 
-                         <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Custom Floral Arrangements</a>
-                         </li>
-                         <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Corporate Event Styling</a>
-                         </li>
-                         <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Elegant Birthday Setups</a>
-                         </li>
-                         <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Luxury Wedding Decor
                              </a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Luxury Wedding Decor
-                             </a>
+                             <a href="" class="nav-link p-0">Patient Counseling</a>
                          </li>
-
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Luxury Wedding Decor
+                             <a href="" class="nav-link p-0">Immunizations/Vaccinations</a>
+                         </li>
+                         <li class="nav-item mb-2">
+                             <a href="" class="nav-link p-0">Medication Therapy Management
                              </a>
                          </li>
-
                      </ul>
                  </div>
                  <div class="col-lg-3 col-12 mb-3 mt-lg-0 mt-3">
@@ -99,33 +89,25 @@
                          <li class="nav-item mb-2">
                              <a href="" class="nav-link p-0">Contact</a>
                          </li>
-                         
+
                      </ul>
                  </div>
-
              </div>
-
          </div>
          <div class=" d-flex align-items-center justify-content-around  my-2 p-2 border-top text-center">
              <p class="fotter-text mt-3">
                  '© 2025 Company, Inc. All rights reserved'
              </p>
              <div class="  ">
-
                  <div class="d-flex gap-4 align-items-start justify-content-start footer-social">
-
                      <a href="" target="_blank"><i class="ri-facebook-line social-icon">
                          </i></a>
                      <a href="" target="_blank"><i class="ri-instagram-line social-icon">
                          </i></a>
                      <a href="" target="_blank"><i class="ri-whatsapp-line social-icon">
                          </i></a>
-
-
                  </div>
-
              </div>
          </div>
      </div>
  </footer>
-
