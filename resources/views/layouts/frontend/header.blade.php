@@ -11,13 +11,13 @@
                     </div>
                     <form class="custom-search-form">
                         <div class="input-group">
-                          <input class="form-control search-input" type="search"
-                            placeholder="What decor are you looking for?" aria-label="Search">
-                          <button class="btn custom-btn" type="submit">
-                            Search
-                          </button>
+                            <input class="form-control search-input" type="search"
+                                placeholder="What decor are you looking for?" aria-label="Search">
+                            <button class="btn custom-btn" type="submit">
+                                Search
+                            </button>
                         </div>
-                      </form>
+                    </form>
                     <div class="button-part d-flex align-items-center gap-5">
                         <a href="">
                             <div>
@@ -41,7 +41,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid ">
             <a class="navbar-brand nav-logo d-block d-lg-none" href="#">
-                <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="Logo">
+                <img src="{{ asset('frontend/assets/images/logo.jpg') }}" alt="Logo">
             </a>
             <!-- Navbar Toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Swiper for Hero Section (".mySwiper")
     const swiper = new Swiper(".mySwiper", {
         loop: true,
+        slidesPerView: 1,
+        spaceBetween: 20,
+        centeredSlides: false,
         autoplay: {
             delay: 2000,
             disableOnInteraction: false,
