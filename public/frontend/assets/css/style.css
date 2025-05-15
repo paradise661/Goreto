@@ -381,41 +381,6 @@ img {
         padding: 0 15px
     }
 }
-.swiper-button-next,
-.swiper-button-prev {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: #fff !important;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-}
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-    background-color: #10a145; /* Green on Hover */
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-/* Swiper Pagination Dots */
-.swiper-pagination-bullet {
-    background-color: #10a145;
-    opacity: 0.6;
-}
-
-.swiper-pagination-bullet-active {
-    background-color: #0ab7ec;
-    transform: scale(1.3);
-}
-
 .navbar-light .navbar-toggler {
     border: 0 !important;
     color: #136cd8;
@@ -507,4 +472,189 @@ button:focus:not(:focus-visible) {
     margin: 5px;
     color: rgb(63, 62, 62);
     font-family: Figtree;
+}
+/* * for product card */ */
+.product-card-img img{
+    height: 290px !important;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.product-card {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.product-card:hover {
+    transform: scale(1.05);
+    /* Slightly enlarges the card */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* Adds a soft shadow */
+}
+.product-card-img {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.product-card-content h3 {
+    font-family: Figtree;
+    font-weight: 700;
+    font-size: 19px;
+}
+.product-card-content p {
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 16px;
+    color: #10a145;
+    margin: 5px;
+}
+.product-img{
+    height: 290px !important;
+}
+/* Ribbon Style */
+.ribbon {
+    position: absolute;
+    top: 15px;
+    left: -30px;
+    transform: rotate(-45deg);
+    background-color: #10a145;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 5px 40px;
+    z-index: 2;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+/* Optionally smoothen the card corners */
+.product-card,
+.product-card-img img {
+    border-radius: 20px;
+}
+.cart-section {
+    border-top: 1px solid #919191;
+}
+.cart-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease-in-out;
+    pointer-events: none;
+    height: 0;
+    overflow: hidden;
+    border-top: none;
+}
+/* On hover: reveal cart section */
+.product-card:hover .cart-section {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    height: auto;
+    margin-top: 10px;
+    border-top: 1px solid #cfcfcf;
+}
+.scale-button {
+    background: linear-gradient(135deg, #10a145, #0ab7ec);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  .scale-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 200%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-30deg);
+    transition: left 0.5s ease-in-out;
+  }
+  .scale-button:hover::before {
+    left: 100%;
+  }
+  .scale-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(16, 161, 69, 0.4);
+  }
+  .scale-text {
+    position: relative;
+    z-index: 2;
+  }
+  .product-heart-icon{
+    font-size: 20px;
+    color: #c2331a;
+
+  }
+  .swiper-button-next,
+.swiper-button-prev {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff !important;
+    width: 35px !important;
+    height: 35px !important;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: #0ab7ec;
+    /* Attractive Orange on Hover */
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 18px;
+    font-weight: bold;
+}
+/* Swiper Pagination Dots */
+.swiper-pagination-bullet {
+    background-color: #0ab7ec;
+    /* Custom Orange Dots */
+    opacity: 0.6;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #0ab7ec;
+    /* Red for Active Dot */
+    transform: scale(1.3);
+}
+.cross-price {
+    text-decoration: line-through;
+    color: #888 !important; /* Optional: faded/grey color for old price */
+    margin: 0;
+}
+.home-title-heading h2 {
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 31px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #10a145;
+}
+.home-title-heading h2 span {
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 31px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #0ab7ec;
+}
+.swiper-button-next:after, .swiper-button-prev:after {
+    font-family: swiper-icons;
+    font-size:18px !important;
+    text-transform: none !important;
+    letter-spacing: 0;
+    font-variant: initial;
+    line-height: 1;
 }
