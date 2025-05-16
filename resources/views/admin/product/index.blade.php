@@ -35,9 +35,9 @@
 
                                 </td>
                                 <td>
-
-                                    {!! str_replace('<img', '<img style="width:80px; "', get_image($product->image)) !!}
-
+                                    <a>
+                                        {!! str_replace('<img', '<img style="width:100px; height:auto;"', get_image($product->image)) !!}
+                                    </a>
                                 </td>
 
                                 <td>
