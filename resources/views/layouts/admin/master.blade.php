@@ -40,6 +40,8 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/fancy.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/inner/dropzone.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.css" />
+
     <script src="{{ asset('admin/assets/inner/dropzone.js') }}"></script>
     <style>
         .dash-icon {
@@ -315,6 +317,11 @@
         </div>
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        Fancybox.bind("[data-fancybox='gallery']", {});
+    </script>
+
     <script src="{{ asset('admin/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('admin/assets/js/bootstrap-new.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>

@@ -20,6 +20,7 @@
                         <tr>
                             <th style="width: 3%">SN</th>
                             <th>Name</th>
+                            <th>Image</th>
                             <th>Parent Category</th>
                             <th>Category</th>
                             <th style="text-align: center">Status</th>
@@ -31,6 +32,14 @@
                             <tr>
                                 <td><strong>{{ $key + $products->firstItem() }}</strong></td>
                                 <td><strong>{{ $product->name ?? '' }}</strong></td>
+
+                                </td>
+                                <td>
+
+                                    {!! str_replace('<img', '<img style="width:80px; "', get_image($product->image)) !!}
+
+                                </td>
+
                                 <td>
                                     @if ($product->category->isNotEmpty())
                                         @foreach ($product->category as $category)

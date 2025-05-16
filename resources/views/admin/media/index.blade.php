@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Media Library - Ohm Pharmaceuticals')
+@section('title', 'Media Library - Goreto')
 
 @section('content')
     <style>
