@@ -5,7 +5,7 @@
                 <div class="logo-part d-flex justify-content-between align-items-center">
                     <div>
                         <a class="navbar-brand nav-logo" href="#"><img
-                                src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
+                         src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
                     </div>
                 </div>
                 <form class="custom-search-form">
@@ -29,11 +29,9 @@
                     </div>
                     <div>
                         <i class="ri-notification-3-line header-icon"></i>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
