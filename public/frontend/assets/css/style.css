@@ -543,7 +543,7 @@ button:focus:not(:focus-visible) {
 
 .product-card-content h3 {
    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
 }
 .product-card-content p {
@@ -763,7 +763,6 @@ button:focus:not(:focus-visible) {
     margin: 0 6px;
     transition: all 0.3s ease;
 }
-
 /* Active bullet style */
 .reviewSwiper .swiper-pagination-bullet-active {
     background-color: #0475AF; /* Your primary color */
@@ -781,7 +780,6 @@ button:focus:not(:focus-visible) {
     justify-content: center;
     align-items: center;
 }
-
 /* Optional: Next/Prev arrows styling */
 .reviewSwiper .swiper-button-next,
 .reviewSwiper .swiper-button-prev {
@@ -793,7 +791,6 @@ button:focus:not(:focus-visible) {
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
     transition: background-color 0.3s;
 }
-
 .reviewSwiper .swiper-button-next:hover,
 .reviewSwiper .swiper-button-prev:hover {
     background-color: #0475AF;
@@ -808,11 +805,24 @@ button:focus:not(:focus-visible) {
     opacity: 1;
     transition: 0.3s;
 }
-
 .reviewSwiper .swiper-pagination-bullet-active {
     background-color: #0475AF;
     width: 30px; /* Slightly wider when active */
     box-shadow: 0 0 6px rgba(4, 117, 175, 0.4);
+}
+.offerSwiper .swiper-pagination-bullet {
+    width: 20px;
+    height: 6px;
+    background-color: #ccc;
+    border-radius: 4px; /* slight rounding for softer edges */
+    margin: 0 4px;
+    opacity: 1;
+    transition: 0.3s;
+}
+.offerSwiper .swiper-pagination-bullet-active {
+    background-color: #06ad43;
+    width: 30px; /* Slightly wider when active */
+    box-shadow: 0 0 6px rgba(4, 175, 27, 0.4);
 }
 .swiper-two-container{
     padding: 80px;
@@ -823,4 +833,18 @@ button:focus:not(:focus-visible) {
 }
 .section-three{
     margin-bottom: 111px;
+}
+.arrival-card-img{
+    height: 380px !important;
+    width: 100%;
+}
+.navbar {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0px !important;
+    padding-bottom:0px !important;
+
 }

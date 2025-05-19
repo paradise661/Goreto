@@ -104,37 +104,32 @@
         </div>
         <!-- Banner2 end -->
         <!-- categories section start -->
-        <div class="category-section py-4">
+        {{-- <div class="category-section py-4">
             <div class="container-fluid">
                 <div class="row d-flex flex-wrap">
                     <div class="col-3 col-md-2 custom-col py-3">
                         <div class="category-wrapper text-center">
                             <img src="{{ asset('frontend/assets/images/cate1.jpg') }}" alt="">
-
                         </div>
                     </div>
                     <div class="col-3 col-md-2 custom-col py-3">
                         <div class="category-wrapper text-center">
                             <img src="{{ asset('frontend/assets/images/cate2.jpg') }}" alt="">
-
                         </div>
                     </div>
                     <div class="col-3 col-md-2 custom-col py-3">
                         <div class="category-wrapper text-center">
                             <img src="{{ asset('frontend/assets/images/cate3.jpg') }}" alt="">
-
                         </div>
                     </div>
                     <div class="col-3 col-md-2 custom-col py-3">
                         <div class="category-wrapper text-center">
                             <img src="{{ asset('frontend/assets/images/cate2.jpg') }}" alt="">
-
                         </div>
                     </div>
                     <div class="col-3 col-md-2 custom-col py-3">
                         <div class="category-wrapper text-center">
                             <img src="{{ asset('frontend/assets/images/cate4.jpg') }}" alt="">
-
                         </div>
                     </div>
                     <div class="col-3 col-md-2 custom-col py-3">
@@ -144,7 +139,79 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+        {{-- new arrival sectio start --}}
+        <section class="new-arrival-section">
+            <div class="container-fluid">
+                <div class="home-title-heading text-center">
+                    <h2>May Deals 
+                        <span>& New Arrivals</span></h2>
+                </div>
+                <div class="swiper offerSwiper p-4">
+                    <div class="swiper-wrapper">
+                        <!-- Card 1 -->
+                        <div class="swiper-slide py-5">
+                            <div class="product-card">
+                                <div class="arrival-card">
+                                    <img src="{{ asset('frontend/assets/images/arrival1.png') }}" class="arrival-card-img"
+                                        alt="">
+                                </div>
+                                <a href="" class=" stretched-link"></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="product-card">
+                                <div class="arrival-card">
+                                    <img src="{{ asset('frontend/assets/images/arrival2.jpeg') }}" class="arrival-card-img"
+                                        alt="">
+                                </div>
+                                <a href="" class=" stretched-link"></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="product-card">
+                                <div class="arrival-card">
+                                    <img src="{{ asset('frontend/assets/images/arrival3.jpeg') }}" class="arrival-card-img"
+                                        alt="">
+                                </div>
+                                <a href="" class=" stretched-link"></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="product-card">
+                                <div class="arrival-card">
+                                    <img src="{{ asset('frontend/assets/images/arrival4.jpeg') }}" class="arrival-card-img"
+                                        alt="">
+                                </div>
+                                <a href="" class=" stretched-link"></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="product-card">
+                                <div class="arrival-card">
+                                    <img src="{{ asset('frontend/assets/images/arrival6.jpeg') }}" class="arrival-card-img"
+                                        alt="">
+                                </div>
+                                <a href="" class=" stretched-link"></a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="product-card">
+                                <div class="arrival-card">
+                                    <img src="{{ asset('frontend/assets/images/arrival6.jpeg') }}" class="arrival-card-img"
+                                        alt="">
+                                </div>
+                                <a href="" class=" stretched-link"></a>
+                            </div>
+                        </div>
+                        <!-- Repeat for other cards -->
+                    </div>
+                    <!-- Swiper Pagination & Navigation -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        {{-- new arrival sectio end --}}
         <!-- categories section end -->
         <!-- product package start -->
         <div class="product-section py-5">
@@ -439,13 +506,12 @@
                 </div>
             </div>
         </section>
-
         <!-- product package start -->
         <section class="py-5 ">
             <div class="position-relative section-three">
                 <!-- Background image in HTML -->
-                <img src="{{ asset('frontend/assets/images/background.jpg') }}" alt="Background"
-                    class="w-100 bg-img" style="height: 408px; object-fit: cover;">
+                <img src="{{ asset('frontend/assets/images/background.jpg') }}" alt="Background" class="w-100 bg-img"
+                    style="height: 408px; object-fit: cover;">
                 <!-- Content Over Image -->
                 <div class="card-container-three w-100 h-100 d-flex align-items-end">
                     <div class="container-fluid">
@@ -677,4 +743,6 @@
                 </div>
             </div>
         </section>
-    @endsection
+        
+    </section>
+@endsection
