@@ -8,15 +8,17 @@
                                 src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
                     </div>
                 </div>
-                <form class="custom-search-form">
+                <form class="custom-search-form" action="{{ route('products.search') }}" method="GET">
                     <div class="input-group">
-                        <input class="form-control search-input" type="search"
-                            placeholder="What decor are you looking for?" aria-label="Search">
+                        <input class="form-control search-input" type="search" name="query"
+                            placeholder="What decor are you looking for?" aria-label="Search" required>
+
                         <button class="btn custom-btn" type="submit">
                             Search
                         </button>
                     </div>
                 </form>
+
                 <div class="button-part d-flex align-items-center gap-5">
                     <a href="">
                         <div>

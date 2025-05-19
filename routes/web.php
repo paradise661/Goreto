@@ -51,6 +51,7 @@ use App\Http\Controllers\Admin\UserRegisterController;
  */
 
 
+
 // Auth::routes();
 Auth::routes(['register' => false]);
 
@@ -135,7 +136,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('popup', PopupController::class);
     Route::resource('social', SocialController::class);
 
-    Route::get('/category/{slug}', [FrontendController::class, 'categoryProducts'])->name('category.products');
+    
 
     /*
     |--------------------------------------------------------------------------

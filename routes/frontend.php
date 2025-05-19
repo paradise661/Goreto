@@ -12,3 +12,4 @@ Route::get('/category/{slug}', [FrontendController::class, 'categoryProducts'])-
 
 
 
+Route::get('/search', [FrontendController::class, 'search'])->name('products.search');

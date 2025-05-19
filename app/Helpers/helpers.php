@@ -313,4 +313,5 @@ if (!function_exists('fileUpload')) {
             return $image;
         }
     }
+    
 }

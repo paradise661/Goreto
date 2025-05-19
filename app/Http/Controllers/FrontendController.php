@@ -52,4 +52,14 @@ class FrontendController extends Controller
 
         return view('frontend.category.products', compact('products', 'category'));
     }
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+
+        $products = Product::where('name', 'LIKE', "%{$query}%")
+                    ->orWhere('description', 'LIKE', "%{$query}%")
+                    ->paginate(20);
+
+        return view('frontend.search.results', compact('products', 'query'));
+    }
 }

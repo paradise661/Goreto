@@ -6,8 +6,9 @@
         @forelse($products as $product)
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img class="card-img-top" src="{{ asset('uploads/products/' . $product->image) }}"
-                        alt="{{ $product->name }}">
+                    <img class="card-img-top img-fluid" src="{{ get_image_url($product->image, 'home-banner-slider') }}"
+                        alt="{{ $product->name }}" style="max-width: 150px; height: auto;">
+
                     <div class="card-body">
                         <h5>{{ $product->name }}</h5>
                         <p>Nrs {{ $product->price }}</p>
