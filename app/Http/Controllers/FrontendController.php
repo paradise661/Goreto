@@ -19,6 +19,15 @@ class FrontendController extends Controller
         return view('frontend.home.index', compact('sliders', 'categories'));
     }
 
+    function product()
+    {
+        return view('frontend.product.index');
+    }
+    function productsingle()
+    {
+        return view('frontend.product.show');
+    }
+
     public function categoryProducts($slug)
     {
         $category = Category::where('slug', $slug)
