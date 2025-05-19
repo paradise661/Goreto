@@ -5,28 +5,25 @@
         <section class="py-3">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-9">
-                        <div class="swiper mySwiper ">
-                            <div class="swiper-wrapper ">
-                                <div class="swiper-slide">
-                                    <div class="banner-first-container pb-4">
-                                        <img src="{{ asset('frontend/assets/images/img1.jpeg') }}" alt="">
-                                    </div>
+                    @if ($sliders->isNotEmpty())
+                        <div class="col-lg-9">
+                            <div class="swiper mySwiper">
+                                <div class="swiper-wrapper">
+                                    @foreach ($sliders as $slide)
+                                        <div class="swiper-slide">
+                                            <div class="banner-first-container pb-4">
+                                                <img class="img-fluid w-100"
+                                                    src="{{ get_image_url($slide->image, 'home-banner-slider') }}"
+                                                    alt="Banner Image" />
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-first-container pb-4">
-                                        <img src="{{ asset('frontend/assets/images/img2.jpeg') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-first-container pb-4">
-                                        <img src="{{ asset('frontend/assets/images/img3.jpeg') }}" alt="">
-                                    </div>
-                                </div>
+                                <div class="swiper-pagination"></div>
                             </div>
-                            <div class="swiper-pagination"></div>
                         </div>
-                    </div>
+                    @endif
+
                     <div class="col-lg-3">
                         <div class="trending-container-card shadow rounded p-3 bg-white">
                             <div class="trending-title">
@@ -38,7 +35,8 @@
                                         <img src="{{ asset('frontend/assets/images/product.jpeg') }}" alt="">
                                     </div>
                                     <div class="col-8 trending-conent">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.</h6>
+                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
+                                        </h6>
                                         <div class="d-flex gap-2 ">
                                             <p>Nrs 5000</p>
                                             <p class="cross-price underline"> Nrs 8000</p>
@@ -52,7 +50,8 @@
                                         <img src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                     </div>
                                     <div class="col-8 trending-conent ">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.</h6>
+                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
+                                        </h6>
                                         <div class="d-flex gap-2 ">
                                             <p>Nrs 5000</p>
                                             <p class="cross-price underline"> Nrs 8000</p>
@@ -66,7 +65,8 @@
                                         <img src="{{ asset('frontend/assets/images/product3.jpeg') }}" alt="">
                                     </div>
                                     <div class="col-8 trending-conent ">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.</h6>
+                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
+                                        </h6>
                                         <div class="d-flex gap-2 ">
                                             <p>Nrs 5000</p>
                                             <p class="cross-price underline"> Nrs 8000</p>
@@ -80,7 +80,8 @@
                                         <img src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                     </div>
                                     <div class="col-8 trending-conent ">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.</h6>
+                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
+                                        </h6>
                                         <div class="d-flex gap-2 ">
                                             <p>Nrs 5000</p>
                                             <p class="cross-price underline"> Nrs 8000</p>
@@ -156,55 +157,55 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img src="{{ asset('frontend/assets/images/arrival1.png') }}" class="arrival-card-img"
+                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival1.png') }}"
                                         alt="">
                                 </div>
-                                <a href="" class=" stretched-link"></a>
+                                <a class=" stretched-link" href=""></a>
                             </div>
                         </div>
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img src="{{ asset('frontend/assets/images/arrival2.jpeg') }}" class="arrival-card-img"
+                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival2.jpeg') }}"
                                         alt="">
                                 </div>
-                                <a href="" class=" stretched-link"></a>
+                                <a class=" stretched-link" href=""></a>
                             </div>
                         </div>
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img src="{{ asset('frontend/assets/images/arrival3.jpeg') }}" class="arrival-card-img"
+                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival3.jpeg') }}"
                                         alt="">
                                 </div>
-                                <a href="" class=" stretched-link"></a>
+                                <a class=" stretched-link" href=""></a>
                             </div>
                         </div>
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img src="{{ asset('frontend/assets/images/arrival4.jpeg') }}"
-                                        class="arrival-card-img" alt="">
+                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival4.jpeg') }}"
+                                        alt="">
                                 </div>
-                                <a href="" class=" stretched-link"></a>
+                                <a class=" stretched-link" href=""></a>
                             </div>
                         </div>
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img src="{{ asset('frontend/assets/images/arrival6.jpeg') }}"
-                                        class="arrival-card-img" alt="">
+                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival6.jpeg') }}"
+                                        alt="">
                                 </div>
-                                <a href="" class=" stretched-link"></a>
+                                <a class=" stretched-link" href=""></a>
                             </div>
                         </div>
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img src="{{ asset('frontend/assets/images/arrival6.jpeg') }}"
-                                        class="arrival-card-img" alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival6.jpeg') }}" alt="">
                                 </div>
-                                <a href="" class=" stretched-link"></a>
+                                <a class=" stretched-link" href=""></a>
                             </div>
                         </div>
                         <!-- Repeat for other cards -->
@@ -236,8 +237,8 @@
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
 
@@ -265,15 +266,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
                                             <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
@@ -300,15 +301,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
                                             <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
@@ -335,51 +336,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
-                                                class="product-img" alt="">
-                                        </div>
-                                        <div class="product-card-content pt-3">
-
-                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
-                                                ML
-                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
-                                            <div class="price-container d-flex justify-content-between">
-                                                <div>
-                                                    <p>Nrs 5000</p>
-                                                    <p class="cross-price underline"> Nrs 8000</p>
-                                                </div>
-                                                <div class="d-flex justify-content-between align-items-center py-2">
-                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
-                                                        alt="">
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="cart-section justify-content-between align-items-center d-flex py-2">
-                                                <div>
-                                                    <a href="">
-                                                        <button class="scale-button">
-                                                            <span class="scale-text">Add to Cart </span>
-                                                        </button></a>
-                                                </div>
-                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
-                                            </div>
-                                        </div>
-                                        <a href="" class=" stretched-link"></a>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide py-5">
-                                    <div class="product-card shadow p-3 position-relative">
-                                        <div class="ribbon">20% Offer</div>
-                                        <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
 
@@ -407,15 +372,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
 
@@ -443,7 +408,43 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <!-- Repeat for other cards -->
@@ -517,7 +518,7 @@
         <section class="py-5 ">
             <div class="position-relative section-three">
                 <!-- Background image in HTML -->
-                <img src="{{ asset('frontend/assets/images/background.jpg') }}" alt="Background" class="w-100 bg-img"
+                <img class="w-100 bg-img" src="{{ asset('frontend/assets/images/background.jpg') }}" alt="Background"
                     style="height: 408px; object-fit: cover;">
                 <!-- Content Over Image -->
                 <div class="card-container-three w-100 h-100 d-flex align-items-end">
@@ -534,8 +535,9 @@
                                         <div class="product-card shadow p-3 position-relative">
                                             <div class="ribbon">20% Offer</div>
                                             <div class="product-card-img">
-                                                <img src="{{ asset('frontend/assets/images/product.jpeg') }}"
-                                                    class="product-img" alt="">
+                                                <img class="product-img"
+                                                    src="{{ asset('frontend/assets/images/product.jpeg') }}"
+                                                    alt="">
                                             </div>
                                             <div class="product-card-content pt-3">
                                                 <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
@@ -562,15 +564,16 @@
                                                     <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                 </div>
                                             </div>
-                                            <a href="" class="stretched-link"></a>
+                                            <a class="stretched-link" href=""></a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
                                             <div class="ribbon">20% Offer</div>
                                             <div class="product-card-img">
-                                                <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
-                                                    class="product-img" alt="">
+                                                <img class="product-img"
+                                                    src="{{ asset('frontend/assets/images/product1.jpeg') }}"
+                                                    alt="">
                                             </div>
                                             <div class="product-card-content pt-3">
                                                 <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
@@ -597,15 +600,16 @@
                                                     <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                 </div>
                                             </div>
-                                            <a href="" class="stretched-link"></a>
+                                            <a class="stretched-link" href=""></a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
                                             <div class="ribbon">20% Offer</div>
                                             <div class="product-card-img">
-                                                <img src="{{ asset('frontend/assets/images/product3.jpeg') }}"
-                                                    class="product-img" alt="">
+                                                <img class="product-img"
+                                                    src="{{ asset('frontend/assets/images/product3.jpeg') }}"
+                                                    alt="">
                                             </div>
                                             <div class="product-card-content pt-3">
                                                 <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
@@ -632,15 +636,16 @@
                                                     <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                 </div>
                                             </div>
-                                            <a href="" class="stretched-link"></a>
+                                            <a class="stretched-link" href=""></a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
                                             <div class="ribbon">20% Offer</div>
                                             <div class="product-card-img">
-                                                <img src="{{ asset('frontend/assets/images/product.jpeg') }}"
-                                                    class="product-img" alt="">
+                                                <img class="product-img"
+                                                    src="{{ asset('frontend/assets/images/product.jpeg') }}"
+                                                    alt="">
                                             </div>
                                             <div class="product-card-content pt-3">
                                                 <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
@@ -667,15 +672,16 @@
                                                     <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                 </div>
                                             </div>
-                                            <a href="" class="stretched-link"></a>
+                                            <a class="stretched-link" href=""></a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
                                             <div class="ribbon">20% Offer</div>
                                             <div class="product-card-img">
-                                                <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
-                                                    class="product-img" alt="">
+                                                <img class="product-img"
+                                                    src="{{ asset('frontend/assets/images/product1.jpeg') }}"
+                                                    alt="">
                                             </div>
                                             <div class="product-card-content pt-3">
                                                 <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
@@ -702,15 +708,16 @@
                                                     <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                 </div>
                                             </div>
-                                            <a href="" class="stretched-link"></a>
+                                            <a class="stretched-link" href=""></a>
                                         </div>
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
                                             <div class="ribbon">20% Offer</div>
                                             <div class="product-card-img">
-                                                <img src="{{ asset('frontend/assets/images/product3.jpeg') }}"
-                                                    class="product-img" alt="">
+                                                <img class="product-img"
+                                                    src="{{ asset('frontend/assets/images/product3.jpeg') }}"
+                                                    alt="">
                                             </div>
                                             <div class="product-card-content pt-3">
                                                 <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
@@ -737,7 +744,7 @@
                                                     <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                 </div>
                                             </div>
-                                            <a href="" class="stretched-link"></a>
+                                            <a class="stretched-link" href=""></a>
                                         </div>
                                     </div>
                                     <!-- Repeat cards -->
@@ -776,8 +783,8 @@
                     <div class="col-lg-3">
                         <div class="side-img position-relative rounded shadow overflow-hidden"
                             style="border: 2px solid #f8d7da;">
-                            <img src="{{ asset('frontend/assets/images/babyside1.jpg') }}" alt="Side Image"
-                                class="img-fluid w-100">
+                            <img class="img-fluid w-100" src="{{ asset('frontend/assets/images/babyside1.jpg') }}"
+                                alt="Side Image">
                             <div class="img-overlay-text position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center text-center text-white p-3"
                                 style="background: rgba(0,0,0,0.45); transition: background 0.3s ease;">
                                 <h4 class="title fw-bold fs-4">Little Joys of the Week</h4>
@@ -794,8 +801,8 @@
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product11.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
                                             <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
@@ -822,15 +829,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/img12.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
                                             <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
@@ -857,15 +864,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/img13.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
                                             <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
@@ -892,15 +899,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/img14.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
 
@@ -928,15 +935,16 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product.jpeg') }}"
-                                                class="product-img" alt="product-img">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product.jpeg') }}"
+                                                alt="product-img">
                                         </div>
                                         <div class="product-card-content pt-3">
 
@@ -964,15 +972,15 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                                 <div class="swiper-slide py-5">
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
-                                                class="product-img" alt="">
+                                            <img class="product-img"
+                                                src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
 
@@ -1000,7 +1008,7 @@
                                                 <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                             </div>
                                         </div>
-                                        <a href="" class=" stretched-link"></a>
+                                        <a class=" stretched-link" href=""></a>
                                     </div>
                                 </div>
                             </div>
