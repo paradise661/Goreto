@@ -44,7 +44,7 @@
                 <img src="{{ asset('frontend/assets/images/logo.jpg') }}" alt="Logo">
             </a>
             <!-- Navbar Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" type="button"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="ri-menu-line"></i>
             </button>
@@ -52,169 +52,49 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <!-- Dropdown for Shop by Category -->
-                    <li class="nav-item dropdown mega-dropdown nav-text">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownModel" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Personal Care<i class="ri-arrow-down-s-line"></i>
-                        </a>
-                        <ul class="dropdown-menu mega-dropdown-menu container " aria-labelledby="navbarDropdownModel">
-                            <div class="row">
-                                <!-- Personal Care -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Personal Care</h4>
-                                    <li><a class="dropdown-item" href="#">Accessories
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
+                    @foreach ($categories->take(8) as $mainCategory)
+                        <li class="nav-item dropdown mega-dropdown nav-text">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownModel" data-bs-toggle="dropdown"
+                                href="#" role="button" aria-expanded="false">
+                                {{ $mainCategory->name }}<i class="ri-arrow-down-s-line"></i>
+                            </a>
+                            <ul class="dropdown-menu mega-dropdown-menu container"
+                                aria-labelledby="navbarDropdownModel">
+                                <div class="row">
+                                    @foreach ($mainCategory->children->chunk(2) as $chunk)
+                                        <div class="col-md-4">
+                                            @foreach ($chunk as $childCategory)
+                                                <li>
+                                                    <a class="dropdown-item fw-bold text-decoration-underline"
+                                                        href="#">
+                                                        {{ $childCategory->name }}
+                                                    </a>
 
+                                                    @if ($childCategory->children->count())
+                                                        <ul class="list-unstyled ps-3">
+                                                            @foreach ($childCategory->children->take(5) as $grandChild)
+                                                                <li>
+                                                                    <a class="dropdown-item"
+                                                                        href="#">{{ $grandChild->name }}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
                                 </div>
-                                <!--  -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Baby Care</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-                                <!-- Birthday Gifts -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Device</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
+                            </ul>
+                        </li>
+                    @endforeach
 
-                                </div>
-                            </div>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown mega-dropdown nav-text">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownModel" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Product Under 1000 <i class="ri-arrow-down-s-line"></i>
-                        </a>
-                        <ul class="dropdown-menu mega-dropdown-menu container " aria-labelledby="navbarDropdownModel">
-                            <div class="row">
-                                <!-- Personal Care -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Wellness</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-
-                                </div>
-
-                                <!-- Candlelight Dinners -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Candlelight Dinners</h4>
-                                    <li><a class="dropdown-item" href="#">Private Couple Experiences</a></li>
-                                    <li><a class="dropdown-item" href="#">Rooftop Dinners</a></li>
-                                    <li><a class="dropdown-item" href="#">Poolside Candlelight Dinners</a></li>
-                                    <li><a class="dropdown-item" href="#">Private Dinner & Movie</a></li>
-
-                                </div>
-
-                                <!-- Anniversary Gifts -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Digestive Health</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-
-                                <!-- Image Section (Only on Large Screens) -->
-                            </div>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown mega-dropdown nav-text">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownModel" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Device <i class="ri-arrow-down-s-line"></i>
-                        </a>
-                        <ul class="dropdown-menu mega-dropdown-menu container " aria-labelledby="navbarDropdownModel">
-                            <div class="row">
-                                <!-- Personal Care -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Device</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-                                <!-- Personal Care -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Device</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-                                <!-- Digestive Health -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Digestive Health</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-
-                                <!-- Image Section (Only on Large Screens) -->
-                            </div>
-
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown mega-dropdown nav-text">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownModel" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Family Care <i class="ri-arrow-down-s-line"></i>
-                        </a>
-                        <ul class="dropdown-menu mega-dropdown-menu container " aria-labelledby="navbarDropdownModel">
-                            <div class="row">
-                                <!-- Personal Care -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Device</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Family Care</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-                                <!-- Digestive Health -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Family Care</h4>
-                                    <li><a class="dropdown-item" href="#">baby & Infant Supplements</a></li>
-                                    <li><a class="dropdown-item" href="#">baby & Infant Supplements</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-                                <!-- Digestive Health -->
-                                <div class="col-md-4">
-                                    <h4 class="header-title">Digestive Health</h4>
-                                    <li><a class="dropdown-item" href="#">Baby & Infant Supplements
-                                        </a></li>
-                                    <li><a class="dropdown-item" href="#">Diapers</a></li>
-                                    <li><a class="dropdown-item" href="#">General Hygience</a></li>
-                                    <li><a class="dropdown-item" href="#">Mens Cares</a></li>
-                                </div>
-                                <!-- Image Section (Only on Large Screens) -->
-                            </div>
-                        </ul>
-                    </li>
-                </ul>
             </div>
+            </ul>
+            </li>
+
+            </ul>
+        </div>
         </div>
     </nav>
 </header>
