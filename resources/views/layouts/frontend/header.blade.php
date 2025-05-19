@@ -1,40 +1,36 @@
 <header class="header-section">
-    <div id="header top-header-main">
-        <div class="top-header">
-            <div class=" container-fluid d-none d-lg-block py-2 ">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="logo-part d-flex justify-content-between align-items-center">
-                        <div>
-                            <a class="navbar-brand nav-logo" href="#"><img
-                                    src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
-                        </div>
-                    </div>
-                    <form class="custom-search-form">
-                        <div class="input-group">
-                            <input class="form-control search-input" type="search"
-                                placeholder="What decor are you looking for?" aria-label="Search">
-                            <button class="btn custom-btn" type="submit">
-                                Search
-                            </button>
-                        </div>
-                    </form>
-                    <div class="button-part d-flex align-items-center gap-5">
-                        <a href="">
-                            <div>
-                                <i class="ri-user-line header-icon"></i>
-                                {{-- <p>Login</p> --}}
-                            </div>
-                        </a>
-                        <div>
-                            <i class="ri-shopping-cart-line header-icon"></i>
-                        </div>
-                        <div>
-                            <i class="ri-notification-3-line header-icon"></i>
-
-                        </div>
+    <div id="header"  class=" top-header">
+        <div class=" container-fluid d-none d-lg-block py-2 ">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="logo-part d-flex justify-content-between align-items-center">
+                    <div>
+                        <a class="navbar-brand nav-logo" href="#"><img
+                         src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
                     </div>
                 </div>
-
+                <form class="custom-search-form">
+                    <div class="input-group">
+                        <input class="form-control search-input" type="search"
+                            placeholder="What decor are you looking for?" aria-label="Search">
+                        <button class="btn custom-btn" type="submit">
+                            Search
+                        </button>
+                    </div>
+                </form>
+                <div class="button-part d-flex align-items-center gap-5">
+                    <a href="">
+                        <div>
+                            <i class="ri-user-line header-icon"></i>
+                            {{-- <p>Login</p> --}}
+                        </div>
+                    </a>
+                    <div>
+                        <i class="ri-shopping-cart-line header-icon"></i>
+                    </div>
+                    <div>
+                        <i class="ri-notification-3-line header-icon"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
