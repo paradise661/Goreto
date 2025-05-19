@@ -1,11 +1,11 @@
 <header class="header-section">
-    <div id="header"  class=" top-header">
+    <div class=" top-header" id="header">
         <div class=" container-fluid d-none d-lg-block py-2 ">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo-part d-flex justify-content-between align-items-center">
                     <div>
-                        <a class="navbar-brand nav-logo" href="#"><img
-                         src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
+                        <a class="navbar-brand nav-logo" href="/"><img
+                                src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
                     </div>
                 </div>
                 <form class="custom-search-form">
