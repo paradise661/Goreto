@@ -47,31 +47,34 @@
             <!-- Collapsible Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <!-- Dropdown for Shop by Category -->
-                    @foreach ($categories->take(8) as $mainCategory)
+                    @foreach ($categories->sortBy(fn($cat) => $cat->order ?? $cat->created_at)->take(8) as $mainCategory)
                         <li class="nav-item dropdown mega-dropdown nav-text">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownModel" data-bs-toggle="dropdown"
-                                href="#" role="button" aria-expanded="false">
+                                href="{{ route('category.products', $mainCategory->slug) }}" role="button"
+                                aria-expanded="false">
                                 {{ $mainCategory->name }}<i class="ri-arrow-down-s-line"></i>
                             </a>
+
                             <ul class="dropdown-menu mega-dropdown-menu container"
                                 aria-labelledby="navbarDropdownModel">
                                 <div class="row">
-                                    @foreach ($mainCategory->children->chunk(2) as $chunk)
+                                    @foreach ($mainCategory->children->sortBy(fn($cat) => $cat->order ?? $cat->created_at)->chunk(2) as $chunk)
                                         <div class="col-md-4">
                                             @foreach ($chunk as $childCategory)
                                                 <li>
                                                     <a class="dropdown-item fw-bold text-decoration-underline"
-                                                        href="#">
+                                                        href="{{ route('category.products', $childCategory->slug) }}">
                                                         {{ $childCategory->name }}
                                                     </a>
 
                                                     @if ($childCategory->children->count())
                                                         <ul class="list-unstyled ps-3">
-                                                            @foreach ($childCategory->children->take(5) as $grandChild)
+                                                            @foreach ($childCategory->children->sortBy(fn($cat) => $cat->order ?? $cat->created_at)->take(5) as $grandChild)
                                                                 <li>
                                                                     <a class="dropdown-item"
-                                                                        href="#">{{ $grandChild->name }}</a>
+                                                                        href="{{ route('category.products', $grandChild->slug) }}">
+                                                                        {{ $grandChild->name }}
+                                                                    </a>
                                                                 </li>
                                                             @endforeach
                                                         </ul>
@@ -84,8 +87,9 @@
                             </ul>
                         </li>
                     @endforeach
-
+                </ul>
             </div>
+
             </ul>
             </li>
 
