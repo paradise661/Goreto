@@ -869,3 +869,11 @@ button:focus:not(:focus-visible) {
 .img-overlay-text .description {
     font-size: 1rem;
 }
+.side-main-img{
+    height: 444px !important;
+    width: 100%;
+}
+.brand-card-container img{
+    height: 150px;
+    width: 100%;
+}

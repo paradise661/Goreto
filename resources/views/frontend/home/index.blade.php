@@ -143,9 +143,11 @@
         {{-- new arrival sectio start --}}
         <section class="new-arrival-section">
             <div class="container-fluid">
-                <div class="home-title-heading text-center">
-                    <h2>May Deals
-                        <span>& New Arrivals</span>
+                <div class="home-title-heading text-center mb-4">
+                    <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
+                        May Deals & New Arrivals
+                        <span
+                            style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
                     </h2>
                 </div>
                 <div class="swiper offerSwiper p-4">
@@ -181,8 +183,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img src="{{ asset('frontend/assets/images/arrival4.jpeg') }}" class="arrival-card-img"
-                                        alt="">
+                                    <img src="{{ asset('frontend/assets/images/arrival4.jpeg') }}"
+                                        class="arrival-card-img" alt="">
                                 </div>
                                 <a href="" class=" stretched-link"></a>
                             </div>
@@ -218,8 +220,12 @@
         <div class="product-section py-5">
             <div class="container-fluid">
                 <div class="product-section">
-                    <div class="home-title-heading text-center">
-                        <h2>Featured Brand <span>Of Week</span></h2>
+                    <div class="home-title-heading text-center mb-4">
+                        <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
+                            Featured Brand Of Week
+                            <span
+                                style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
+                        </h2>
                     </div>
                     <!-- for mobile view -->
                     <div class="">
@@ -758,7 +764,8 @@
                 <!-- Section Title -->
                 <div class="home-title-heading text-center mb-4">
                     <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
-                        Baby Care <span style="color: #0ab7ec;">Of Week</span>
+                        Baby Care
+                        {{-- <span style="color: #0ab7ec;">Of Week</span> --}}
                         {{-- <img src="{{ asset('frontend/assets/images/baby-icon.png') }}" alt="Baby Icon" class="ms-2" style="width: 40px;"> --}}
                         <span
                             style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
@@ -787,7 +794,7 @@
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product.jpeg') }}"
+                                            <img src="{{ asset('frontend/assets/images/product11.jpeg') }}"
                                                 class="product-img" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
@@ -822,7 +829,7 @@
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
+                                            <img src="{{ asset('frontend/assets/images/img12.jpeg') }}"
                                                 class="product-img" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
@@ -857,7 +864,7 @@
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
+                                            <img src="{{ asset('frontend/assets/images/img13.jpeg') }}"
                                                 class="product-img" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
@@ -892,7 +899,7 @@
                                     <div class="product-card shadow p-3 position-relative">
                                         <div class="ribbon">20% Offer</div>
                                         <div class="product-card-img">
-                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
+                                            <img src="{{ asset('frontend/assets/images/img14.jpeg') }}"
                                                 class="product-img" alt="">
                                         </div>
                                         <div class="product-card-content pt-3">
@@ -998,12 +1005,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
                     </div>
                 </div>
             </div>
         </section>
-          <!-- Banner3 start -->
-          <div class="container-fluid py-0 py-md-5">
+        <!-- Banner3 start -->
+        <div class="container-fluid py-0 py-md-5">
             <div class="row">
                 <div class="banner-2">
                     <img src="{{ asset('frontend/assets/images/banner3.jpg') }}" alt="">
@@ -1011,7 +1020,546 @@
             </div>
         </div>
         <!-- Banner3 end -->
-        
+        <section class="categories">
+            <div class="container-fluid">
+                <!-- Section Title -->
+                <div class="home-title-heading text-center mb-4">
+                    <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
+                        Women's Care
+                        <span
+                            style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
+                    </h2>
+                </div>
+                <div class="row align-items-center">
+                    <!-- Product Swiper -->
+                    <div class="col-lg-9">
+                        <div class="swiper categorieSwiper p-4 bg-white rounded shadow-sm">
+                            <div class="swiper-wrapper">
+                                <!-- Cards (as-is) -->
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product11.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product17.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product16.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product17.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product11.jpeg') }}"
+                                                class="product-img" alt="product-img">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                    <!-- Left Side Image with Overlay -->
+                    <div class="col-lg-3">
+                        <div class="side-img position-relative rounded shadow overflow-hidden"
+                            style="border: 2px solid #f8d7da;">
+                            <img src="{{ asset('frontend/assets/images/babyside1.jpg') }}" alt="Side Image"
+                                class="img-fluid w-100">
+                            <div class="img-overlay-text position-absolute top-0 start-0 w-100 h-100 d-flex flex-column 
+                            justify-content-center align-items-center text-center text-white p-3"
+                                style="background: rgba(0,0,0,0.45); transition: background 0.3s ease;">
+                                <h4 class="title fw-bold fs-4">Little Joys of the Week</h4>
+                                <p class="description fs-6">Nurturing Smiles, One Product at a Time</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5">
+            <div class="container-fluid">
+                <!-- Section Title -->
+                <div class="home-title-heading text-center mb-4">
+                    <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
+                        Family Care
+                        <span
+                            style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
+                    </h2>
+                </div>
+                <div class="row align-items-center">
+                    <!-- Left Side Image with Overlay -->
+                    <div class="col-lg-3">
+                        <div class="side-img position-relative rounded shadow overflow-hidden"
+                            style="border: 2px solid #f8d7da;">
+                            <img src="{{ asset('frontend/assets/images/side-img-1.jpg') }}" alt="Side Image"
+                                class="img-fluid w-100 side-main-img">
+                            <div class="img-overlay-text position-absolute top-0 start-0 w-100 h-100 d-flex flex-column 
+                            justify-content-center align-items-center text-center text-white p-3"
+                                style="background: rgba(0,0,0,0.45); transition: background 0.3s ease;">
+                                <h4 class="title fw-bold fs-4">Little Joys of the Week</h4>
+                                <p class="description fs-6">Nurturing Smiles, One Product at a Time</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product Swiper -->
+                    <div class="col-lg-9">
+                        <div class="swiper categorieSwiper p-4 bg-white rounded shadow-sm">
+                            <div class="swiper-wrapper">
+                                <!-- Cards (as-is) -->
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product11.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product17.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product16.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product17.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product11.jpeg') }}"
+                                                class="product-img" alt="product-img">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide py-5">
+                                    <div class="product-card shadow p-3 position-relative">
+                                        <div class="ribbon">20% Offer</div>
+                                        <div class="product-card-img">
+                                            <img src="{{ asset('frontend/assets/images/product1.jpeg') }}"
+                                                class="product-img" alt="">
+                                        </div>
+                                        <div class="product-card-content pt-3">
+
+                                            <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50
+                                                ML
+                                                Beauty Of Joseon Relief Sun Aqua-fresh: Rice + B5 - 50ml</h3>
+                                            <div class="price-container d-flex justify-content-between">
+                                                <div>
+                                                    <p>Nrs 5000</p>
+                                                    <p class="cross-price underline"> Nrs 8000</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                        alt="">
+                                                </div>
+                                            </div>
+                                            <div
+                                                class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                <div>
+                                                    <a href="">
+                                                        <button class="scale-button">
+                                                            <span class="scale-text">Add to Cart </span>
+                                                        </button></a>
+                                                </div>
+                                                <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                            </div>
+                                        </div>
+                                        <a href="" class=" stretched-link"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {{-- for brands --}}
+        <section class="brand-section py-5">
+            <div class="container-fluid">
+                <div class="swiper categorieSwiper p-4 ">
+                    <div class="swiper-wrapper">
+                        <!-- Cards (as-is) -->
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand.png') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand2.jpeg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
         {{-- categories section end --}}
+
     </section>
 @endsection
