@@ -1284,3 +1284,7 @@ button:focus:not(:focus-visible) {
     font-size: 19px;
     font-weight: 400;
 }
+.heading-title{
+    font-size: 29px;
+    font-weight: 600;
+}

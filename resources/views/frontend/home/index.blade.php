@@ -525,7 +525,7 @@
                     <div class="container-fluid">
                         <div class=" pt-5 mt-5">
                             <div>
-                                <h3 class="text-white">Lorem ipsum dolor sit.</h3>
+                                <h3 class="text-white text-center heading-title">New Products</h3>
                             </div>
                             <div class="swiper packageSwiper p-4  ">
                                 <div class="swiper-wrapper">
