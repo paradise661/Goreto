@@ -877,3 +877,262 @@ button:focus:not(:focus-visible) {
     height: 150px;
     width: 100%;
 }
+.package-detail-banner {
+    background-color: white;
+    /* Light background */
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.package-detail-banner ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+}
+
+.package-detail-banner li {
+    font-size: 16px;
+    font-family: Figtree;
+    color: #333;
+}
+
+.package-detail-banner ul .active {
+    color: #910C28;
+}
+
+.package-detail-banner h4 {
+    font-size: 22px;
+    font-family: Figtree;
+    font-weight: 600;
+    padding-top: 10px;
+}
+
+.package-detail-banner p {
+    font-size: 15px;
+    font-family: Figtree;
+    font-weight: 400;
+
+}
+
+.custom-list {
+    list-style: none !important;
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+
+}
+
+.custom-list li {
+    margin-bottom: 0.6rem;
+    position: relative;
+    list-style: none !important;
+}
+
+.custom-list li:before {
+    content: "✓";
+    color: #006960;
+    display: inline-block;
+    position: absolute;
+    top: 8%;
+    left: -40px;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.inclusion-content h4 {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Figtree;
+    border-bottom: 1px solid #aaabac;
+    padding: 5px;
+}
+
+.exclusice-list {
+    list-style: none !important;
+    font-size: 1.125rem;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+
+}
+
+.exclusice-list li {
+    margin-bottom: 0.6rem;
+    position: relative;
+    list-style: none !important;
+}
+
+.exclusice-list li:before {
+    content: "✗";
+    color: #db1414;
+    display: inline-block;
+    position: absolute;
+    top: 8%;
+    left: -40px;
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 18px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.inclusion-content p {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: Figtree;
+    color: #474646;
+    padding: 5px;
+}
+
+.sidebar-content {
+    top: 50px;
+    position: sticky;
+    z-index: 1;
+}
+
+.why-us-card h4 {
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Figtree;
+    padding: 5px;
+    text-align: center;
+}
+
+.custom-list ul strong {
+    color: #910C28;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: Figtree;
+}
+
+.recommendation-swiper .card img {
+    height: 100px;
+}
+
+.recomendation-card-img img {
+    height: 100px;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.recomendation-card-content h3 {
+    font-family: Figtree;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 16px;
+}
+
+.recomendation-card-content p {
+    font-family: Figtree;
+    font-weight: 600;
+    font-size: 10px;
+    color: #05c1fa;
+
+}
+
+.recomendation-card {
+    background-color: white;
+}
+
+/* Scale Background Button */
+.scale-button-rd {
+    position: relative;
+    padding: 0.2rem 0.5rem;
+    font-size: 1rem;
+    color: rgb(68, 68, 68);
+    background: none;
+    border: 1px solid #06ad43;
+    border-radius: 8px;
+    font-weight: 400;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.scale-text {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+.scale-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #06ad43;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    z-index: 0;
+}
+.scale-button:hover .scale-bg {
+    transform: scale(1);
+}
+
+.scale-button:hover {
+    color: white !important;
+}
+
+.pricing-part h5 {
+    font-weight: 700;
+    font-size: 22px;
+    font-family: Figtree;
+}
+
+.pricing-part h5 span {
+    font-weight: 400;
+    font-size: 16px;
+    font-family: Figtree;
+}
+/* .booking-form-container{
+    margin: 14px 14px 0px 0px;
+} */
+.date-picker-container label {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: Figtree;
+}
+.date-picker-container input {
+    font-weight: 400;
+    font-size: 14px;
+    font-family: Figtree;
+    width: 44%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    font-size: 16px;
+}
+.book-now-btn {
+    background-color: #06ad43;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+.book-now-btn:hover {
+    background-color: #2489d5;
+}
+.recommendation-content-title {
+    font-weight: 600;
+    font-size: 18px;
+    font-family: Figtree;
+    color: #424242;
+}
