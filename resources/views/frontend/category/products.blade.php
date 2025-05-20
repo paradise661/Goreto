@@ -22,7 +22,7 @@
                                     <div class="price-container d-flex justify-content-between">
                                         <div>
                                             <p>Nrs {{ $product->price }}</p>
-                                            <p class="cross-price underline">Nrs 8000</p>
+                                            <p class="cross-price underline">Nrs {{ $product->mrp }}</p>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-center py-2">
                                             <img src="{{ asset('frontend/assets/images/rating.png') }}" alt="">

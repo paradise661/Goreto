@@ -42,6 +42,10 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
     }
+    public function division()
+{
+    return $this->belongsTo(Division::class);
+}
 
     /**
      * Assign selected category along with all its ancestors (parent, grandparent).

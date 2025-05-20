@@ -4,20 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Sliders;
+use App\Models\Division;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
     public function home()
-    {
-        $sliders = Sliders::oldest('order')->get();
-        $categories = Category::whereNull('parent_id')
-            ->with('children.children')
-            ->get();
+{
+    $sliders = Sliders::oldest('order')->get();
 
-        return view('frontend.home.index', compact('sliders', 'categories'));
-    }
+    $categories = Category::whereNull('parent_id')
+        ->with('children.children')
+        ->get();
+
+    // ✅ Get 3 divisions that have products with a division_id
+    $divisions = Division::whereHas('products', function ($query) {
+            $query->whereNotNull('division_id');
+        })
+        ->with(['products' => function ($query) {
+            $query->whereNotNull('division_id')->latest()->take(10); // limit products if needed
+        }])
+        ->take(3)
+        ->get();
+
+    return view('frontend.home.index', compact('sliders', 'categories', 'divisions'));
+}
 
     function product()
     {

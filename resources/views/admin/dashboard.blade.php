@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Dashboard - Ohm Pharmaceuticals')
+@section('title', 'Dashboard - Goreto')
 
 @section('content')
     <div class="row">

@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
             ['site_footer_logo', null],
             ['site_fav_icon', null],
             ['site_icon_image', null],
-            ['site_information', 'Ohm Pharmaceuticals'],
+            ['site_information', 'Goreto'],
             ['site_phone', '9898989898'],
             ['site_email', 'admin@opm.com'],
             ['site_phone_two', '9898989898'],
