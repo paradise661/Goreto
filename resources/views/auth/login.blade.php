@@ -62,11 +62,11 @@
                                 </span>
 
                                 <img src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
-                                    alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Ohm Pharmaceuticals' }}">
+                                    alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}">
                             </a>
                         </div>
                         <!-- /Logo -->
-                        <h4 class="mb-2">Welcome to Ohm Pharmaceuticals!</h4>
+                        <h4 class="mb-2">Welcome to Goreto!</h4>
                         <p class="mb-4">Please sign-in to your account</p>
 
                         <form class="mb-3" id="formAuthentication" action="{{ route('login') }}" method="POST">
