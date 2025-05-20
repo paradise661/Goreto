@@ -1300,3 +1300,6 @@ button:focus:not(:focus-visible) {
     font-size: 29px;
     font-weight: 600;
 }
+.fotter-top-container{
+    background: linear-gradient(135deg, #23a352, #0ab7ec);
+}

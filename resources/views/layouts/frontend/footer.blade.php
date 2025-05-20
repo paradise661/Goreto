@@ -1,4 +1,49 @@
  <footer class="footer-class py-2">
+    <div class="fotter-top-container bg-primary p-3">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                        <img src="{{asset('frontend/assets/images/payements.png')}}" alt="">
+                        <div class="text-white">
+                            <h5>Payment Options</h5>
+                            <p>Safe and secure payments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                        <img src="{{asset('frontend/assets/images/award.png')}}" alt="">
+                        <div class="text-white">
+                            <h5>Genuine Products</h5>
+                            <p>Safe and secure payments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                        <img src="{{asset('frontend/assets/images/payements.png')}}" alt="">
+                        <div class="text-white">
+                            <h5>1500 Brands</h5>
+                            <p>Safe and secure payments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                        <img src="{{asset('frontend/assets/images/award.png')}}" alt="">
+                        <div class="text-white">
+                            <h5>Payment Options</h5>
+                            <p>Safe and secure payments</p>
+                        </div>
+                    </div>
+                </div>
+                  
+                  
+                
+            </div>
+        </div>
+    </div>
      <div class="fotter-section-background">
          <div class="container-fluid py-5">
              <div class="row w-100 ">
