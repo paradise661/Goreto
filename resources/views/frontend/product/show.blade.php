@@ -109,11 +109,11 @@
                     <div class="package-content-part ">
                         <div class="package-detail-banner shadow pb-3">
                             <ul>
-                                <li class="active">Home</li>
+                                <li class="">Home</li>
                                 <li><i class="ri-arrow-right-s-line"></i></li>
                                 <li>product</li>
                                 <li><i class="ri-arrow-right-s-line"></i></li>
-                                <li>product detail</li>
+                                <li class="active">product detail</li>
                             </ul>
                             <h4>BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
                                 50 ML</h4>
