@@ -1008,7 +1008,7 @@ button:focus:not(:focus-visible) {
 }
 
 .custom-list ul strong {
-    color: #910C28;
+    color: #05c1fa;
     font-size: 16px;
     font-weight: 600;
     font-family: Figtree;
@@ -1024,14 +1024,12 @@ button:focus:not(:focus-visible) {
     border-radius: 10px;
     object-fit: cover;
 }
-
 .recomendation-card-content h3 {
     font-family: Figtree;
     font-weight: 700;
     font-size: 10px;
     line-height: 16px;
 }
-
 .recomendation-card-content p {
     font-family: Figtree;
     font-weight: 600;
@@ -1039,11 +1037,9 @@ button:focus:not(:focus-visible) {
     color: #05c1fa;
 
 }
-
 .recomendation-card {
     background-color: white;
 }
-
 /* Scale Background Button */
 .scale-button-rd {
     position: relative;
@@ -1057,7 +1053,6 @@ button:focus:not(:focus-visible) {
     cursor: pointer;
     overflow: hidden;
 }
-
 .scale-text {
     position: relative;
     z-index: 1;

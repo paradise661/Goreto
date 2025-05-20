@@ -104,7 +104,7 @@
                         </div>
                         <div class="why-chose-us-container py-3">
                             <div class="why-us-card shadow rounded bg-white p-4">
-                                <h4>Why Choose us ?</h4>
+                                <h4>Features</h4>
                                 <div class="custom-list">
                                     <ul>
                                         <li><strong>Unmatched Creativity - </strong>we craft themes that leave a lasting
