@@ -57,7 +57,7 @@
             <div class="row">
                 <div class="col-lg-6 position-relative">
                     <div class="sidebar-content">
-                        <div class="gallery-container  p-3 position-relative bg-white rounded">
+                        <div class="gallery-container shadow p-3 position-relative bg-white rounded">
                             <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
                                 class="swiper gallerySwiper2">
                                 <div class="swiper-wrapper gallery-swiper">
@@ -83,42 +83,26 @@
                                 <div class="swiper-button-prev"></div>
                             </div>
                             <div thumbsSlider="" class="swiper gallerySwiper">
-                                <div class="swiper-wrapper gallery-lower-part p-3">
-                                    <div class="swiper-slide">
+                                <div class="swiper-wrapper gallery-lower-part p-3 ">
+                                    <div class="swiper-slide border">
                                         <img src="{{ asset('frontend/assets/images/product.jpeg') }}" />
                                     </div>
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide border">
                                         <img src="{{ asset('frontend/assets/images/product11.jpeg') }}" />
                                     </div>
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide border">
                                         <img src="{{ asset('frontend/assets/images/product17.jpeg') }}" />
                                     </div>
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide border">
                                         <img src="{{ asset('frontend/assets/images/product15.jpeg') }}" />
                                     </div>
-                                    <div class="swiper-slide">
+                                    <div class="swiper-slide border">
                                         <img src="{{ asset('frontend/assets/images/product16.jpeg') }}" />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="why-chose-us-container py-3">
-                            <div class="why-us-card shadow rounded bg-white p-4">
-                                <h4>Features</h4>
-                                <div class="custom-list">
-                                    <ul>
-                                        <li><strong>Unmatched Creativity - </strong>we craft themes that leave a lasting
-                                            impression.</li>
-                                        <li><strong>Luxurious Quality - </strong>We use only the finest materials, from
-                                            premium floral arrangements to sophisticated lighting</li>
-                                        <li><strong>Unmatched Creativity - </strong>we craft themes that leave a lasting
-                                            impression.</li>
-                                        <li><strong>Luxurious Quality - </strong>We use only the finest materials, from
-                                            premium floral arrangements to sophisticated lighting</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -174,6 +158,23 @@
                         <!-- booking form -->
                         <div class="booking-form-container py-3 ">
 
+                        </div>
+                        <div class="why-chose-us-container py-3">
+                            <div class="why-us-card  rounded bg-white p-4">
+                                <h4>Features</h4>
+                                <div class="custom-list">
+                                    <ul>
+                                        <li><strong>Unmatched Creativity - </strong>we craft themes that leave a lasting
+                                            impression.</li>
+                                        <li><strong>Luxurious Quality - </strong>We use only the finest materials, from
+                                            premium floral arrangements to sophisticated lighting</li>
+                                        <li><strong>Unmatched Creativity - </strong>we craft themes that leave a lasting
+                                            impression.</li>
+                                        <li><strong>Luxurious Quality - </strong>We use only the finest materials, from
+                                            premium floral arrangements to sophisticated lighting</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                         <!-- for recommendation -->
                         <div class="recommendation-content">
@@ -305,32 +306,18 @@
                                 <div class="swiper-button-prev"></div>
                             </div>
                         </div>
-                        <!-- for Need To know -->
-                        <div class="inclusion-card py-3">
-                            <div class="inclusion-content shadow rounded bg-white p-3">
-                                <h4>Need To know</h4>
-                                <div class="custom-list">
-                                    <ul>
-                                        <li>6x6 Rectangle Stand</li>
-                                        <li> Floral & Fabric Backdrops </li>
-                                        <li>6x6 Rectangle Stand – </li>
-                                        <li> Balloon & Light Installations </li>
-                                        <li>Customized Props & Accents </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                     
                     </div>
                 </div>
             </div>
             <!-- Decoration package start -->
             <div class="decoration-section py-5">
                 <div class="home-title-heading text-start">
-                    <h2>Related <span>Packages</span></h2>
+                    <h2>Related <span>Product</span></h2>
                 </div>
                 <!-- for dekstop view -->
                 <div class="row ">
-                    <div class="col-lg-3 py-3">
+                    <div class="col-lg custom-col-width py-3">
                         <div class="product-card shadow p-3 position-relative">
                             <div class="ribbon">20% Offer</div>
                             <div class="product-card-img">
@@ -363,7 +350,7 @@
                             <a class="stretched-link" href=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 py-3">
+                    <div class="col-lg custom-col-width py-3">
                         <div class="product-card shadow p-3 position-relative">
                             <div class="ribbon">20% Offer</div>
                             <div class="product-card-img">
@@ -396,7 +383,7 @@
                             <a class="stretched-link" href=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 py-3">
+                    <div class="col-lg custom-col-width py-3">
                         <div class="product-card shadow p-3 position-relative">
                             <div class="ribbon">20% Offer</div>
                             <div class="product-card-img">
@@ -429,7 +416,40 @@
                             <a class="stretched-link" href=""></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 py-3">
+                    <div class="col-lg custom-col-width py-3">
+                        <div class="product-card shadow p-3 position-relative">
+                            <div class="ribbon">20% Offer</div>
+                            <div class="product-card-img">
+                                <img class="product-img" src="{{ asset('frontend/assets/images/product.jpeg') }}"
+                                    alt="">
+                            </div>
+                            <div class="product-card-content pt-3">
+                                <h3 class="line-clamp-3">BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5
+                                    50 ML</h3>
+                                <div class="price-container d-flex justify-content-between">
+                                    <div>
+                                        <p>Nrs 5000</p>
+                                        <p class="cross-price underline">Nrs 8000</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center py-2">
+                                        <img src="{{ asset('frontend/assets/images/rating.png') }}" alt="">
+                                    </div>
+                                </div>
+                                <div class="cart-section justify-content-between align-items-center d-flex py-2">
+                                    <div>
+                                        <a href="">
+                                            <button class="scale-button">
+                                                <span class="scale-text">Add to Cart </span>
+                                            </button>
+                                        </a>
+                                    </div>
+                                    <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                </div>
+                            </div>
+                            <a class="stretched-link" href=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg custom-col-width py-3">
                         <div class="product-card shadow p-3 position-relative">
                             <div class="ribbon">20% Offer</div>
                             <div class="product-card-img">
