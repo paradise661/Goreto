@@ -96,13 +96,7 @@
         </section>
         {{-- Home bannner first end --}}
         <!-- Banner2 start -->
-        <div class="container-fluid py-0 py-md-5">
-            <div class="row">
-                <div class="banner-2">
-                    <img src="{{ asset('frontend/assets/images/banner1.jpeg') }}" alt="">
-                </div>
-            </div>
-        </div>
+
         <!-- Banner2 end -->
         <!-- categories section start -->
         {{-- <div class="category-section py-4">
@@ -142,6 +136,71 @@
             </div>
         </div> --}}
         {{-- new arrival sectio start --}}
+        <section class="brand-section py-5">
+            <div class="container-fluid">
+                <div class="home-title-heading text-center mb-4">
+                    <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
+                        Our Categories
+                        <span
+                            style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
+                    </h2>
+                </div>
+                <div class="swiper branchSwiper p-4 ">
+                    <div class="swiper-wrapper">
+                        <!-- Cards (as-is) -->
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand.png') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand10.jpg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand9.jpg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand2.jpeg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand10.jpg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand9.jpg') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="swiper-slide py-5">
+                            <div class="brand-card-container">
+                                <img src="{{ asset('frontend/assets/images/brand8.jpg') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            </div>
+        </section>
+        {{-- categories section end --}}
+
         <section class="new-arrival-section">
             <div class="container-fluid">
                 <div class="home-title-heading text-center mb-4">
@@ -157,8 +216,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival1.png') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival1.png') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -166,8 +225,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival2.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival2.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -175,8 +234,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival3.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival3.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -184,8 +243,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival4.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival4.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -217,6 +276,13 @@
         </section>
         {{-- new arrival sectio end --}}
         <!-- categories section end -->
+        <div class="container-fluid py-0 py-md-5">
+            <div class="row">
+                <div class="banner-2">
+                    <img src="{{ asset('frontend/assets/images/banner1.jpeg') }}" alt="">
+                </div>
+            </div>
+        </div>
         <!-- product package start -->
         <div class="product-section py-5">
             <div class="container-fluid">
@@ -850,71 +916,6 @@
                 </section>
             @endif
         @endforeach
-
-        <section class="brand-section py-5">
-            <div class="container-fluid">
-                <div class="home-title-heading text-center mb-4">
-                    <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
-                       Product Categories
-                        <span
-                            style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
-                    </h2>
-                </div>
-                <div class="swiper branchSwiper p-4 ">
-                    <div class="swiper-wrapper">
-                        <!-- Cards (as-is) -->
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand.png') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand10.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand9.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand2.jpeg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand10.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand9.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand8.jpg') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-               
-            </div>
-        </section>
-        {{-- categories section end --}}
 
     </section>
 @endsection
