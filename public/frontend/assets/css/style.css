@@ -1303,3 +1303,10 @@ button:focus:not(:focus-visible) {
 .fotter-top-container{
     background: linear-gradient(135deg, #23a352, #0ab7ec);
 }
+.camera-icon{
+    font-size: 22px;
+}
+.btn-primary{
+    background-color: #0ab7ec !important;
+    border-color: #0ab7ec !important;
+}

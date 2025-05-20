@@ -39,7 +39,10 @@ class FrontendController extends Controller
     {
         return view('frontend.product.show');
     }
-
+    function prescription()
+    {
+        return view('frontend.prescription');
+    }
     public function categoryProducts($slug)
     {
         $category = Category::where('slug', $slug)
@@ -74,4 +77,5 @@ class FrontendController extends Controller
 
         return view('frontend.search.results', compact('products', 'query'));
     }
+
 }

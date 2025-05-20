@@ -10,6 +10,6 @@ Route::get('/product/slug', [FrontendController::class, 'productsingle'])->name(
 
 Route::get('/category/{slug}', [FrontendController::class, 'categoryProducts'])->name('category.products');
 
-
+Route::get('/upload-prescription', [FrontendController::class, 'prescription'])->name('frontend.prescription');
 
 Route::get('/search', [FrontendController::class, 'search'])->name('products.search');
