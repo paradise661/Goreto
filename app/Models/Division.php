@@ -21,4 +21,8 @@ class Division extends Model
         'seo_keywords',
         'seo_schema'
     ];
+    public function products()
+{
+    return $this->hasMany(Product::class);
+}
 }
