@@ -261,8 +261,6 @@
              </div>
          </div>
      </footer>
-    
-
 </section>
 <script src="{{ asset('admin/assets/js/sweetalert-new.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/script.js') }}"></script>

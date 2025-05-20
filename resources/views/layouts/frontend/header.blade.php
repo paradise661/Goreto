@@ -18,7 +18,7 @@
                     </div>
                 </form>
                 <div class="button-part d-flex align-items-center gap-5">
-                    <a href="">
+                    <a href="{{route('frontend.prescription')}}">
                         <button class="btn btn-primary">
                             <i class="ri-camera-switch-line camera-icon"></i>  Upload Prescription
                         </button>
