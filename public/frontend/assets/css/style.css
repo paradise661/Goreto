@@ -468,13 +468,24 @@ button:focus:not(:focus-visible) {
 }
 
 .fotter-text {
-    color: #444;
+    color: #0475AF;
     font-weight: 400;
     font-size: 17px;
    font-family: 'Poppins', sans-serif;
 
 }
-
+.social-icon{
+    font-weight: 500;
+    font-size: 19px;
+    text-decoration: none !important;
+    background-color: #4bcbf1;
+    color: white;
+    border-radius: 50%;
+    padding: 10px;
+}
+.footer-social a{
+    text-decoration: none;
+}
 .fotter-text li:hover a {
     color: #1a98c2;
 }
