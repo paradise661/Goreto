@@ -616,7 +616,7 @@
                 <section class="categories">
                     <div class="container-fluid">
                         <!-- Division Title -->
-                        <div class="home-title-heading text-center mb-4">
+                        <div class="home-title-heading text-center pt-4 mb-4">
                             <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
                                 {{ $division->name }}
                                 <span
