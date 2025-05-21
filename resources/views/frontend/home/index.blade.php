@@ -96,7 +96,6 @@
         </section>
         {{-- Home bannner first end --}}
         <!-- Banner2 start -->
-
         <!-- Banner2 end -->
         <!-- categories section start -->
         {{-- <div class="category-section py-4">
@@ -137,7 +136,6 @@
         </div> --}}
         {{-- new arrival sectio start --}}
         {{-- categories section end --}}
-
         <section class="new-arrival-section">
             <div class="container-fluid">
                 <div class="home-title-heading text-center mb-4">
@@ -294,7 +292,6 @@
                 </div>
             </div>
         @endif
-
         <!-- product package end -->
         <!-- Banner2 start -->
         <div class="container-fluid py-0 py-md-5">
@@ -601,7 +598,6 @@
             </div>
         </section>
         {{-- categories section start --}}
-
         <!-- Banner3 start -->
         <div class="container-fluid py-0 py-md-5">
             <div class="row">
@@ -694,7 +690,6 @@
                 </section>
             @endif
         @endforeach
-
         <section class="brand-section py-5">
             <div class="container-fluid">
                 <div class="home-title-heading text-center mb-4">
@@ -759,6 +754,5 @@
             </div>
         </section>
         {{-- categories section end --}}
-
     </section>
 @endsection

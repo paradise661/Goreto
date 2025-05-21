@@ -1352,3 +1352,9 @@ button:focus:not(:focus-visible) {
     opacity: 0;
     cursor: pointer;
   }
+  /* For mobile screens (max-width 767px) */
+@media (max-width: 767px) {
+    .banner-first-container img {
+        height: 250px;
+    }
+}
