@@ -23,74 +23,44 @@
                             </div>
                         </div>
                     @endif
+                    @if (!empty($setting['trending_products']))
+                        <div class="col-lg-3">
+                            <div class="trending-container-card shadow rounded p-3 bg-white">
+                                <div class="trending-title">
+                                    {{ $setting['trending_big_title'] ?? '' }}
+                                </div>
 
-                    <div class="col-lg-3">
-                        <div class="trending-container-card shadow rounded p-3 bg-white">
-                            <div class="trending-title">
-                                Trending Products
-                            </div>
-                            <div class="trending-item-content  p-3">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img src="{{ asset('frontend/assets/images/product.jpeg') }}" alt="">
-                                    </div>
-                                    <div class="col-8 trending-conent">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
-                                        </h6>
-                                        <div class="d-flex gap-2 ">
-                                            <p>Nrs 5000</p>
-                                            <p class="cross-price underline"> Nrs 8000</p>
+                                @foreach (array_slice($setting['trending_products'], 0, 4) as $pd)
+                                    @php
+                                        $prd = getProductByID($pd);
+                                    @endphp
+                                    @if ($prd)
+                                        <div class="trending-item-content p-3">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="{{ get_image_url($prd->image, 'home-banner-slider') }}"
+                                                        alt="">
+                                                </div>
+                                                <div class="col-8 trending-conent">
+                                                    <h6 class="line-clamp-2">{{ $prd->name ?? '' }}</h6>
+                                                    <div class="d-flex gap-2">
+                                                        <p>Nrs {{ $prd->price ?? '' }}</p>
+                                                        @if ($prd->price && $prd->mrp)
+                                                            <p class="cross-price underline">Nrs
+                                                                <del>{{ $prd->mrp }}</del>
+                                                            </p>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="trending-item-content  p-3">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
-                                    </div>
-                                    <div class="col-8 trending-conent ">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
-                                        </h6>
-                                        <div class="d-flex gap-2 ">
-                                            <p>Nrs 5000</p>
-                                            <p class="cross-price underline"> Nrs 8000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="trending-item-content  p-3">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img src="{{ asset('frontend/assets/images/product3.jpeg') }}" alt="">
-                                    </div>
-                                    <div class="col-8 trending-conent ">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
-                                        </h6>
-                                        <div class="d-flex gap-2 ">
-                                            <p>Nrs 5000</p>
-                                            <p class="cross-price underline"> Nrs 8000</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="trending-item-content  p-3">
-                                <div class="row">
-                                    <div class="col-4">
-                                        <img src="{{ asset('frontend/assets/images/product1.jpeg') }}" alt="">
-                                    </div>
-                                    <div class="col-8 trending-conent ">
-                                        <h6 class="line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing.
-                                        </h6>
-                                        <div class="d-flex gap-2 ">
-                                            <p>Nrs 5000</p>
-                                            <p class="cross-price underline"> Nrs 8000</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                    @endif
+                                @endforeach
+
                             </div>
                         </div>
-                    </div>
+                    @endif
+
                 </div>
             </div>
         </section>
@@ -198,8 +168,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img"
-                                        src="{{ asset('frontend/assets/images/arrival6.jpeg') }}" alt="">
+                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival6.jpeg') }}"
+                                        alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>

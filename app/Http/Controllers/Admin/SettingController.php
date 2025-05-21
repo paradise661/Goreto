@@ -26,10 +26,11 @@ class SettingController extends Controller
     {
         $settings = Setting::pluck('value', 'key');
         $products = Product::where('status', 1)->get();
+        $trending_product = Product::where('status', 1)->get();
         $categorys = Category::where('status', 1)->get();
         $brands = Brand::where('status', 1)->get();
         $reviews = Review::where('status', 1)->get();
-        return view('admin.setting.edit', compact(['settings', 'products', 'categorys', 'brands', 'reviews']));
+        return view('admin.setting.edit', compact(['settings', 'products', 'categorys', 'brands', 'reviews','trending_product']));
     }
 
     /**
