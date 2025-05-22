@@ -1,10 +1,22 @@
 @extends('layouts.frontend.master')
 @section('content')
+    <section class="banner-section">
+        <div class="container banner-content">
+            <nav aria-label="breadcrumb">
+                <ul>
+                    <li>Home</a></li>
+                    <li>/</li>
+                    <li>{{ $category->name }}</li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
     <div class="decoration-section py-5">
         <div class="container-fluid">
-            <div class="home-title-heading text-start title-border">
+            {{-- <div class="home-title-heading text-start title-border">
                 <h3>{{ $category->name }}</h3>
-            </div>
+            </div> --}}
 
             <!-- For desktop view -->
             <div class="swiper packageSwiper p-4">
@@ -14,7 +26,8 @@
                             <div class="product-card shadow p-3 position-relative">
                                 <div class="ribbon">20% Offer</div>
                                 <div class="product-card-img">
-                                    <img class="product-img" src="{{ get_image_url($product->image, 'home-banner-slider') }}"
+                                    <img class="product-img"
+                                        src="{{ get_image_url($product->image, 'home-banner-slider') }}"
                                         alt="{{ $product->name }}">
                                 </div>
                                 <div class="product-card-content pt-3">

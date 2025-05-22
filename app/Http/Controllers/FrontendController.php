@@ -18,7 +18,6 @@ class FrontendController extends Controller
         ->with('children.children')
         ->get();
 
-    // ✅ Get 3 divisions that have products with a division_id
     $divisions = Division::whereHas('products', function ($query) {
             $query->whereNotNull('division_id');
         })
