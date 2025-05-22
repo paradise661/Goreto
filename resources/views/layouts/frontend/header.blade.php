@@ -6,7 +6,7 @@
                     <div>
                         <a class="navbar-brand nav-logo" href="/"><img
                                 src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
-                                alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Ohm Pharmaceuticals' }}"></a>
+                                alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}"></a>
                     </div>
                 </div>
                 <form class="custom-search-form" action="{{ route('products.search') }}" method="GET">
@@ -44,7 +44,8 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid ">
             <a class="navbar-brand nav-logo d-block d-lg-none" href="#">
-                <img src="{{ asset('frontend/assets/images/logo.jpg') }}" alt="Logo">
+                <img src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
+                    alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}">
             </a>
             <!-- Navbar Toggler -->
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav" type="button"

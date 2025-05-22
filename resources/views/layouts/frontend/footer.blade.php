@@ -1,56 +1,55 @@
  <footer class="footer-class py-2">
-    <div class="fotter-top-container bg-primary p-3">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
-                        <img src="{{asset('frontend/assets/images/payements.png')}}" alt="">
-                        <div class="text-white">
-                            <h5>Payment Options</h5>
-                            <p>Safe and secure payments</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
-                        <img src="{{asset('frontend/assets/images/award.png')}}" alt="">
-                        <div class="text-white">
-                            <h5>Genuine Products</h5>
-                            <p>Safe and secure payments</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
-                        <img src="{{asset('frontend/assets/images/payements.png')}}" alt="">
-                        <div class="text-white">
-                            <h5>1500 Brands</h5>
-                            <p>Safe and secure payments</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="fotter-items d-flex justify-center align-items-center gap-3">
-                        <img src="{{asset('frontend/assets/images/award.png')}}" alt="">
-                        <div class="text-white">
-                            <h5>Payment Options</h5>
-                            <p>Safe and secure payments</p>
-                        </div>
-                    </div>
-                </div>
-                  
-                  
-                
-            </div>
-        </div>
-    </div>
+     <div class="fotter-top-container bg-primary p-3">
+         <div class="container-fluid">
+             <div class="row">
+                 <div class="col-lg-3">
+                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                         <img src="{{ asset('frontend/assets/images/payements.png') }}" alt="">
+                         <div class="text-white">
+                             <h5>Payment Options</h5>
+                             <p>Safe and secure payments</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-3">
+                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                         <img src="{{ asset('frontend/assets/images/award.png') }}" alt="">
+                         <div class="text-white">
+                             <h5>Genuine Products</h5>
+                             <p>Safe and secure payments</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-3">
+                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                         <img src="{{ asset('frontend/assets/images/payements.png') }}" alt="">
+                         <div class="text-white">
+                             <h5>1500 Brands</h5>
+                             <p>Safe and secure payments</p>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-3">
+                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
+                         <img src="{{ asset('frontend/assets/images/award.png') }}" alt="">
+                         <div class="text-white">
+                             <h5>Payment Options</h5>
+                             <p>Safe and secure payments</p>
+                         </div>
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+     </div>
      <div class="fotter-section-background">
          <div class="container-fluid py-5">
              <div class="row w-100 ">
                  <div class="col-lg-3 col-sm-6  d-flex  align-lg-items-center justify-lg-content-center">
                      <div>
                          <div class="pb-3 text-start">
-                             <img src="{{ asset('frontend/assets/images/logo.jpg') }}" class="fotter-img" alt="logo">
+                             <img src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
+                                 alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}">
                          </div>
 
                          <div class="site-descrption  fotter-css py-2">
@@ -62,34 +61,34 @@
                      <h5 class="fotter-headings">Useful links</h5>
                      <ul class="nav flex-column fotter-text fotter-css">
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0 ">
+                             <a class="nav-link p-0 " href="">
                                  About us
                              </a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">
+                             <a class="nav-link p-0" href="">
                                  Our Team
                              </a>
                          </li>
 
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">
+                             <a class="nav-link p-0" href="">
                                  Prjects
                              </a>
                          </li>
 
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">
+                             <a class="nav-link p-0" href="">
                                  Blogs
                              </a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">
+                             <a class="nav-link p-0" href="">
                                  Gallery
                              </a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0 ">
+                             <a class="nav-link p-0 " href="">
                                  Contact Us
                              </a>
                          </li>
@@ -99,18 +98,18 @@
                      <h5 class="fotter-headings ">Our Services</h5>
                      <ul class="nav flex-column fotter-text fotter-css">
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Prescription Dispensing
+                             <a class="nav-link p-0" href="">Prescription Dispensing
 
                              </a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Patient Counseling</a>
+                             <a class="nav-link p-0" href="">Patient Counseling</a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Immunizations/Vaccinations</a>
+                             <a class="nav-link p-0" href="">Immunizations/Vaccinations</a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Medication Therapy Management
+                             <a class="nav-link p-0" href="">Medication Therapy Management
                              </a>
                          </li>
                      </ul>
@@ -119,20 +118,20 @@
                      <h5 class="fotter-headings">Information</h5>
                      <ul class="nav flex-column fotter-text fotter-css">
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Sitemap
+                             <a class="nav-link p-0" href="">Sitemap
                              </a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Terms & Conditions</a>
+                             <a class="nav-link p-0" href="">Terms & Conditions</a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Privacy & return</a>
+                             <a class="nav-link p-0" href="">Privacy & return</a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Royal Grandeur Package</a>
+                             <a class="nav-link p-0" href="">Royal Grandeur Package</a>
                          </li>
                          <li class="nav-item mb-2">
-                             <a href="" class="nav-link p-0">Contact</a>
+                             <a class="nav-link p-0" href="">Contact</a>
                          </li>
 
                      </ul>

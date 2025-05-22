@@ -665,69 +665,43 @@
             @endif
         @endforeach
 
-        <section class="brand-section py-5">
-            <div class="container-fluid">
-                <div class="home-title-heading text-center mb-4">
-                    <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
-                        Product Categories
-                        <span
-                            style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
-                    </h2>
-                </div>
-                <div class="swiper branchSwiper p-4 ">
-                    <div class="swiper-wrapper">
-                        <!-- Cards (as-is) -->
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand.png') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand10.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand9.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand2.jpeg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand3.jpeg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand10.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand9.jpg') }}" alt="">
-                            </div>
-                        </div>
-                        <div class="swiper-slide py-5">
-                            <div class="brand-card-container">
-                                <img src="{{ asset('frontend/assets/images/brand8.jpg') }}" alt="">
-                            </div>
-                        </div>
+        @if ($setting['categorys'])
+            <section class="brand-section py-5">
+                <div class="container-fluid">
+                    <div class="home-title-heading text-center mb-4">
+                        <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
+                            {{ $setting['categorybigtitle'] ?? '' }}
+                            <span
+                                style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
+                        </h2>
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
+                    <div class="swiper branchSwiper p-4 ">
+                        @if ($setting['categorys'])
+                            <div class="swiper-wrapper">
+                                @foreach ($setting['categorys'] as $ct)
+                                    @php
+                                        $cats = getCategoryByID($ct);
+                                    @endphp
+                                    @if ($cats)
+                                        <!-- Cards (as-is) -->
+                                        <div class="swiper-slide py-5">
+                                            <div class="brand-card-container">
+                                                <a href="{{ route('category.products', $cats->slug) }}">
+                                                    {!! get_image($cats->image, '', 'home-category') !!}
 
-            </div>
-        </section>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+            </section>
+        @endif
         {{-- categories section end --}}
 
     </section>
