@@ -68,14 +68,60 @@ class FrontendController extends Controller
         return view('frontend.category.products', compact('products', 'category'));
     }
     public function search(Request $request)
-    {
-        $query = $request->input('query');
+{
+    $query = $request->input('query');
 
-        $products = Product::where('name', 'LIKE', "%{$query}%")
-                    ->orWhere('description', 'LIKE', "%{$query}%")
-                    ->paginate(20);
+    // 1. Search products by name or description
+    $products = Product::where('name', 'LIKE', "%{$query}%")
+        ->orWhere('description', 'LIKE', "%{$query}%")
+        ->paginate(20);
 
-        return view('frontend.search.results', compact('products', 'query'));
+    // 2. If no products found, check categories matching query
+    if ($products->isEmpty()) {
+        // Find categories matching the query
+        $categories = Category::where('name', 'LIKE', "%{$query}%")->get();
+
+        if ($categories->isNotEmpty()) {
+            // Collect category IDs and their children recursively (if needed)
+            $categoryIds = collect();
+
+            foreach ($categories as $category) {
+                $categoryIds->push($category->id);
+
+                // Add children categories recursively (if you have nested categories)
+                if ($category->children->count()) {
+                    foreach ($category->children as $child) {
+                        $categoryIds->push($child->id);
+
+                        if ($child->children->count()) {
+                            foreach ($child->children as $grandchild) {
+                                $categoryIds->push($grandchild->id);
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Fetch products from those categories
+            $products = Product::whereHas('category', function ($q) use ($categoryIds) {
+                $q->whereIn('categories.id', $categoryIds);
+            })->paginate(20);
+        }
     }
+
+    return view('frontend.search.results', compact('products', 'query'));
+}
+
+    public function searchSuggestions(Request $request)
+{
+    $query = $request->input('query');
+
+    $suggestions = Product::where('name', 'LIKE', "%{$query}%")
+        ->limit(5)
+        ->pluck('name');
+
+    return response()->json($suggestions);
+}
+
 
 }

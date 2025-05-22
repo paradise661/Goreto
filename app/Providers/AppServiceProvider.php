@@ -28,23 +28,23 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Share settings globally
+        
         $data1 = Setting::pluck('value', 'key');
         View::share('setting', $data1);
 
-        // Share social data globally
+        
         $data2 = Social::whereStatus(1)->oldest('order')->get();
         View::share('socialdata', $data2);
 
-        // Share categories ONLY for views that need it
-        View::composer(['frontend.home.index', 'frontend.category.products'], function ($view) {
+       
+        View::composer('layouts.frontend.*', function ($view) {
             $categories = Category::whereNull('parent_id')
                 ->with('children.children')
                 ->get();
             $view->with('categories', $categories);
         });
 
-        // Use Bootstrap for pagination
+       
         Paginator::useBootstrap();
     }
 }

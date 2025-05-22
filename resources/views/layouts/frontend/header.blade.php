@@ -9,7 +9,7 @@
                                 alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}"></a>
                     </div>
                 </div>
-                <form class="custom-search-form" action="{{ route('products.search') }}" method="GET">
+                <form class="custom-search-form" action="{{ route('search') }}" method="GET">
                     <div class="input-group">
                         <input class="form-control search-input" type="search" name="query"
                             placeholder="What decor are you looking for?" aria-label="Search" required>

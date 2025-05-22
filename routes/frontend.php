@@ -12,4 +12,5 @@ Route::get('/category/{slug}', [FrontendController::class, 'categoryProducts'])-
 
 Route::get('/upload-prescription', [FrontendController::class, 'prescription'])->name('frontend.prescription');
 
-Route::get('/search', [FrontendController::class, 'search'])->name('products.search');
+Route::get('/search', [FrontendController::class, 'search'])->name('search');
+Route::get('/search/suggestions', [FrontendController::class, 'searchSuggestions'])->name('search.suggestions');
