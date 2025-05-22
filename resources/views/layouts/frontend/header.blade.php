@@ -4,7 +4,9 @@
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo-part d-flex justify-content-between align-items-center">
                     <div>
-                        <a class="navbar-brand nav-logo" href="/"><img src="{{ asset('frontend/assets/images/logo.jpg') }}" alt=""></a>
+                        <a class="navbar-brand nav-logo" href="/"><img
+                                src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
+                                alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Ohm Pharmaceuticals' }}"></a>
                     </div>
                 </div>
                 <form class="custom-search-form" action="{{ route('products.search') }}" method="GET">
@@ -18,9 +20,9 @@
                     </div>
                 </form>
                 <div class="button-part d-flex align-items-center gap-5">
-                    <a href="{{route('frontend.prescription')}}">
+                    <a href="{{ route('frontend.prescription') }}">
                         <button class="btn btn-primary">
-                            <i class="ri-camera-switch-line camera-icon"></i>  Upload Prescription
+                            <i class="ri-camera-switch-line camera-icon"></i> Upload Prescription
                         </button>
                     </a>
                     <a href="">
