@@ -3,10 +3,10 @@
         <a class="app-brand-link mx-auto my-0" href="#" target="_blank">
             @if ($setting['site_main_logo'])
                 <img src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
-                    alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}"
+                    alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Ohm Pharmaceuticals' }}"
                     height="50">
             @else
-                <span class="app-brand-text demo menu-text fw-bolder ms-2">Goreto</span>
+                <span class="app-brand-text demo menu-text fw-bolder ms-2">Ohm Pharmaceuticals</span>
             @endif
         </a>
 

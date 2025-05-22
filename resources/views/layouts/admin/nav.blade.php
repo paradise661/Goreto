@@ -30,7 +30,7 @@
                         @if ($setting['site_main_logo'])
                             <img class="w-px-40 h-auto rounded-circle"
                                 src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
-                                alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}">
+                                alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Ohm Pharmaceuticals' }}">
                         @endif
                     </div>
                 </a>
@@ -43,7 +43,7 @@
                                         @if ($setting['site_main_logo'])
                                             <img class="w-px-40 h-auto rounded-circle"
                                                 src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
-                                                alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto ?>' }}">
+                                                alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Ohm Pharmaceuticals' }}">
                                         @endif
                                     </div>
                                 </div>

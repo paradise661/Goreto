@@ -18,7 +18,6 @@
     <link rel="icon"
         href="{{ asset($setting['site_fav_icon'] ? get_media($setting['site_fav_icon'])->fullurl : 'frontend/images/logo.png') }}"
         type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,8 +40,6 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/toastr.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/fancy.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/inner/dropzone.min.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
-
     <script src="{{ asset('admin/assets/inner/dropzone.js') }}"></script>
     <style>
         .dash-icon {
@@ -318,8 +315,6 @@
         </div>
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-
     <script src="{{ asset('admin/assets/vendor/libs/jquery/jquery.js') }}"></script>
     <script src="{{ asset('admin/assets/js/bootstrap-new.js') }}"></script>
     <script src="{{ asset('admin/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
@@ -331,8 +326,6 @@
     <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
     <script src="{{ asset('admin/assets/js/fancybox-new.js') }}"></script>
     <script src="{{ asset('admin/assets/js/new-custom.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
     @yield('scripts')
     <script>
