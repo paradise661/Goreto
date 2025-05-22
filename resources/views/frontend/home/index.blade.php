@@ -64,6 +64,44 @@
                 </div>
             </div>
         </section>
+        @if ($setting['categorys'])
+            <section class="brand-section py-5">
+                <div class="container-fluid">
+                    <div class="home-title-heading text-center mb-4">
+                        <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
+                            {{ $setting['categorybigtitle'] ?? '' }}
+                            <span
+                                style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
+                        </h2>
+                    </div>
+                    <div class="swiper branchSwiper p-4 ">
+                        @if ($setting['categorys'])
+                            <div class="swiper-wrapper">
+                                @foreach ($setting['categorys'] as $ct)
+                                    @php
+                                        $cats = getCategoryByID($ct);
+                                    @endphp
+                                    @if ($cats)
+                                        <!-- Cards (as-is) -->
+                                        <div class="swiper-slide py-5">
+                                            <div class="brand-card-container">
+                                                <a href="{{ route('category.products', $cats->slug) }}">
+                                                    {!! get_image($cats->image, '', 'home-category') !!}
+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
+                        @endif
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+            </section>
+        @endif
+        {{-- categories section end --}}
         {{-- Home bannner first end --}}
         <!-- Banner2 start -->
 
@@ -664,45 +702,6 @@
                 </section>
             @endif
         @endforeach
-
-        @if ($setting['categorys'])
-            <section class="brand-section py-5">
-                <div class="container-fluid">
-                    <div class="home-title-heading text-center mb-4">
-                        <h2 class="fw-bold position-relative d-inline-block" style="font-size: 2.5rem;">
-                            {{ $setting['categorybigtitle'] ?? '' }}
-                            <span
-                                style="display: block; height: 4px; width: 80px; background: #0ab7ec; margin: 10px auto 0; border-radius: 50px;"></span>
-                        </h2>
-                    </div>
-                    <div class="swiper branchSwiper p-4 ">
-                        @if ($setting['categorys'])
-                            <div class="swiper-wrapper">
-                                @foreach ($setting['categorys'] as $ct)
-                                    @php
-                                        $cats = getCategoryByID($ct);
-                                    @endphp
-                                    @if ($cats)
-                                        <!-- Cards (as-is) -->
-                                        <div class="swiper-slide py-5">
-                                            <div class="brand-card-container">
-                                                <a href="{{ route('category.products', $cats->slug) }}">
-                                                    {!! get_image($cats->image, '', 'home-category') !!}
-
-                                                </a>
-                                            </div>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </div>
-                        @endif
-                        <div class="swiper-pagination"></div>
-                    </div>
-
-                </div>
-            </section>
-        @endif
-        {{-- categories section end --}}
 
     </section>
 @endsection
