@@ -39,7 +39,9 @@
                                                                         class="thumbnails media-wrapper d-flex justify-content-center align-items-center">
                                                                         @if ($settings['site_main_logo'])
                                                                             @php
-                                                                                $feature = get_media($settings['site_main_logo'] ?? '');
+                                                                                $feature = get_media(
+                                                                                    $settings['site_main_logo'] ?? '',
+                                                                                );
                                                                             @endphp
                                                                             @if ($feature)
                                                                                 <img id="feature_img"
@@ -85,7 +87,9 @@
                                                                         class="thumbnails media-wrapper d-flex justify-content-center align-items-center">
                                                                         @if ($settings['site_fav_icon'])
                                                                             @php
-                                                                                $banner = get_media($settings['site_fav_icon'] ?? '');
+                                                                                $banner = get_media(
+                                                                                    $settings['site_fav_icon'] ?? '',
+                                                                                );
                                                                             @endphp
                                                                             <img id="banner_img"
                                                                                 src="{{ asset($banner->fullurl) }}"
@@ -125,7 +129,9 @@
                                                                         class="thumbnails media-wrapper d-flex justify-content-center align-items-center">
                                                                         @if ($settings['site_footer_logo'])
                                                                             @php
-                                                                                $footer = get_media($settings['site_footer_logo'] ?? '');
+                                                                                $footer = get_media(
+                                                                                    $settings['site_footer_logo'] ?? '',
+                                                                                );
                                                                             @endphp
                                                                             <img id="footer_img"
                                                                                 src="{{ asset($footer->fullurl) }}"
@@ -165,7 +171,9 @@
                                                                         class="thumbnails media-wrapper d-flex justify-content-center align-items-center">
                                                                         @if ($settings['site_icon_image'])
                                                                             @php
-                                                                                $fimage = get_media($settings['site_icon_image'] ?? '');
+                                                                                $fimage = get_media(
+                                                                                    $settings['site_icon_image'] ?? '',
+                                                                                );
                                                                             @endphp
                                                                             <img id="fimage_img"
                                                                                 src="{{ asset($fimage->fullurl) }}"
@@ -321,7 +329,7 @@
                                                     <button class="nav-link" id="pills-products-tab"
                                                         data-bs-toggle="pill" data-bs-target="#pills-products"
                                                         type="button" role="tab" aria-controls="pills-products"
-                                                        aria-selected="false">Products</button>
+                                                        aria-selected="false">Feature Products</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="pills-review-tab" data-bs-toggle="pill"
@@ -329,6 +337,15 @@
                                                         aria-controls="pills-review"
                                                         aria-selected="false">Reviews</button>
                                                 </li>
+
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="pills-trending-products-tab"
+                                                        data-bs-toggle="pill" data-bs-target="#pills-trending-products"
+                                                        type="button" role="tab"
+                                                        aria-controls="pills-trending-products"
+                                                        aria-selected="false">Trending Products</button>
+                                                </li>
+
                                             </ul>
                                             <div class="tab-content" id="pills-tabContent">
                                                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -356,7 +373,11 @@
                                                                                 class="thumbnails media-wrapper d-flex justify-content-center align-items-center">
                                                                                 @if ($settings['homepage_image'])
                                                                                     @php
-                                                                                        $home = get_media($settings['homepage_image'] ?? '');
+                                                                                        $home = get_media(
+                                                                                            $settings[
+                                                                                                'homepage_image'
+                                                                                            ] ?? '',
+                                                                                        );
                                                                                     @endphp
                                                                                     <img id="home_img"
                                                                                         src="{{ asset($home->fullurl) }}"
@@ -686,21 +707,23 @@
                                                                             </div>
                                                                         @endif
                                                                         <select class="form-control" id="product"
-                                                                            name="product[]"
-                                                                            placeholder="This is a placeholder" multiple>
-                                                                            @if ($products->isNotEmpty())
-                                                                                @foreach ($products as $pck)
-                                                                                    <option value="{{ $pck->id }}">
-                                                                                        {{ $pck->name }}</option>
-                                                                                @endforeach
-                                                                            @endif
+                                                                            name="product[]" multiple>
+                                                                            @foreach ($products as $pck)
+                                                                                <option value="{{ $pck->id }}"
+                                                                                    {{ !empty($settings['product']) && in_array($pck->id, $settings['product']) ? 'selected' : '' }}>
+                                                                                    {{ $pck->name }}
+                                                                                </option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                             </fieldset>
+
                                                         </div>
+
                                                     </div>
                                                 </div>
+
                                                 <div class="tab-pane fade" id="pills-review" role="tabpanel"
                                                     aria-labelledby="pills-review-tab" tabindex="0">
                                                     <div class="row">
@@ -752,6 +775,71 @@
                                                         </div>
                                                     </div>
                                                 </div>
+
+                                                <div class="tab-pane fade" id="pills-trending-products" role="tabpanel"
+                                                    aria-labelledby="pills-trending-products-tab" tabindex="0">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <fieldset class="border p-3 mb-3">
+                                                                <legend class="float-none w-auto legend-title">Trending
+                                                                    Products</legend>
+                                                                <div class="row">
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-3">
+                                                                            <label for="trending_small_title">Small
+                                                                                Title</label>
+                                                                            <input class="form-control" type="text"
+                                                                                name="trending_small_title"
+                                                                                value="{{ $settings['trending_small_title'] ?? '' }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <div class="form-group mb-3">
+                                                                            <label for="trending_big_title">Big
+                                                                                Title</label>
+                                                                            <input class="form-control" type="text"
+                                                                                name="trending_big_title"
+                                                                                value="{{ $settings['trending_big_title'] ?? '' }}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <label for="trending_products">Select Trending
+                                                                            Products</label>
+
+                                                                        @if (!empty($settings['trending_products']))
+                                                                            <div class="d-flex gap-2 my-3 flex-wrap">
+                                                                                @foreach ($settings['trending_products'] as $id)
+                                                                                    @php
+                                                                                        $trendProd = getProductByID(
+                                                                                            $id,
+                                                                                        );
+                                                                                    @endphp
+                                                                                    @if ($trendProd)
+                                                                                        <span
+                                                                                            class="badge bg-warning">{{ $trendProd->name }}</span>
+                                                                                    @endif
+                                                                                @endforeach
+                                                                            </div>
+                                                                        @endif
+
+                                                                        <select class="form-control select2"
+                                                                            id="trending_products"
+                                                                            name="trending_products[]" multiple>
+                                                                            @foreach ($products as $pck)
+                                                                                <option value="{{ $pck->id }}"
+                                                                                    {{ !empty($settings['trending_products']) && in_array($pck->id, $settings['trending_products']) ? 'selected' : '' }}>
+                                                                                    {{ $pck->name }}
+                                                                                </option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                    </div>
+
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -773,6 +861,13 @@
     <script type="text/javascript" src="{{ asset('admin/assets/vendor/libs/choices/scripts/choices.min.js') }}"></script>
 
     <script>
+        $(document).ready(function() {
+            $('#trending_products').select2({
+                placeholder: "Select trending products",
+                width: '100%'
+            });
+        });
+
         function selfChoice(value) {
             var option = new Choices(
                 value, {
