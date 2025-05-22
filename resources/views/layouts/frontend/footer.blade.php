@@ -2,7 +2,7 @@
     <div class="fotter-top-container bg-primary p-3">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-3 py-3">
                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
                         <img src="{{asset('frontend/assets/images/payements.png')}}" alt="">
                         <div class="text-white">
@@ -11,7 +11,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 py-3">
                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
                         <img src="{{asset('frontend/assets/images/award.png')}}" alt="">
                         <div class="text-white">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 py-3">
                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
                         <img src="{{asset('frontend/assets/images/payements.png')}}" alt="">
                         <div class="text-white">
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+                <div class="col-lg-3 py-3">
                     <div class="fotter-items d-flex justify-center align-items-center gap-3">
                         <img src="{{asset('frontend/assets/images/award.png')}}" alt="">
                         <div class="text-white">
