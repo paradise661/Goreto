@@ -19,11 +19,84 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/remixicon.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- if you're using remixicon -->
+    <style>
+        .premium-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .premium-dropdown .premium-dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 0;
+            z-index: 1050;
+            min-width: 220px;
+            box-shadow: 0 0.75rem 1.5rem #00b2f0;
+            border-radius: 12px;
+            padding: 0.5rem 0;
+            background-color: #fff;
+            border: none;
+        }
+
+        .premium-dropdown:hover .premium-dropdown-menu,
+        .premium-dropdown:focus-within .premium-dropdown-menu {
+            display: block;
+        }
+
+        .premium-dropdown .premium-dropdown-item {
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.65rem 1.2rem;
+            color: #009f3c;
+            display: flex;
+            align-items: center;
+            border-radius: 50px;
+            margin: 0.25rem 0;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .premium-dropdown .premium-dropdown-item i {
+            font-size: 1.1rem;
+            color: #009f3c;
+            margin-right: 0.5rem;
+        }
+
+        .premium-dropdown .premium-dropdown-item:hover {
+            background-color: #f0f9ff;
+            color: #009f3c;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .premium-dropdown .premium-header-icon {
+            cursor: pointer;
+            padding: 10px;
+            display: inline-block;
+            font-size: 1.5rem;
+            color: #00b2f0;
+            transition: color 0.3s ease;
+        }
+
+        .premium-dropdown .premium-header-icon:hover {
+            color: #009f3c;
+        }
+    </style>
 
 </head>
 
 <body>
     @include('layouts.frontend.header')
+
+    @include('auth.customer-login')
+    @include('auth.customer-register')
     <!-- Notification alerts -->
     <main>
         @yield('content')
@@ -74,17 +147,21 @@
             });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 
-    <script src="{{ asset('admin/assets/js/sweetalert-new.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
-    <!-- swiper for review -->
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/swiper.bundle.min.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/swiper-bundle.min1.js') }}"></script>
-    <script src="{{ asset('frontend/assets/js/swiper-bundle.min2.js') }}"></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
+</html>
+
+<script src="{{ asset('admin/assets/js/sweetalert-new.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/script.js') }}"></script>
+<!-- swiper for review -->
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/swiper.bundle.min.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/swiper-bundle.min1.js') }}"></script>
+<script src="{{ asset('frontend/assets/js/swiper-bundle.min2.js') }}"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
 </body>
 
 </html>

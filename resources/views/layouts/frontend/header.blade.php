@@ -25,12 +25,37 @@
                             <i class="ri-camera-switch-line camera-icon"></i> Upload Prescription
                         </button>
                     </a>
-                    <a href="">
-                        <div>
-                            <i class="ri-user-line header-icon"></i>
-                            {{-- <p>Login</p> --}}
-                        </div>
-                    </a>
+
+                    <div class="premium-dropdown">
+                        <span class="premium-header-icon">
+                            <i class="ri-user-line"></i>
+                        </span>
+                        <ul class="premium-dropdown-menu">
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-info-circle"></i>About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-envelope"></i>Contact Us
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-file-earmark-text"></i>Terms & Conditions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal"
+                                    href="#">
+                                    <i class="bi bi-box-arrow-in-right"></i><strong>Login</strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
                     <div>
                         <i class="ri-shopping-cart-line header-icon"></i>
                     </div>

@@ -62,7 +62,9 @@
                                 </span>
 
                                 <img src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
-                                    alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}">
+                                    alt="{{ $setting['site_main_logo'] ? get_media($setting['site_main_logo'])->alt : 'Goreto' }}"
+                                    width="150" height="150">
+
                             </a>
                         </div>
                         <!-- /Logo -->

@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\BlogcategoryController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\OhmSikauchhaController;
 use App\Http\Controllers\Admin\UserRegisterController;
+use App\Http\Controllers\Auth\CustomerLoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,14 @@ use App\Http\Controllers\Admin\UserRegisterController;
  */
 
 
-
+//  Route::get('/customer/login', [CustomerLoginController::class, 'showLoginForm'])->name('customer.login');
+//  Route::post('/customer/login', [CustomerLoginController::class, 'login'])->name('customer.login.submit');
+//  Route::post('/customer/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
+ 
+//  // Customer dashboard
+//  Route::get('/customer/dashboard', function () {
+//      return view('customer.dashboard');
+//  })->middleware('auth:customer')->name('customer.dashboard');
 // Auth::routes();
 Auth::routes(['register' => false]);
 
