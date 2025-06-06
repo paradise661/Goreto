@@ -32,6 +32,8 @@ use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\OhmSikauchhaController;
 use App\Http\Controllers\Admin\UserRegisterController;
 use App\Http\Controllers\Auth\CustomerLoginController;
+use App\Http\Controllers\Auth\CustomerRegisterController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,38 @@ use App\Http\Controllers\Auth\CustomerLoginController;
 //      return view('customer.dashboard');
 //  })->middleware('auth:customer')->name('customer.dashboard');
 // Auth::routes();
+
+
+/*
+|--------------------------------------------------------------------------
+| Frontend auth Routes
+|--------------------------------------------------------------------------
+ */
+
+ Route::prefix('customer')->middleware('guest:customer')->group(function () {
+    Route::get('login', [CustomerLoginController::class, 'showLoginForm'])->name('customer.login');
+    Route::post('login', [CustomerLoginController::class, 'login'])->name('customer.login.submit');
+
+    Route::get('register', [CustomerRegisterController::class, 'showRegisterForm'])->name('customer.register');
+    Route::post('register', [CustomerRegisterController::class, 'register'])->name('customer.register.submit');
+});
+
+Route::post('/customer/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
+
+Route::middleware('auth:customer')->prefix('customer')->group(function () {
+    Route::get('dashboard', function () {
+        return view('customer.dashboard');
+    })->name('customer.dashboard');
+});
+
+
+Route::post('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+
+
+
 Auth::routes(['register' => false]);
 
 Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');

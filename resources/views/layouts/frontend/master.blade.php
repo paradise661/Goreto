@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- favicon --}}
     @yield('seo')
     {{-- <title>Flyeast Nepal</title> --}}
@@ -95,8 +96,8 @@
 <body>
     @include('layouts.frontend.header')
 
-    @include('auth.customer-login')
-    @include('auth.customer-register')
+    {{-- @include('auth.customer-login') --}}
+    {{-- @include('auth.customer-register') --}}
     <!-- Notification alerts -->
     <main>
         @yield('content')
@@ -162,6 +163,69 @@
 <script src="{{ asset('frontend/assets/js/swiper-bundle.min1.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/swiper-bundle.min2.js') }}"></script>
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
+</script>
+
+<script>
+    function showContent(contentId, element) {
+        // Hide all content sections
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => section.classList.remove('active'));
+
+        // Show selected content
+        document.getElementById(contentId).classList.add('active');
+
+        // Update active nav item
+        const navLinks = document.querySelectorAll('.nav-link-custom');
+        navLinks.forEach(link => link.classList.remove('active'));
+        element.classList.add('active');
+
+        // Close sidebar on mobile after selection
+        if (window.innerWidth <= 768) {
+            closeSidebar();
+        }
+    }
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.querySelector('.mobile-overlay');
+
+        sidebar.classList.toggle('show');
+        overlay.classList.toggle('show');
+    }
+
+    function closeSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.querySelector('.mobile-overlay');
+
+        sidebar.classList.remove('show');
+        overlay.classList.remove('show');
+    }
+
+
+
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', function(event) {
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+
+        if (window.innerWidth <= 768 &&
+            sidebar.classList.contains('show') &&
+            !sidebar.contains(event.target) &&
+            !menuBtn.contains(event.target)) {
+            closeSidebar();
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeSidebar();
+        }
+    });
+</script>
+
 </body>
 
 </html>

@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Darryldecode\Cart\Facades\CartFacade as Cart;
+
+class CartController extends Controller
+{
+    public function add(Request $request)
+    {
+        Cart::add([
+            'id' => $request->id,
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->qty ?? 1,
+            'attributes' => [],
+        ]);
+
+        return response()->json(['success' => 'Product added to cart!']);
+    }
+
+    public function index()
+    {
+        $cartItems = Cart::getContent();
+        return view('cart.index', compact('cartItems'));
+    }
+
+    public function remove($id)
+    {
+        Cart::remove($id);
+        return redirect()->back()->with('success', 'Item removed from cart.');
+    }
+
+    public function clear()
+    {
+        Cart::clear();
+        return redirect()->back()->with('success', 'Cart cleared.');
+    }
+}

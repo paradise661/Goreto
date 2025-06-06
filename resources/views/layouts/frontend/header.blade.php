@@ -29,31 +29,63 @@
                     <div class="premium-dropdown">
                         <span class="premium-header-icon">
                             <i class="ri-user-line"></i>
+                            @if (Auth::guard('customer')->check())
+                                <span class="ms-1">{{ Auth::guard('customer')->user()->name }}</span>
+                            @endif
                         </span>
                         <ul class="premium-dropdown-menu">
-                            <li>
-                                <a class="premium-dropdown-item" href="#">
-                                    <i class="bi bi-info-circle"></i>About Us
-                                </a>
-                            </li>
-                            <li>
-                                <a class="premium-dropdown-item" href="#">
-                                    <i class="bi bi-envelope"></i>Contact Us
-                                </a>
-                            </li>
-                            <li>
-                                <a class="premium-dropdown-item" href="#">
-                                    <i class="bi bi-file-earmark-text"></i>Terms & Conditions
-                                </a>
-                            </li>
-                            <li>
-                                <a class="premium-dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal"
-                                    href="#">
-                                    <i class="bi bi-box-arrow-in-right"></i><strong>Login</strong>
-                                </a>
-                            </li>
+                            @if (Auth::guard('customer')->check())
+                                <li>
+                                    <a class="premium-dropdown-item" href="{{ route('customer.dashboard') }}">
+                                        <i class="bi bi-speedometer2"></i> Dashboard
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="premium-dropdown-item" href="#">
+                                        <i class="bi bi-person-circle"></i> Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="premium-dropdown-item" href="#">
+                                        <i class="bi bi-bag-check"></i> Orders
+                                    </a>
+                                </li>
+                                <li>
+                                    <form method="POST" action="{{ route('customer.logout') }}">
+                                        @csrf
+                                        <button
+                                            class="premium-dropdown-item text-danger border-0 bg-transparent w-100 text-start"
+                                            type="submit">
+                                            <i class="bi bi-box-arrow-right"></i><strong>Logout</strong>
+                                        </button>
+                                    </form>
+                                </li>
+                            @else
+                                <li>
+                                    <a class="premium-dropdown-item" href="#">
+                                        <i class="bi bi-info-circle"></i> About Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="premium-dropdown-item" href="#">
+                                        <i class="bi bi-envelope"></i> Contact Us
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="premium-dropdown-item" href="#">
+                                        <i class="bi bi-file-earmark-text"></i> Terms & Conditions
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="premium-dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal"
+                                        href="#">
+                                        <i class="bi bi-box-arrow-in-right"></i><strong>Login</strong>
+                                    </a>
+                                </li>
+                            @endif
                         </ul>
                     </div>
+
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
                     <div>
@@ -130,4 +162,15 @@
         </div>
         </div>
     </nav>
+
 </header>
+@include('auth.partials.customer-login-form')
+
+@if ($errors->any())
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+            loginModal.show();
+        });
+    </script>
+@endif

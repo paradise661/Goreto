@@ -10,23 +10,48 @@ class CustomerLoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.customer-login');
+        return view('auth.customer-login'); 
     }
 
     public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
+{
+    $credentials = $request->validate([
+        'email'    => 'required|email',
+        'password' => 'required|string',
+    ]);
 
-        if (Auth::guard('customer')->attempt($credentials)) {
-            return redirect()->intended('/customer/dashboard');
+    if (Auth::guard('customer')->attempt($credentials)) {
+        $request->session()->regenerate();
+
+        if ($request->expectsJson()) {
+            return response()->json([
+                'message' => 'Login successful',
+                'redirect' => route('customer.dashboard')
+            ]);
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials.']);
+        return redirect()->intended('/customer/dashboard');
     }
+
+    if ($request->expectsJson()) {
+        return response()->json([
+            'message' => 'Invalid credentials.'
+        ], 422);
+    }
+
+    return back()->withErrors([
+        'email' => 'Invalid credentials.',
+    ]);
+}
+
 
     public function logout(Request $request)
     {
         Auth::guard('customer')->logout();
-        return redirect('/customer/login');
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }
