@@ -280,14 +280,15 @@
                                                             <button class="scale-button add-to-cart-btn"
                                                                 data-id="{{ $prd->id }}"
                                                                 data-name="{{ $prd->name }}"
-                                                                data-price="{{ $prd->price }}">
+                                                                data-price="{{ $prd->price }}" type="button">
                                                                 <span class="scale-text">Add to Cart</span>
                                                             </button>
+
                                                         </div>
                                                         <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                     </div>
                                                 </div>
-                                                <a class="stretched-link" href="#"></a>
+                                                {{-- <a class="stretched-link" href="#"></a> --}}
                                             </div>
                                         </div>
                                     @endif
@@ -303,36 +304,19 @@
                 </div>
             </div>
 
-            <!-- ✅ Add-to-Cart AJAX Script -->
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script>
-                $('.add-to-cart-btn').click(function(e) {
-                    e.preventDefault();
-
-                    let btn = $(this);
-                    let productId = btn.data('id');
-                    let productName = btn.data('name');
-                    let productPrice = btn.data('price');
-
-                    $.ajax({
-                        url: "{{ route('cart.add') }}",
-                        method: "POST",
-                        data: {
-                            _token: "{{ csrf_token() }}",
-                            id: productId,
-                            name: productName,
-                            price: productPrice
-                        },
-                        success: function(response) {
-                            // Toast or alert can be used here
-                            alert(response.success);
-                        },
-                        error: function(xhr) {
-                            alert('Something went wrong!');
-                        }
-                    });
-                });
-            </script>
+            <!-- ✅ Toast for feedback -->
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+                <div class="toast align-items-center text-white bg-success border-0" id="cartToast" role="alert"
+                    aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Product added to cart!
+                        </div>
+                        <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" type="button"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
         @endif
 
         <!-- product package end -->

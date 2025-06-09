@@ -4,27 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- favicon --}}
     @yield('seo')
-    {{-- <title>Flyeast Nepal</title> --}}
-    <link rel="icon" type="image/x-icon" href="" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/swiper-bundle.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/remixicon.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 
-    <!-- if you're using remixicon -->
     <style>
         .premium-dropdown {
             position: relative;
@@ -74,45 +64,164 @@
             background-color: #f0f9ff;
             color: #009f3c;
             font-weight: 700;
-            text-decoration: none;
         }
 
         .premium-dropdown .premium-header-icon {
             cursor: pointer;
             padding: 10px;
-            display: inline-block;
             font-size: 1.5rem;
             color: #00b2f0;
-            transition: color 0.3s ease;
         }
 
         .premium-dropdown .premium-header-icon:hover {
             color: #009f3c;
         }
     </style>
-
 </head>
 
 <body>
     @include('layouts.frontend.header')
 
-    {{-- @include('auth.customer-login') --}}
-    {{-- @include('auth.customer-register') --}}
-    <!-- Notification alerts -->
     <main>
         @yield('content')
     </main>
-    {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> --}}
+
     @include('layouts.frontend.footer')
-    <!-- Vendors JS -->
+
+    <!-- Toast -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div class="toast align-items-center text-bg-success border-0" id="cartToast" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">✅ Product added to cart!</div>
+                <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" type="button"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login Required</h5>
+                    <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- @include('frontend.auth.login-form') Use your actual login form --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="{{ asset('admin/assets/js/sweetalert-new.js') }}"></script>
+    <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
+
+    <script>
+        $(document).ready(function() {
+            // CSRF setup for all AJAX requests
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            // ADD TO CART
+            $(document).on('click', '.add-to-cart-btn', function(e) {
+                e.preventDefault();
+                let btn = $(this);
+
+                @auth('customer')
+                    let productId = btn.data('id');
+                    let productName = btn.data('name');
+                    let productPrice = btn.data('price');
+
+                    $.ajax({
+                        url: "{{ route('cart.add') }}",
+                        method: "POST",
+                        data: {
+                            id: productId,
+                            name: productName,
+                            price: productPrice
+                        },
+                        success: function(response) {
+                            let toast = new bootstrap.Toast(document.getElementById(
+                                'cartToast'));
+                            toast.show();
+                        },
+                        error: function(xhr) {
+                            alert('Something went wrong!');
+                            console.log(xhr.responseText);
+                        }
+                    });
+                @else
+                    // Open modal instead of redirecting
+                    let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+                    loginModal.show();
+                @endauth
+            });
+
+            // REMOVE ITEM FROM CART
+            $(document).on('click', '.remove-item', function(e) {
+                e.preventDefault();
+                let btn = $(this);
+                let itemId = btn.data('id');
+                let row = btn.closest('tr');
+
+                $.ajax({
+                    url: "{{ url('/cart/remove') }}/" + itemId,
+                    method: "POST",
+                    data: {
+                        _method: 'DELETE',
+                    },
+                    success: function(response) {
+                        row.remove();
+
+                        if (typeof recalculateTotals === 'function') {
+                            recalculateTotals();
+                        }
+
+                        let toastEl = document.getElementById('removeToast');
+                        if (toastEl) {
+                            let toast = new bootstrap.Toast(toastEl);
+                            toast.show();
+                        } else {
+                            let toastHtml = `
+                                <div class="toast align-items-center text-bg-success border-0 position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" id="removeToast">
+                                    <div class="d-flex">
+                                        <div class="toast-body">Item removed from cart!</div>
+                                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                                    </div>
+                                </div>`;
+                            $('body').append(toastHtml);
+                            let newToastEl = document.getElementById('removeToast');
+                            let toast = new bootstrap.Toast(newToastEl);
+                            toast.show();
+                            newToastEl.addEventListener('hidden.bs.toast', function() {
+                                $(newToastEl).remove();
+                            });
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('Failed to remove item!');
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- Search Suggestion Script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const input = document.getElementById('search-input');
             const suggestionsList = document.getElementById('suggestions-list');
 
-            input.addEventListener('input', function() {
+            input?.addEventListener('input', function() {
                 const query = this.value;
-
                 if (query.length < 2) {
                     suggestionsList.style.display = 'none';
                     return;
@@ -148,84 +257,48 @@
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
-
-<script src="{{ asset('admin/assets/js/sweetalert-new.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/script.js') }}"></script>
-<!-- swiper for review -->
-<!-- Swiper JS -->
-<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-<script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/swiper.bundle.min.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/swiper-bundle.min1.js') }}"></script>
-<script src="{{ asset('frontend/assets/js/swiper-bundle.min2.js') }}"></script>
-{{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-</script>
-
-<script>
-    function showContent(contentId, element) {
-        // Hide all content sections
-        const sections = document.querySelectorAll('.content-section');
-        sections.forEach(section => section.classList.remove('active'));
-
-        // Show selected content
-        document.getElementById(contentId).classList.add('active');
-
-        // Update active nav item
-        const navLinks = document.querySelectorAll('.nav-link-custom');
-        navLinks.forEach(link => link.classList.remove('active'));
-        element.classList.add('active');
-
-        // Close sidebar on mobile after selection
-        if (window.innerWidth <= 768) {
-            closeSidebar();
+    <!-- Quantity and Cart Total Script -->
+    <script>
+        function recalculateTotals() {
+            let grandTotal = 0;
+            $('#cart-body tr').each(function() {
+                const row = $(this);
+                const price = parseFloat(row.find('.price').data('price'));
+                const qty = parseInt(row.find('.qty').val());
+                const total = price * qty;
+                row.find('.item-total').text(total.toLocaleString());
+                grandTotal += total;
+            });
+            $('#grand-total').text('Rs. ' + grandTotal.toLocaleString());
         }
-    }
 
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.querySelector('.mobile-overlay');
+        $(document).ready(function() {
+            recalculateTotals();
 
-        sidebar.classList.toggle('show');
-        overlay.classList.toggle('show');
-    }
+            $(document).on('click', '.plus', function() {
+                const qtyInput = $(this).closest('.quantity-control').find('.qty');
+                qtyInput.val(parseInt(qtyInput.val()) + 1);
+                recalculateTotals();
+            });
 
-    function closeSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.querySelector('.mobile-overlay');
+            $(document).on('click', '.minus', function() {
+                const qtyInput = $(this).closest('.quantity-control').find('.qty');
+                const currentQty = parseInt(qtyInput.val());
+                if (currentQty > 1) {
+                    qtyInput.val(currentQty - 1);
+                    recalculateTotals();
+                }
+            });
 
-        sidebar.classList.remove('show');
-        overlay.classList.remove('show');
-    }
+            $(document).on('click', '.remove-item', function() {
+                $(this).closest('tr').remove();
+                recalculateTotals();
+            });
+        });
+    </script>
 
-
-
-    // Close sidebar when clicking outside on mobile
-    document.addEventListener('click', function(event) {
-        const sidebar = document.getElementById('sidebar');
-        const menuBtn = document.querySelector('.mobile-menu-btn');
-
-        if (window.innerWidth <= 768 &&
-            sidebar.classList.contains('show') &&
-            !sidebar.contains(event.target) &&
-            !menuBtn.contains(event.target)) {
-            closeSidebar();
-        }
-    });
-
-    // Handle window resize
-    window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-            closeSidebar();
-        }
-    });
-</script>
-
+    @stack('scripts')
 </body>
 
 </html>

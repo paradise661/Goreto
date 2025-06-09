@@ -23,7 +23,7 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = Cart::getContent();
-        return view('cart.index', compact('cartItems'));
+        return view('frontend.cart.index', compact('cartItems'));
     }
 
     public function remove($id)
