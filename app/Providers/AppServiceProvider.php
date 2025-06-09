@@ -8,7 +8,7 @@ use App\Models\Social;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Darryldecode\Cart\Facades\CartFacade as Cart; // ✅ Import Cart
+use Darryldecode\Cart\Facades\CartFacade as Cart; 
 
 class AppServiceProvider extends ServiceProvider
 {

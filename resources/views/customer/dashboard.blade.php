@@ -83,7 +83,7 @@
                         </li>
                         <li class="nav-item">
                             <span class="nav-link nav-link-custom" onclick="showContent('address', this)">
-                                <i class="bi bi-geo-alt me-2"></i> Address
+                                <i class="bi bi-geo-alt me-2"></i> Billing Address
                             </span>
                         </li>
                         <li class="nav-item">
