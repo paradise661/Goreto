@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Sliders;
 use App\Models\Division;
 use App\Models\Product;
+use App\Models\Advertise;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -26,8 +27,9 @@ class FrontendController extends Controller
         }])
         ->take(3)
         ->get();
+        $adv_single = Advertise::where('status', 1)->whereLocation(2)->oldest('order')->first();
 
-    return view('frontend.home.index', compact('sliders', 'categories', 'divisions'));
+    return view('frontend.home.index', compact('sliders', 'categories', 'divisions', 'adv_single'));
 }
 
     function product()

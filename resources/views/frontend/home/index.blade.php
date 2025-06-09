@@ -322,13 +322,28 @@
 
         <!-- product package end -->
         <!-- Banner2 start -->
-        <div class="container-fluid py-0 py-md-5">
+        @if ($adv_single)
+            <div class="container-fluid py-0 py-md-5">
+                <section class="discount-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="wrap">
+                                    {!! get_image($adv_single->image) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        @endif
+        {{-- <div class="container-fluid py-0 py-md-5">
             <div class="row">
                 <div class="banner-2">
                     <img src="{{ asset('frontend/assets/images/banner2.jpg') }}" alt="">
                 </div>
             </div>
-        </div>
+        </div> --}}
         <!-- Banner2 end -->
         <section>
             <div class="container ">
