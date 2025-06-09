@@ -51,5 +51,11 @@
         <div class="text-end mt-4">
             <h4>Total: <span class="text-success fw-bold" id="grand-total">Rs. 0</span></h4>
         </div>
+
+        <div class="text-end mt-3">
+            <a class="btn btn-success btn-lg" href="#">
+                Proceed to Checkout
+            </a>
+        </div>
     </div>
 @endsection
