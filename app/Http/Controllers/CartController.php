@@ -8,17 +8,20 @@ use Darryldecode\Cart\Facades\CartFacade as Cart;
 class CartController extends Controller
 {
     public function add(Request $request)
-    {
-        Cart::add([
-            'id' => $request->id,
-            'name' => $request->name,
-            'price' => $request->price,
-            'quantity' => $request->qty ?? 1,
-            'attributes' => [],
-        ]);
+{
+    Cart::add([
+        'id' => $request->id,
+        'name' => $request->name,
+        'price' => $request->price,
+        'quantity' => $request->qty ?? 1,
+        'attributes' => [
+            'image' => $request->image,
+        ],
+    ]);
 
-        return response()->json(['success' => 'Product added to cart!']);
-    }
+    return response()->json(['success' => 'Product added to cart!']);
+}
+
 
     public function index()
     {

@@ -138,6 +138,7 @@
                     let productId = btn.data('id');
                     let productName = btn.data('name');
                     let productPrice = btn.data('price');
+                    let productImage = btn.data('image');
 
                     $.ajax({
                         url: "{{ route('cart.add') }}",
@@ -145,7 +146,8 @@
                         data: {
                             id: productId,
                             name: productName,
-                            price: productPrice
+                            price: productPrice,
+                            image: productImage,
                         },
                         success: function(response) {
                             let toast = new bootstrap.Toast(document.getElementById(

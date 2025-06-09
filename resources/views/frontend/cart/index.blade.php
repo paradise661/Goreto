@@ -19,7 +19,8 @@
                     @foreach ($cartItems as $item)
                         <tr data-id="{{ $item->id }}">
                             <td>
-                                <img class="rounded" src="{{ asset('admin/images/product/' . $item->image) }}"
+                                <img class="rounded"
+                                    src="{{ get_image_url($item->attributes['image'], 'home-banner-slider') }}"
                                     alt="product" width="60">
                             </td>
                             <td class="fw-medium">{{ $item->name }}</td>

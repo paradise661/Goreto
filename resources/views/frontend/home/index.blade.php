@@ -280,7 +280,8 @@
                                                             <button class="scale-button add-to-cart-btn"
                                                                 data-id="{{ $prd->id }}"
                                                                 data-name="{{ $prd->name }}"
-                                                                data-price="{{ $prd->price }}" type="button">
+                                                                data-price="{{ $prd->price }}"
+                                                                data-image="{{ $prd->image }}" type="button">
                                                                 <span class="scale-text">Add to Cart</span>
                                                             </button>
 

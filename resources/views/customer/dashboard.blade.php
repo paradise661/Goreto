@@ -163,8 +163,8 @@
                                     <tr data-id="{{ $item->id }}">
                                         <td>
                                             <img class="rounded"
-                                                src="{{ get_image_url($item->image, 'home-banner-slider') }}" alt="product"
-                                                width="60">
+                                                src="{{ get_image_url($item->attributes['image'], 'home-banner-slider') }}"
+                                                alt="product" width="60">
 
                                         </td>
                                         <td class="fw-medium">{{ $item->name }}</td>
