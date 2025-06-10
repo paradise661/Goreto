@@ -164,4 +164,5 @@ class CheckoutController extends Controller
         $cartItems = \Cart::getContent()->sort();
         return view('frontend.checkout.order-component', compact('cartItems', 'deliveryCharge'));
     }
+    
 }

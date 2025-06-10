@@ -36,6 +36,7 @@
                 @csrf
 
                 {{-- Billing --}}
+                @include('frontend.includes.message')
                 <div class="col-lg-8">
                     <div class="card shadow-sm border-0">
                         <div class="card-header bg-success text-white">
