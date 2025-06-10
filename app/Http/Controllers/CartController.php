@@ -19,7 +19,11 @@ class CartController extends Controller
         ],
     ]);
 
-    return response()->json(['success' => 'Product added to cart!']);
+    return response()->json([
+        'success' => 'Product added to cart!',
+        'totalUniqueItems' => Cart::getContent()->count(),
+
+    ]);
 }
 
 
@@ -30,10 +34,15 @@ class CartController extends Controller
     }
 
     public function remove($id)
-    {
-        Cart::remove($id);
-        return redirect()->back()->with('success', 'Item removed from cart.');
-    }
+{
+    Cart::remove($id);
+
+    return response()->json([
+        'success' => true,
+        'totalUniqueItems' => Cart::getContent()->count(),
+    ]);
+}
+
 
     public function clear()
     {

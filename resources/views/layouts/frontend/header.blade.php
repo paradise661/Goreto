@@ -86,13 +86,13 @@
                         </ul>
                     </div>
 
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+                    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 
                     <a class="text-decoration-none text-dark position-relative" href="{{ route('cart.index') }}">
                         <i class="ri-shopping-cart-line header-icon"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
                             id="cart-count">
-                            {{ \Cart::getTotalQuantity() }}
+                            {{ \Cart::getContent()->count() }}
                         </span>
                     </a>
 

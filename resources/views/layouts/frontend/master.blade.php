@@ -153,6 +153,10 @@
                             let toast = new bootstrap.Toast(document.getElementById(
                                 'cartToast'));
                             toast.show();
+
+                            if (response.totalUniqueItems !== undefined) {
+                                $('#cart-count').text(response.totalUniqueItems);
+                            }
                         },
                         error: function(xhr) {
                             alert('Something went wrong!');
@@ -182,10 +186,13 @@
                     success: function(response) {
                         row.remove();
 
+                        if (response.totalUniqueItems !== undefined) {
+                            $('#cart-count').text(response.totalUniqueItems);
+                        }
+
                         if (typeof recalculateTotals === 'function') {
                             recalculateTotals();
                         }
-
                         let toastEl = document.getElementById('removeToast');
                         if (toastEl) {
                             let toast = new bootstrap.Toast(toastEl);
