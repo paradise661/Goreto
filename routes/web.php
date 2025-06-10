@@ -34,6 +34,13 @@ use App\Http\Controllers\Admin\UserRegisterController;
 use App\Http\Controllers\Auth\CustomerLoginController;
 use App\Http\Controllers\Auth\CustomerRegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\CouponController;
+use App\Http\Controllers\Admin\DeliveryChargeController;
+use App\Http\Controllers\CheckoutController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +93,8 @@ Route::middleware('auth:customer')->prefix('customer')->group(function () {
         return view('customer.dashboard');
     })->name('customer.dashboard');
 });
+Route::post('applycoupon', [CartController::class, 'applyCoupon'])->name('coupon');
+
 
 
 Route::post('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
@@ -93,7 +102,11 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::get('/view-order/checkout/{deliverycharge}', [CheckoutController::class, 'OrderItems'])->name('order.view');
 
+Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/confirmation/{order_number}', [CheckoutController::class, 'thankyou'])->name('checkout.thankyou');
 
 Auth::routes(['register' => false]);
 
@@ -136,6 +149,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
      */
 
     Route::resource('contacts', ContactsController::class);
+
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.delete');
+    Route::get('/orders/{order}', [OrderController::class, 'orderItems'])->name('orders.items');
+    Route::post('order-status/{order}', [OrderController::class, 'changeOrderStatus'])->name('order.status');
+    Route::resource('coupons', CouponController::class);
+    Route::resource('delivery', DeliveryChargeController::class);
+
 
     /*
     |--------------------------------------------------------------------------
@@ -210,4 +232,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('delete-menuitem/{id}/{key}/{in?}', [MenuController::class, 'deleteMenuItem'])->name('admin.menu.deleteitem');
     Route::get('delete-menu/{id}', [MenuController::class, 'destroy'])->name('admin.menu.deletemenu');
 });
+Route::get('/invoice', [OrderController::class, 'invoice'])->name('invoice');
+
 require __DIR__ . '/frontend.php';

@@ -53,7 +53,7 @@
         </div>
 
         <div class="text-end mt-3">
-            <a class="btn btn-success btn-lg" href="#">
+            <a class="btn btn-success btn-lg" href="{{ route('checkout') }}">
                 Proceed to Checkout
             </a>
         </div>

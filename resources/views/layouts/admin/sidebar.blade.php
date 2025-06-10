@@ -181,6 +181,18 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item {{ Request::segment(2) == 'orders' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('orders.index') }}">
+                <i class="menu-icon tf-icons bx bx-cart"></i>
+                <div data-i18n="Basic">Orders</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::segment(2) == 'coupons' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('coupons.index') }}">
+                <i class="menu-icon tf-icons bx bxs-coupon"></i>
+                <div data-i18n="Basic">Coupons</div>
+            </a>
+        </li>
         <li class="menu-item @if (Request::segment(2) == 'department') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-building-house"></i>
