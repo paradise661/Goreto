@@ -1355,3 +1355,70 @@ button:focus:not(:focus-visible) {
         height: 250px;
     }
 }
+
+
+        .checkout-progress {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .progress-step {
+            position: relative;
+            width: 250px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 20px;
+            margin-right: 20px;
+            /* Gap between steps */
+            background-color: #fff;
+            color: #6c757d;
+            z-index: 1;
+        }
+
+        .progress-step.active {
+            background-color: #23a352;
+            /* Dark gold color */
+            color: white;
+        }
+
+        .progress-step .number {
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+
+        .progress-step .text {
+            font-weight: 500;
+        }
+
+        /* Arrow shape for active step */
+        .progress-step.active::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-top: 28px solid transparent;
+            border-bottom: 28px solid transparent;
+            border-left: 20px solid #23a352;
+            z-index: 2;
+        }
+
+        /* Arrow shape for inactive steps */
+        .progress-step:not(.active)::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-top: 28px solid transparent;
+            border-bottom: 28px solid transparent;
+            border-left: 20px solid #fff;
+            z-index: 2;
+        }

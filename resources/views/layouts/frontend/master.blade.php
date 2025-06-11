@@ -26,14 +26,12 @@
             position: absolute;
             top: 100%;
             left: 0;
-            margin-top: 0;
             z-index: 1050;
             min-width: 220px;
             box-shadow: 0 0.75rem 1.5rem #00b2f0;
             border-radius: 12px;
             padding: 0.5rem 0;
             background-color: #fff;
-            border: none;
         }
 
         .premium-dropdown:hover .premium-dropdown-menu,
@@ -50,19 +48,17 @@
             align-items: center;
             border-radius: 50px;
             margin: 0.25rem 0;
-            transition: background-color 0.2s ease, color 0.2s ease;
             text-decoration: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
         .premium-dropdown .premium-dropdown-item i {
             font-size: 1.1rem;
-            color: #009f3c;
             margin-right: 0.5rem;
         }
 
         .premium-dropdown .premium-dropdown-item:hover {
             background-color: #f0f9ff;
-            color: #009f3c;
             font-weight: 700;
         }
 
@@ -107,13 +103,13 @@
                     <button class="btn-close" data-bs-dismiss="modal" type="button" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    {{-- @include('frontend.auth.login-form') Use your actual login form --}}
+                    {{-- @include('frontend.auth.login-form') --}}
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- JS Scripts -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -122,96 +118,56 @@
 
     <script>
         $(document).ready(function() {
-            // CSRF setup for all AJAX requests
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
 
-            // ADD TO CART
             $(document).on('click', '.add-to-cart-btn', function(e) {
                 e.preventDefault();
-                let btn = $(this);
+                const btn = $(this);
 
                 @auth('customer')
-                    let productId = btn.data('id');
-                    let productName = btn.data('name');
-                    let productPrice = btn.data('price');
-                    let productImage = btn.data('image');
-
-                    $.ajax({
-                        url: "{{ route('cart.add') }}",
-                        method: "POST",
-                        data: {
-                            id: productId,
-                            name: productName,
-                            price: productPrice,
-                            image: productImage,
-                        },
-                        success: function(response) {
-                            let toast = new bootstrap.Toast(document.getElementById(
-                                'cartToast'));
-                            toast.show();
-
-                            if (response.totalUniqueItems !== undefined) {
-                                $('#cart-count').text(response.totalUniqueItems);
-                            }
-                        },
-                        error: function(xhr) {
-                            alert('Something went wrong!');
-                            console.log(xhr.responseText);
+                    $.post("{{ route('cart.add') }}", {
+                        id: btn.data('id'),
+                        name: btn.data('name'),
+                        price: btn.data('price'),
+                        image: btn.data('image')
+                    }, function(response) {
+                        new bootstrap.Toast($('#cartToast')[0]).show();
+                        if (response.totalUniqueItems) {
+                            $('#cart-count').text(response.totalUniqueItems);
                         }
+                    }).fail(function(xhr) {
+                        alert('Something went wrong!');
+                        console.log(xhr.responseText);
                     });
                 @else
-                    // Open modal instead of redirecting
-                    let loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
-                    loginModal.show();
+                    new bootstrap.Modal($('#loginModal')).show();
                 @endauth
             });
 
-            // REMOVE ITEM FROM CART
             $(document).on('click', '.remove-item', function(e) {
                 e.preventDefault();
-                let btn = $(this);
-                let itemId = btn.data('id');
-                let row = btn.closest('tr');
+                const btn = $(this);
+                const itemId = btn.data('id');
+                const row = btn.closest('tr');
 
                 $.ajax({
-                    url: "{{ url('/cart/remove') }}/" + itemId,
-                    method: "POST",
+                    url: `/cart/remove/${itemId}`,
+                    type: 'POST',
                     data: {
-                        _method: 'DELETE',
+                        _method: 'DELETE'
                     },
                     success: function(response) {
                         row.remove();
-
                         if (response.totalUniqueItems !== undefined) {
                             $('#cart-count').text(response.totalUniqueItems);
                         }
-
+                        showToast('Item removed from cart!');
                         if (typeof recalculateTotals === 'function') {
                             recalculateTotals();
-                        }
-                        let toastEl = document.getElementById('removeToast');
-                        if (toastEl) {
-                            let toast = new bootstrap.Toast(toastEl);
-                            toast.show();
-                        } else {
-                            let toastHtml = `
-                                <div class="toast align-items-center text-bg-success border-0 position-fixed top-0 end-0 m-3" role="alert" aria-live="assertive" aria-atomic="true" id="removeToast">
-                                    <div class="d-flex">
-                                        <div class="toast-body">Item removed from cart!</div>
-                                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                                    </div>
-                                </div>`;
-                            $('body').append(toastHtml);
-                            let newToastEl = document.getElementById('removeToast');
-                            let toast = new bootstrap.Toast(newToastEl);
-                            toast.show();
-                            newToastEl.addEventListener('hidden.bs.toast', function() {
-                                $(newToastEl).remove();
-                            });
                         }
                     },
                     error: function(xhr) {
@@ -220,17 +176,75 @@
                     }
                 });
             });
+
+            function showToast(message) {
+                let toastHtml = `
+                    <div class="toast align-items-center text-bg-success border-0 position-fixed top-0 end-0 m-3" role="alert" id="removeToast">
+                        <div class="d-flex">
+                            <div class="toast-body">${message}</div>
+                            <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                        </div>
+                    </div>`;
+                $('body').append(toastHtml);
+                const toastEl = document.getElementById('removeToast');
+                const toast = new bootstrap.Toast(toastEl);
+                toast.show();
+                toastEl.addEventListener('hidden.bs.toast', () => $(toastEl).remove());
+            }
         });
     </script>
 
-    <!-- Search Suggestion Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener("DOMContentLoaded", () => {
+            const cartBody = document.getElementById("cart-body");
+            const grandTotalElem = document.getElementById("grand-total");
+            const csrfToken = '{{ csrf_token() }}';
+
+            function updateTotals() {
+                let grandTotal = 0;
+                cartBody?.querySelectorAll("tr").forEach(row => {
+                    const price = parseFloat(row.querySelector(".price")?.dataset.price || 0);
+                    const qty = parseInt(row.querySelector(".qty")?.value || 1);
+                    const total = price * qty;
+                    row.querySelector(".item-total").innerText = total.toLocaleString();
+                    grandTotal += total;
+                });
+                grandTotalElem.innerText = `Rs. ${grandTotal.toLocaleString()}`;
+            }
+
+            cartBody?.addEventListener("click", (e) => {
+                const row = e.target.closest("tr");
+                const id = row?.dataset.id;
+                if (!id) return;
+
+                if (e.target.classList.contains("plus") || e.target.classList.contains("minus")) {
+                    const increase = e.target.classList.contains("plus");
+                    fetch(`/cart/${increase ? 'increase' : 'decrease'}/${id}`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                        }
+                    }).then(res => res.json()).then(() => {
+                        const qtyInput = row.querySelector(".qty");
+                        qtyInput.value = increase ? parseInt(qtyInput.value) + 1 : Math.max(1,
+                            parseInt(qtyInput.value) - 1);
+                        updateTotals();
+                    });
+                }
+            });
+
+            updateTotals();
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
             const input = document.getElementById('search-input');
             const suggestionsList = document.getElementById('suggestions-list');
 
-            input?.addEventListener('input', function() {
-                const query = this.value;
+            input?.addEventListener('input', () => {
+                const query = input.value;
                 if (query.length < 2) {
                     suggestionsList.style.display = 'none';
                     return;
@@ -259,50 +273,10 @@
                     });
             });
 
-            document.addEventListener('click', function(e) {
+            document.addEventListener('click', (e) => {
                 if (!input.contains(e.target) && !suggestionsList.contains(e.target)) {
                     suggestionsList.style.display = 'none';
                 }
-            });
-        });
-    </script>
-
-    <!-- Quantity and Cart Total Script -->
-    <script>
-        function recalculateTotals() {
-            let grandTotal = 0;
-            $('#cart-body tr').each(function() {
-                const row = $(this);
-                const price = parseFloat(row.find('.price').data('price'));
-                const qty = parseInt(row.find('.qty').val());
-                const total = price * qty;
-                row.find('.item-total').text(total.toLocaleString());
-                grandTotal += total;
-            });
-            $('#grand-total').text('Rs. ' + grandTotal.toLocaleString());
-        }
-
-        $(document).ready(function() {
-            recalculateTotals();
-
-            $(document).on('click', '.plus', function() {
-                const qtyInput = $(this).closest('.quantity-control').find('.qty');
-                qtyInput.val(parseInt(qtyInput.val()) + 1);
-                recalculateTotals();
-            });
-
-            $(document).on('click', '.minus', function() {
-                const qtyInput = $(this).closest('.quantity-control').find('.qty');
-                const currentQty = parseInt(qtyInput.val());
-                if (currentQty > 1) {
-                    qtyInput.val(currentQty - 1);
-                    recalculateTotals();
-                }
-            });
-
-            $(document).on('click', '.remove-item', function() {
-                $(this).closest('tr').remove();
-                recalculateTotals();
             });
         });
     </script>

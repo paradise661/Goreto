@@ -101,6 +101,8 @@ Route::post('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
+Route::post('/cart/increase/{id}', [CartController::class, 'cartItemsIncrease'])->name('cart.increase');
+Route::post('/cart/decrease/{id}', [CartController::class, 'cartItemsDecrease'])->name('cart.decrease');
 
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/view-order/checkout/{deliverycharge}', [CheckoutController::class, 'OrderItems'])->name('order.view');

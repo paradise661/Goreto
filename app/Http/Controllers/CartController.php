@@ -43,6 +43,51 @@ class CartController extends Controller
     ]);
 }
 
+public function cartItemsIncrease($id)
+{
+    $item = Cart::get($id);
+    if ($item) {
+        $newQty = $item->quantity + 1;
+        Cart::update($id, [
+            'quantity' => [
+                'relative' => false,
+                'value' => $newQty
+            ],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'quantity' => $newQty,
+            'item_total' => $newQty * $item->price
+        ]);
+    }
+
+    return response()->json(['success' => false], 404);
+}
+
+public function cartItemsDecrease($id)
+{
+    $item = Cart::get($id);
+    if ($item) {
+        $newQty = max(1, $item->quantity - 1);
+        Cart::update($id, [
+            'quantity' => [
+                'relative' => false,
+                'value' => $newQty
+            ],
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'quantity' => $newQty,
+            'item_total' => $newQty * $item->price
+        ]);
+    }
+
+    return response()->json(['success' => false], 404);
+}
+
+
 
     public function clear()
     {

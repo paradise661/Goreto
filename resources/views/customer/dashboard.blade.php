@@ -81,11 +81,11 @@
                                 <i class="bi bi-cart me-2"></i> My Cart
                             </span>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <span class="nav-link nav-link-custom" onclick="showContent('address', this)">
                                 <i class="bi bi-geo-alt me-2"></i> Billing Address
                             </span>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <span class="nav-link nav-link-custom" onclick="showContent('account', this)">
                                 <i class="bi bi-person me-2"></i> Account Details
@@ -146,63 +146,73 @@
                 <div class="content-section" id="cart">
                     <h4 class="fw-bold mb-4">🛒 Your Cart</h4>
 
-                    <div class="table-responsive">
-                        <table class="table align-middle text-center bg-white shadow rounded-4 overflow-hidden">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Price (Rs)</th>
-                                    <th scope="col" style="width: 140px;">Quantity</th>
-                                    <th scope="col">Total (Rs)</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody id="cart-body">
-                                @foreach ($cartItems as $item)
-                                    <tr data-id="{{ $item->id }}">
-                                        <td>
-                                            <img class="rounded"
-                                                src="{{ get_image_url($item->attributes['image'], 'home-banner-slider') }}"
-                                                alt="product" width="60">
-
-                                        </td>
-                                        <td class="fw-medium">{{ $item->name }}</td>
-                                        <td class="price" data-price="{{ $item->price }}">
-                                            {{ number_format($item->price) }}</td>
-                                        <td>
-                                            <div class="input-group quantity-control">
-                                                <button class="btn btn-sm btn-outline-secondary minus">−</button>
-                                                <input class="form-control text-center qty" type="text"
-                                                    value="{{ $item->quantity }}" readonly>
-                                                <button class="btn btn-sm btn-outline-secondary plus">+</button>
-                                            </div>
-                                        </td>
-                                        <td class="item-total fw-bold text-primary">
-                                            {{ number_format($item->price * $item->quantity) }}
-                                        </td>
-                                        <td>
-                                        <td>
-                                            <a class="btn btn-sm btn-outline-danger remove-item"
-                                                data-id="{{ $item->id }}" href="#">Remove</a>
-                                        </td>
-
-                                        </td>
+                    @if ($cartItems->isEmpty())
+                        <div class="text-center py-5">
+                            <p class="fs-5">Your cart is currently empty.</p>
+                            <a class="btn btn-primary mt-3" href="{{ url('/') }}">Continue Shopping</a>
+                        </div>
+                    @else
+                        <div class="table-responsive">
+                            <table class="table align-middle text-center bg-white shadow rounded-4 overflow-hidden">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Price (Rs)</th>
+                                        <th scope="col" style="width: 140px;">Quantity</th>
+                                        <th scope="col">Total (Rs)</th>
+                                        <th></th>
                                     </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                </thead>
+                                <tbody id="cart-body">
+                                    @foreach ($cartItems as $item)
+                                        <tr data-id="{{ $item->id }}">
+                                            <td>
+                                                <img class="rounded"
+                                                    src="{{ get_image_url($item->attributes['image'], 'home-banner-slider') }}"
+                                                    alt="product" width="60">
+                                            </td>
+                                            <td class="fw-medium">{{ $item->name }}</td>
+                                            <td class="price" data-price="{{ $item->price }}">
+                                                {{ number_format($item->price) }}</td>
+                                            <td>
+                                                <div class="input-group quantity-control">
+                                                    <button class="btn btn-sm btn-outline-secondary minus">−</button>
+                                                    <input class="form-control text-center qty" type="text"
+                                                        value="{{ $item->quantity }}" readonly>
+                                                    <button class="btn btn-sm btn-outline-secondary plus">+</button>
+                                                </div>
+                                            </td>
+                                            <td class="item-total fw-bold text-primary">
+                                                {{ number_format($item->price * $item->quantity) }}
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-sm btn-outline-danger remove-item"
+                                                    data-id="{{ $item->id }}" href="#">Remove</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
-                    <div class="text-end mt-4">
-                        <h4>Total: <span class="text-success fw-bold" id="grand-total">Rs. 0</span></h4>
-                    </div>
+                        <div class="text-end mt-4">
+                            <h4>Total: <span class="text-success fw-bold" id="grand-total">Rs. 0</span></h4>
+                        </div>
+
+                        <div class="text-end mt-3">
+                            <a class="btn btn-success btn-lg" href="{{ route('checkout') }}">
+                                Proceed to Checkout
+                            </a>
+                        </div>
+                    @endif
                 </div>
+
                 <!-- Address -->
-                <div class="content-section" id="address">
+                {{-- <div class="content-section" id="address">
                     <h4>Address</h4>
                     <p>Manage your saved addresses.</p>
-                </div>
+                </div> --}}
 
                 <!-- Account -->
                 <div class="content-section" id="account">

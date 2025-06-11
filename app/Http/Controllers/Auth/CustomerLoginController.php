@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class CustomerLoginController extends Controller
 {
     public function showLoginForm()
@@ -48,10 +49,6 @@ class CustomerLoginController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('customer')->logout();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
