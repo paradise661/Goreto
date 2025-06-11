@@ -176,7 +176,8 @@
                                         <div class="col-3">
                                             <h2>ORDER #<span class="order">{{ $order->order_number ?: 'N/A' }}</span></h2>
                                             <h2>
-                                                {{ date('F d Y, h:i A', strtotime(now())) }}
+                                                {{ now()->timezone('Asia/Kathmandu')->format('F d Y, h:i A') }}
+
                                             </h2>
                                         </div>
                                     </div>

@@ -63,7 +63,8 @@
                                 <td><span
                                         class="badge rounded-pill alert-warning">{{ $order->transaction_status ?: 'Not Paid' }}</span>
                                 </td>
-                                <td>{{ date('Y-m-d, h:i A', strtotime($order->created_at)) }}</td>
+                                <td>{{ $order->created_at->timezone('Asia/Kathmandu')->format('d F Y, h:i A') }}</td>
+
                                 <td>
                                     <span
                                         class="badge {{ $order->is_seen ? 'badge rounded-pill alert-success' : '' }}">{{ $order->is_seen ? 'Seen' : '' }}
