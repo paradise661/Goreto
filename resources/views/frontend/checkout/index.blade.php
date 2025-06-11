@@ -138,6 +138,7 @@
 @section('scripts')
     <script>
         function loadOrderComponent(deliveryCharge = 0) {
+            console.log("loadOrderComponent called with deliveryCharge:", deliveryCharge);
             $.ajax({
                 url: "{{ url('/view-order/checkout') }}/" + deliveryCharge,
                 type: "GET",

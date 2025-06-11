@@ -139,8 +139,7 @@
                     <a class="btn btn-secondary" href="javascript:void()" onclick="printdiv()"><i class="fa fa-print"
                             aria-hidden="true"></i> Print
                     </a>
-                    <a class="btn btn-primary" href="{{ route('admin.orders.index') }}"><i
-                            class="fa-solid fa-arrow-left"></i>
+                    <a class="btn btn-primary" href="{{ route('orders.index') }}"><i class="fa-solid fa-arrow-left"></i>
                         Back</a>
                 </small>
             </div>
@@ -152,7 +151,7 @@
                                 <div class="row justify-content-between align-items-center">
                                     <div class="col-3">
                                         <div class="media-wrapper">
-                                            <img src="{{ $settings['site_main_logo'] ? asset('admin/images/setting/' . $settings['site_main_logo']) : 'https://www.bookbank.com.np/frontend/assets/images/logo.png' }}"
+                                            <img src="{{ $setting['site_main_logo'] ? asset(get_media($setting['site_main_logo'])->fullurl) : '' }}"
                                                 alt="logo">
                                         </div>
                                     </div>
@@ -201,19 +200,29 @@
                                             @php
                                                 $total = 0;
                                             @endphp
+                                            @php $total = 0; @endphp
+
                                             @foreach ($orderItems as $item)
                                                 @php
-                                                    $subTotal = $item->product->price * $item->quantity;
+                                                    $price = $item->product ? $item->product->price : 0;
+                                                    $name = $item->product ? $item->product->name : 'Product not found';
+                                                    $subTotal = $price * $item->quantity;
                                                     $total += $subTotal;
                                                 @endphp
 
                                                 <tr>
-                                                    <td>{{ $item->product->name }}</td>
-                                                    <td>R.s {{ number_format($item->product->price) }}</td>
+                                                    <td>{{ $name }}</td>
+                                                    <td>R.s {{ number_format($price) }}</td>
                                                     <td>{{ $item->quantity }}</td>
                                                     <td>R.s {{ number_format($subTotal) }}</td>
                                                 </tr>
                                             @endforeach
+
+                                            <tr>
+                                                <td class="text-right" colspan="3"><strong>Total:</strong></td>
+                                                <td><strong>R.s {{ number_format($total) }}</strong></td>
+                                            </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -325,7 +334,7 @@
                                                     Status Action
                                                 </h6>
                                             </legend>
-                                            <form class="" action="{{ route('admin.order.status', $order->id) }}"
+                                            <form class="" action="{{ route('order.status', $order->id) }}"
                                                 method="POST">
                                                 @csrf
                                                 <div class="row">

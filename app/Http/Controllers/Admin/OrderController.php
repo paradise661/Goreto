@@ -65,7 +65,7 @@ class OrderController extends Controller
     public function invoice()
     {
         $order = Order::find(3);
-        $orderItems = OrderItems::where('order_id', $order->id)->get();
+        $orderItems = OrderItems::with('product')->where('order_id', $order->id)->get();
         $shipping = ShippingAddress::where('user_id', $order->user_id)->first();
         $billing = BillingAddress::where('user_id', $order->user_id)->first();
         return view('admin.order.invoice', compact('order', 'orderItems', 'billing'));

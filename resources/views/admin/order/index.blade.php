@@ -54,7 +54,10 @@
                             <tr>
                                 <td><strong>{{ $key + $orders->firstItem() }}</strong></td>
                                 <td>{{ $order->order_number }}</td>
-                                <td>{{ $order->user->first_name . ' ' . $order->user->last_name ?? 'Not Registered' }}</td>
+                                <td>
+                                    {{ $order->customer ? $order->customer->name : 'Not Registered' }}
+                                </td>
+
                                 <td>{{ $order->payment_method ?: 'NA' }}</td>
                                 <td>{{ $order->status ?? '' }}</td>
                                 <td><span
@@ -68,10 +71,10 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-sm btn-outline-primary" title="View"
-                                        href="{{ route('admin.orders.items', $order->id) }}"
+                                        href="{{ route('orders.items', $order->id) }}"
                                         style="float: left;margin-right: 5px;"><i class="fa-solid fa fa-eye"></i></a>
 
-                                    <form class="delete-form" action="{{ route('admin.orders.delete', $order->id) }}"
+                                    <form class="delete-form" action="{{ route('orders.delete', $order->id) }}"
                                         method="POST">
                                         @csrf
                                         @method('DELETE')

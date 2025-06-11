@@ -315,3 +315,14 @@ if (!function_exists('fileUpload')) {
     }
     
 }
+function getTotalAmount()
+{
+    $cartItems = \Cart::getContent();
+    $subtotal = $cartItems->sum(function ($item) {
+        return $item->quantity * $item->price;
+    });
+
+    $discount = Session::get('couponDiscount')['amount'] ?? 0;
+
+    return max(0, $subtotal - $discount);
+}

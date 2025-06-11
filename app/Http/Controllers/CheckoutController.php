@@ -63,13 +63,16 @@ class CheckoutController extends Controller
         ]);
 
         foreach ($cartItems as $item) {
+            $productId = $item->attributes->product_id ?? $item->id;
+        
             OrderItems::create([
-                'order_id' => $order->id ?? '',
-                'product_id' => $item->attributes->product_id ?? '',
-                'quantity' => $item->quantity ?? '',
-                'price' => $item->price ?? '',
+                'order_id' => $order->id,
+                'product_id' => $productId,
+                'quantity' => $item->quantity,
+                'price' => $item->price,
             ]);
         }
+        
 
         $billing_shipping_data = [
             'order_id' => $order->id ?? '',
@@ -105,64 +108,64 @@ class CheckoutController extends Controller
         return view('frontend.checkout.thankyou', compact('order_number'));
     }
 
-    public function esewaSuccess(Request $request)
-    {
-        $status = $request->q;
+    // public function esewaSuccess(Request $request)
+    // {
+    //     $status = $request->q;
 
-        if ($status == 'su') {
-            $url = "https://uat.esewa.com.np/epay/transrec";
-            $order = Order::where('order_number', $request->oid)->first();
-            $order->update(['transaction_status' => 'processing']);
+    //     if ($status == 'su') {
+    //         $url = "https://uat.esewa.com.np/epay/transrec";
+    //         $order = Order::where('order_number', $request->oid)->first();
+    //         $order->update(['transaction_status' => 'processing']);
 
-            $data = [
-                'amt' => $order->total_amount ?? NULL,
-                'rid' => $request->refId,
-                'pid' => $order->order_number ?? NULl,
-                'scd' => 'EPAYTEST'
-            ];
+    //         $data = [
+    //             'amt' => $order->total_amount ?? NULL,
+    //             'rid' => $request->refId,
+    //             'pid' => $order->order_number ?? NULl,
+    //             'scd' => 'EPAYTEST'
+    //         ];
 
-            $curl = curl_init($url);
-            curl_setopt($curl, CURLOPT_POST, true);
-            curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-            $response = curl_exec($curl);
-            curl_close($curl);
+    //         $curl = curl_init($url);
+    //         curl_setopt($curl, CURLOPT_POST, true);
+    //         curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+    //         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    //         $response = curl_exec($curl);
+    //         curl_close($curl);
 
-            if (strpos($response, 'Success')) {
-                $order->update([
-                    'transaction_id' => $request->refId,
-                    'transaction_status' => 'Success',
-                ]);
+    //         if (strpos($response, 'Success')) {
+    //             $order->update([
+    //                 'transaction_id' => $request->refId,
+    //                 'transaction_status' => 'Success',
+    //             ]);
 
-                \Cart::clear();
-                session()->forget('couponDiscount');
+    //             \Cart::clear();
+    //             session()->forget('couponDiscount');
 
-                return redirect()->route('checkout.thankyou', $order->order_number);
-            } else {
-                $order->update([
-                    'transaction_id' => $request->refId,
-                    'transaction_status' => 'Failed',
-                ]);
-                session()->forget('couponDiscount');
+    //             return redirect()->route('checkout.thankyou', $order->order_number);
+    //         } else {
+    //             $order->update([
+    //                 'transaction_id' => $request->refId,
+    //                 'transaction_status' => 'Failed',
+    //             ]);
+    //             session()->forget('couponDiscount');
 
-                dd('transaction failed');
-            }
-        } else {
-            dd('transaction failed');
-        }
-    }
+    //             dd('transaction failed');
+    //         }
+    //     } else {
+    //         dd('transaction failed');
+    //     }
+    // }
 
-    public function esewaFailure(Request $request)
-    {
-        session()->forget('couponDiscount');
-        return redirect()->route('checkout')->with('error', 'Payment could not be made.');
-    }
+    // public function esewaFailure(Request $request)
+    // {
+    //     session()->forget('couponDiscount');
+    //     return redirect()->route('checkout')->with('error', 'Payment could not be made.');
+    // }
 
-    public function OrderItems($deliveryCharge)
-    {
-        $deliveryCharge = $deliveryCharge ?? 0;
-        $cartItems = \Cart::getContent()->sort();
-        return view('frontend.checkout.order-component', compact('cartItems', 'deliveryCharge'));
-    }
+    public function OrderItems($deliveryCharge = 0)
+{
+    $cartItems = \Cart::getContent()->sort();
+    return view('frontend.checkout.order-component', compact('cartItems', 'deliveryCharge'));
+}
+
     
 }

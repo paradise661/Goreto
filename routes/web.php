@@ -105,7 +105,9 @@ Route::get('/cart/clear', [CartController::class, 'clear'])->name('cart.clear');
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/view-order/checkout/{deliverycharge}', [CheckoutController::class, 'OrderItems'])->name('order.view');
 
-Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::middleware('auth:customer')->group(function () {
+    Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
+});
 Route::get('/confirmation/{order_number}', [CheckoutController::class, 'thankyou'])->name('checkout.thankyou');
 
 Auth::routes(['register' => false]);

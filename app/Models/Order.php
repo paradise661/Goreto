@@ -34,10 +34,11 @@ class Order extends Model
         'Success' => 'Success',
     ];
 
-    public function user()
+    public function customer()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Customer::class, 'user_id');
     }
+    
 
     public function orderitems()
     {
@@ -48,4 +49,5 @@ class Order extends Model
     {
         return $this->belongsTo(Coupon::class, 'coupon_id');
     }
+    
 }
