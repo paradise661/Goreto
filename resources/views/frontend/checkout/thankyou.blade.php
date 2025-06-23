@@ -1,8 +1,8 @@
 @extends('layouts.frontend.master')
 @section('seo')
-    <title>{{ $settings['contact_seo_title'] ?? 'Book Bank' }}</title>
-    <meta name="keywords" content="{{ $settings['contact_seo_keywords'] ?? 'Book Bank' }}">
-    <meta name="description" content="{{ $settings['contact_seo_description'] ?? 'Book Bank' }}">
+    <title>{{ $settings['contact_seo_title'] ?? 'Goreto' }}</title>
+    <meta name="keywords" content="{{ $settings['contact_seo_keywords'] ?? 'Goreto' }}">
+    <meta name="description" content="{{ $settings['contact_seo_description'] ?? 'Goreto' }}">
 @endsection
 @section('content')
     <div class="container-fluid mx-auto my-5">
