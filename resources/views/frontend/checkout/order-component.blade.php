@@ -133,7 +133,7 @@
 
         @if ($deliveryCharge > 0)
             <div class="delivery-charge order-row">
-                <p>Delivery Charge</p>
+                <p>Delivery Charges</p>
                 <p>Rs. {{ $deliveryCharge ?? 0 }}</p>
             </div>
         @endif
