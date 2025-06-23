@@ -9,12 +9,12 @@
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Create Delivery Charge</h5>
                 <small class="text-muted float-end">
-                    <a class="btn btn-primary" href="{{ route('admin.delivery.index') }}"><i
-                            class="fa-solid fa-arrow-left"></i> Back</a>
+                    <a class="btn btn-primary" href="{{ route('delivery.index') }}"><i class="fa-solid fa-arrow-left"></i>
+                        Back</a>
                 </small>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('admin.delivery.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('delivery.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label" for="basic-default-fullname">Title</label>

@@ -193,6 +193,13 @@
                 <div data-i18n="Basic">Coupons</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::segment(2) == 'delivery' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('delivery.index') }}">
+                <i class="menu-icon tf-icons bx bx-money"></i>
+                <div data-i18n="Basic">Delivery Charges</div>
+            </a>
+        </li>
+
         <li class="menu-item @if (Request::segment(2) == 'department') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-building-house"></i>
