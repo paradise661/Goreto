@@ -281,6 +281,97 @@
         });
     </script>
 
+    @push('scripts')
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const fileInput = document.getElementById('fileInput');
+                const doctorModalEl = document.getElementById('doctorModal');
+                const doctorModal = new bootstrap.Modal(doctorModalEl);
+
+                const previewImage = document.getElementById('previewImage');
+                const pdfPreview = document.getElementById('pdfPreview');
+                const pdfFilename = document.getElementById('pdfFilename');
+
+                const doctorName = document.getElementById('doctorName');
+                const doctorTitle = document.getElementById('doctorTitle');
+                const message = document.getElementById('message');
+
+                const confirmBtn = document.getElementById('confirmBtn');
+                const modalCancelBtn = document.getElementById('modalCancelBtn');
+                const cancelBtn = document.getElementById('cancelBtn');
+
+                const cartToast = document.getElementById('cartToast');
+                const cartToastBody = cartToast.querySelector('.toast-body');
+                const toast = new bootstrap.Toast(cartToast);
+
+                // Clear modal fields & previews
+                function clearModal() {
+                    previewImage.style.display = 'none';
+                    previewImage.src = '#';
+
+                    pdfPreview.style.display = 'none';
+                    pdfFilename.textContent = '';
+
+                    doctorName.value = '';
+                    doctorTitle.value = '';
+                    message.value = '';
+
+                    fileInput.value = '';
+                    doctorModal.hide();
+                }
+
+                // Show preview for image or pdf and open modal
+                fileInput.addEventListener('change', () => {
+                    const file = fileInput.files[0];
+                    if (!file) return;
+
+                    const fileType = file.type;
+
+                    if (fileType.startsWith('image/')) {
+                        // Show image preview
+                        const reader = new FileReader();
+                        reader.onload = e => {
+                            previewImage.src = e.target.result;
+                            previewImage.style.display = 'block';
+
+                            pdfPreview.style.display = 'none';
+                            pdfFilename.textContent = '';
+                            doctorModal.show();
+                        };
+                        reader.readAsDataURL(file);
+
+                    } else if (fileType === 'application/pdf') {
+                        // Show pdf icon and filename (small, clear)
+                        previewImage.style.display = 'none';
+
+                        pdfPreview.style.display = 'flex';
+                        pdfPreview.style.flexDirection = 'column';
+                        pdfPreview.style.alignItems = 'center';
+                        pdfPreview.style.justifyContent = 'center';
+                        pdfFilename.textContent = file.name;
+
+                        doctorModal.show();
+                    } else {
+                        alert('Unsupported file type! Please upload images or PDFs only.');
+                        fileInput.value = '';
+                    }
+                });
+
+                confirmBtn.addEventListener('click', () => {
+                    // TODO: Add actual upload logic here (AJAX or form submit)
+
+                    cartToastBody.textContent = "✅ Prescription uploaded successfully!";
+                    toast.show();
+
+                    clearModal();
+                });
+
+                modalCancelBtn.addEventListener('click', clearModal);
+                cancelBtn.addEventListener('click', clearModal);
+            });
+        </script>
+    @endpush
+
     @stack('scripts')
     @yield('scripts')
 </body>
