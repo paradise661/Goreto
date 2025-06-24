@@ -8,6 +8,10 @@ use App\Models\Division;
 use App\Models\Product;
 use App\Models\Advertise;
 use Illuminate\Http\Request;
+use App\Models\Prescription;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class FrontendController extends Controller
 {

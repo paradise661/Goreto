@@ -38,6 +38,8 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\DeliveryChargeController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Admin\PrescriptionController;
+
 
 
 
@@ -95,6 +97,9 @@ Route::middleware('auth:customer')->prefix('customer')->group(function () {
 });
 Route::post('applycoupon', [CartController::class, 'applyCoupon'])->name('coupon');
 
+Route::post('/upload-prescription', [PrescriptionController::class, 'uploadPrescription'])
+    ->middleware('auth:customer')
+    ->name('prescription.upload');
 
 
 Route::post('/add-to-cart', [CartController::class, 'add'])->name('cart.add');
@@ -152,6 +157,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     |--------------------------------------------------------------------------
      */
 
+     Route::resource('prescriptions', PrescriptionController::class)->names([
+        'index' => 'admin.prescriptions.index',
+        'show' => 'admin.prescriptions.show',
+        'destroy' => 'admin.prescriptions.destroy',
+    ]);
+    
+    
+    
     Route::resource('contacts', ContactsController::class);
 
 

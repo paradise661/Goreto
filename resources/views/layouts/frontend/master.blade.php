@@ -2,18 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('seo')
-    <link rel="icon" type="image/x-icon" href="">
+
+    <link rel="icon" type="image/x-icon" href="" />
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/swiper-bundle.min.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/swiper-bundle.min.css') }}" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 
     <style>
         .premium-dropdown {
@@ -72,6 +73,32 @@
         .premium-dropdown .premium-header-icon:hover {
             color: #009f3c;
         }
+
+        /* PDF Preview Container */
+        #pdfPreview {
+            display: none;
+            width: 80px;
+            height: 100px;
+            border: 2px solid #009f3c;
+            border-radius: 8px;
+            background-color: #f0f9ff;
+            color: #009f3c;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 0.5rem 0;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0.5rem 0;
+            user-select: none;
+        }
+
+        #pdfPreview svg {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 0.3rem;
+        }
     </style>
 </head>
 
@@ -85,11 +112,13 @@
     @include('layouts.frontend.footer')
 
     <!-- Toast -->
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div class="toast align-items-center text-bg-success border-0" id="cartToast" role="alert">
+    <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+        <div class="toast align-items-center text-bg-success border-0" id="cartToast" role="alert"
+            aria-live="assertive" aria-atomic="true">
             <div class="d-flex">
-                <div class="toast-body">✅ Product added to cart!</div>
-                <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" type="button"></button>
+                <div class="toast-body">✅ Prescription uploaded successfully!</div>
+                <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" type="button"
+                    aria-label="Close"></button>
             </div>
         </div>
     </div>
@@ -109,14 +138,54 @@
         </div>
     </div>
 
+    <!-- Doctor Info Modal -->
+    <div class="modal fade" id="doctorModal" tabindex="-1" aria-labelledby="doctorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="doctorModalLabel">Confirm Prescription Details</h5>
+                    <button class="btn-close" id="modalCancelBtn" type="button" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <!-- Preview Image -->
+                    <img class="img-fluid mb-3" id="previewImage" src="#" alt="Preview"
+                        style="max-height: 180px; display:none;" />
+
+                    <!-- PDF Preview -->
+                    <div class="d-flex" id="pdfPreview">
+                        <svg class="mb-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 8v4l3 3m6 1v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h7l5 5z" />
+                        </svg>
+                        <div class="text-truncate" id="pdfFilename" style="max-width: 70px;"></div>
+                    </div>
+
+                    <input class="form-control mb-2" id="doctorName" type="text" placeholder="Doctor Name"
+                        maxlength="255" />
+                    <input class="form-control mb-2" id="doctorTitle" type="text" placeholder="Doctor Title"
+                        maxlength="255" />
+                    <textarea class="form-control mb-3" id="message" rows="3" placeholder="Message (optional)" maxlength="1000"></textarea>
+
+                    <div>
+                        <button class="btn btn-success me-2" id="confirmBtn" type="button">Upload</button>
+                        <button class="btn btn-secondary" id="cancelBtn" type="button">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('admin/assets/js/sweetalert-new.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
+
     <script>
         const isCustomerLoggedIn = @json(Auth::guard('customer')->check());
+
         $(document).on('click', '#uploadPrescriptionBtn', function(e) {
             e.preventDefault();
             if (isCustomerLoggedIn) {
@@ -124,171 +193,6 @@
             } else {
                 new bootstrap.Modal($('#loginModal')).show();
             }
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $(document).on('click', '.add-to-cart-btn', function(e) {
-                e.preventDefault();
-                const btn = $(this);
-
-                @auth('customer')
-                    $.post("{{ route('cart.add') }}", {
-                        id: btn.data('id'),
-                        name: btn.data('name'),
-                        price: btn.data('price'),
-                        image: btn.data('image')
-                    }, function(response) {
-                        new bootstrap.Toast($('#cartToast')[0]).show();
-                        if (response.totalUniqueItems) {
-                            $('#cart-count').text(response.totalUniqueItems);
-                        }
-                    }).fail(function(xhr) {
-                        alert('Something went wrong!');
-                        console.log(xhr.responseText);
-                    });
-                @else
-                    new bootstrap.Modal($('#loginModal')).show();
-                @endauth
-            });
-
-            $(document).on('click', '.remove-item', function(e) {
-                e.preventDefault();
-                const btn = $(this);
-                const itemId = btn.data('id');
-                const row = btn.closest('tr');
-
-                $.ajax({
-                    url: `/cart/remove/${itemId}`,
-                    type: 'POST',
-                    data: {
-                        _method: 'DELETE'
-                    },
-                    success: function(response) {
-                        row.remove();
-                        if (response.totalUniqueItems !== undefined) {
-                            $('#cart-count').text(response.totalUniqueItems);
-                        }
-                        showToast('Item removed from cart!');
-                        if (typeof recalculateTotals === 'function') {
-                            recalculateTotals();
-                        }
-                    },
-                    error: function(xhr) {
-                        alert('Failed to remove item!');
-                        console.log(xhr.responseText);
-                    }
-                });
-            });
-
-            function showToast(message) {
-                let toastHtml = `
-                    <div class="toast align-items-center text-bg-success border-0 position-fixed top-0 end-0 m-3" role="alert" id="removeToast">
-                        <div class="d-flex">
-                            <div class="toast-body">${message}</div>
-                            <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-                        </div>
-                    </div>`;
-                $('body').append(toastHtml);
-                const toastEl = document.getElementById('removeToast');
-                const toast = new bootstrap.Toast(toastEl);
-                toast.show();
-                toastEl.addEventListener('hidden.bs.toast', () => $(toastEl).remove());
-            }
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const cartBody = document.getElementById("cart-body");
-            const grandTotalElem = document.getElementById("grand-total");
-            const csrfToken = '{{ csrf_token() }}';
-
-            function updateTotals() {
-                let grandTotal = 0;
-                cartBody?.querySelectorAll("tr").forEach(row => {
-                    const price = parseFloat(row.querySelector(".price")?.dataset.price || 0);
-                    const qty = parseInt(row.querySelector(".qty")?.value || 1);
-                    const total = price * qty;
-                    row.querySelector(".item-total").innerText = total.toLocaleString();
-                    grandTotal += total;
-                });
-                grandTotalElem.innerText = `Rs. ${grandTotal.toLocaleString()}`;
-            }
-
-            cartBody?.addEventListener("click", (e) => {
-                const row = e.target.closest("tr");
-                const id = row?.dataset.id;
-                if (!id) return;
-
-                if (e.target.classList.contains("plus") || e.target.classList.contains("minus")) {
-                    const increase = e.target.classList.contains("plus");
-                    fetch(`/cart/${increase ? 'increase' : 'decrease'}/${id}`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'X-CSRF-TOKEN': csrfToken,
-                        }
-                    }).then(res => res.json()).then(() => {
-                        const qtyInput = row.querySelector(".qty");
-                        qtyInput.value = increase ? parseInt(qtyInput.value) + 1 : Math.max(1,
-                            parseInt(qtyInput.value) - 1);
-                        updateTotals();
-                    });
-                }
-            });
-
-            updateTotals();
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const input = document.getElementById('search-input');
-            const suggestionsList = document.getElementById('suggestions-list');
-
-            input?.addEventListener('input', () => {
-                const query = input.value;
-                if (query.length < 2) {
-                    suggestionsList.style.display = 'none';
-                    return;
-                }
-
-                fetch(`/search/suggestions?query=${encodeURIComponent(query)}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        suggestionsList.innerHTML = '';
-                        if (data.length) {
-                            data.forEach(item => {
-                                const li = document.createElement('li');
-                                li.textContent = item;
-                                li.classList.add('list-group-item');
-                                li.style.cursor = 'pointer';
-                                li.addEventListener('click', () => {
-                                    input.value = item;
-                                    input.form.submit();
-                                });
-                                suggestionsList.appendChild(li);
-                            });
-                            suggestionsList.style.display = 'block';
-                        } else {
-                            suggestionsList.style.display = 'none';
-                        }
-                    });
-            });
-
-            document.addEventListener('click', (e) => {
-                if (!input.contains(e.target) && !suggestionsList.contains(e.target)) {
-                    suggestionsList.style.display = 'none';
-                }
-            });
         });
     </script>
 
@@ -311,9 +215,7 @@
                 const modalCancelBtn = document.getElementById('modalCancelBtn');
                 const cancelBtn = document.getElementById('cancelBtn');
 
-                const cartToast = document.getElementById('cartToast');
-                const cartToastBody = cartToast.querySelector('.toast-body');
-                const toast = new bootstrap.Toast(cartToast);
+                let selectedFile = null;
 
                 // Clear modal fields & previews
                 function clearModal() {
@@ -328,6 +230,7 @@
                     message.value = '';
 
                     fileInput.value = '';
+                    selectedFile = null;
                     doctorModal.hide();
                 }
 
@@ -335,6 +238,8 @@
                 fileInput.addEventListener('change', () => {
                     const file = fileInput.files[0];
                     if (!file) return;
+
+                    selectedFile = file;
 
                     const fileType = file.type;
 
@@ -356,9 +261,6 @@
                         previewImage.style.display = 'none';
 
                         pdfPreview.style.display = 'flex';
-                        pdfPreview.style.flexDirection = 'column';
-                        pdfPreview.style.alignItems = 'center';
-                        pdfPreview.style.justifyContent = 'center';
                         pdfFilename.textContent = file.name;
 
                         doctorModal.show();
@@ -369,12 +271,53 @@
                 });
 
                 confirmBtn.addEventListener('click', () => {
-                    // TODO: Add actual upload logic here (AJAX or form submit)
+                    if (!selectedFile) {
+                        alert('Please select a file first.');
+                        return;
+                    }
 
-                    cartToastBody.textContent = "✅ Prescription uploaded successfully!";
-                    toast.show();
+                    const formData = new FormData();
+                    formData.append('file', selectedFile);
+                    formData.append('doctor_name', doctorName.value);
+                    formData.append('doctor_title', doctorTitle.value);
+                    formData.append('message', message.value);
 
-                    clearModal();
+                    fetch("{{ route('prescription.upload') }}", {
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            },
+                            body: formData,
+                            credentials: 'include'
+                        })
+                        .then(async response => {
+                            const isJson = response.headers.get('content-type')?.includes(
+                                'application/json');
+                            const data = isJson ? await response.json() : null;
+
+                            if (!response.ok) {
+                                const errorMsg = data?.message ||
+                                    'Upload failed. Server returned an error.';
+                                throw new Error(errorMsg);
+                            }
+
+                            if (data.success) {
+                                const cartToast = new bootstrap.Toast(document.getElementById(
+                                    'cartToast'));
+                                document.querySelector('#cartToast .toast-body').textContent =
+                                    '✅ Prescription uploaded successfully!';
+                                cartToast.show();
+                                clearModal();
+                            } else {
+                                alert('Upload failed. ' + (data.message || 'Please try again.'));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Full error object:', error);
+                            alert('❌ Upload failed: ' + error.message);
+                        });
+
+
                 });
 
                 modalCancelBtn.addEventListener('click', clearModal);
