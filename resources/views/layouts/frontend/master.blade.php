@@ -115,6 +115,17 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="{{ asset('admin/assets/js/sweetalert-new.js') }}"></script>
     <script src="{{ asset('frontend/assets/js/script.js') }}"></script>
+    <script>
+        const isCustomerLoggedIn = @json(Auth::guard('customer')->check());
+        $(document).on('click', '#uploadPrescriptionBtn', function(e) {
+            e.preventDefault();
+            if (isCustomerLoggedIn) {
+                window.location.href = "{{ route('frontend.prescription') }}";
+            } else {
+                new bootstrap.Modal($('#loginModal')).show();
+            }
+        });
+    </script>
 
     <script>
         $(document).ready(function() {

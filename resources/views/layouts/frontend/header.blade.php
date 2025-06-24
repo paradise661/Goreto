@@ -20,88 +20,87 @@
                     </div>
                 </form>
                 <div class="button-part d-flex align-items-center gap-5">
-                    <a href="{{ route('frontend.prescription') }}">
-                        <button class="btn btn-primary">
-                            <i class="ri-camera-switch-line camera-icon"></i> Upload Prescription
-                        </button>
-                    </a>
+                    <button class="btn btn-primary" id="uploadPrescriptionBtn">
+                        <i class="ri-camera-switch-line camera-icon"></i> Upload Prescription
+                    </button>
+                </div>
 
-                    <div class="premium-dropdown">
-                        <span class="premium-header-icon">
-                            <i class="ri-user-line"></i>
-                            @if (Auth::guard('customer')->check())
-                                <span class="ms-1">{{ Auth::guard('customer')->user()->name }}</span>
-                            @endif
-                        </span>
-                        <ul class="premium-dropdown-menu">
-                            @if (Auth::guard('customer')->check())
-                                <li>
-                                    <a class="premium-dropdown-item" href="{{ route('customer.dashboard') }}">
-                                        <i class="bi bi-speedometer2"></i> Dashboard
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="premium-dropdown-item" href="#">
-                                        <i class="bi bi-person-circle"></i> Profile
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="premium-dropdown-item" href="#">
-                                        <i class="bi bi-bag-check"></i> Orders
-                                    </a>
-                                </li>
-                                <li>
-                                    <form method="POST" action="{{ route('customer.logout') }}">
-                                        @csrf
-                                        <button
-                                            class="premium-dropdown-item text-danger border-0 bg-transparent w-100 text-start"
-                                            type="submit">
-                                            <i class="bi bi-box-arrow-right"></i><strong>Logout</strong>
-                                        </button>
-                                    </form>
-                                </li>
-                            @else
-                                <li>
-                                    <a class="premium-dropdown-item" href="#">
-                                        <i class="bi bi-info-circle"></i> About Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="premium-dropdown-item" href="#">
-                                        <i class="bi bi-envelope"></i> Contact Us
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="premium-dropdown-item" href="#">
-                                        <i class="bi bi-file-earmark-text"></i> Terms & Conditions
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="premium-dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal"
-                                        href="#">
-                                        <i class="bi bi-box-arrow-in-right"></i><strong>Login</strong>
-                                    </a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
+                <div class="premium-dropdown">
+                    <span class="premium-header-icon">
+                        <i class="ri-user-line"></i>
+                        @if (Auth::guard('customer')->check())
+                            <span class="ms-1">{{ Auth::guard('customer')->user()->name }}</span>
+                        @endif
+                    </span>
+                    <ul class="premium-dropdown-menu">
+                        @if (Auth::guard('customer')->check())
+                            <li>
+                                <a class="premium-dropdown-item" href="{{ route('customer.dashboard') }}">
+                                    <i class="bi bi-speedometer2"></i> Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-person-circle"></i> Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-bag-check"></i> Orders
+                                </a>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('customer.logout') }}">
+                                    @csrf
+                                    <button
+                                        class="premium-dropdown-item text-danger border-0 bg-transparent w-100 text-start"
+                                        type="submit">
+                                        <i class="bi bi-box-arrow-right"></i><strong>Logout</strong>
+                                    </button>
+                                </form>
+                            </li>
+                        @else
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-info-circle"></i> About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-envelope"></i> Contact Us
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" href="#">
+                                    <i class="bi bi-file-earmark-text"></i> Terms & Conditions
+                                </a>
+                            </li>
+                            <li>
+                                <a class="premium-dropdown-item" data-bs-toggle="modal" data-bs-target="#loginModal"
+                                    href="#">
+                                    <i class="bi bi-box-arrow-in-right"></i><strong>Login</strong>
+                                </a>
+                            </li>
+                        @endif
+                    </ul>
+                </div>
 
-                    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
+                {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 
-                    <a class="text-decoration-none text-dark position-relative" href="{{ route('cart.index') }}">
-                        <i class="ri-shopping-cart-line header-icon"></i>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                            id="cart-count">
-                            {{ \Cart::getContent()->count() }}
-                        </span>
-                    </a>
+                <a class="text-decoration-none text-dark position-relative" href="{{ route('cart.index') }}">
+                    <i class="ri-shopping-cart-line header-icon"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        id="cart-count">
+                        {{ \Cart::getContent()->count() }}
+                    </span>
+                </a>
 
-                    {{-- <div>
+                {{-- <div>
                         <i class="ri-notification-3-line header-icon"></i>
                     </div> --}}
-                </div>
             </div>
         </div>
+    </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid ">
