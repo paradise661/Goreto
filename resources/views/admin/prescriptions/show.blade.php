@@ -7,9 +7,11 @@
             <h5>Prescription Details</h5>
         </div>
         <div class="card-body">
-            <p><strong>Customer:</strong> {{ $prescription->customer->name ?? 'N/A' }}</p>
+            <p><strong>Customer Name:</strong> {{ $prescription->customer->name ?? 'N/A' }}</p>
+            <p><strong>Customer Email:</strong> {{ $prescription->customer->email ?? 'N/A' }}</p>
+            <p><strong>Customer Number:</strong> {{ $prescription->customer->number ?? 'N/A' }}</p>
             <p><strong>Doctor Name:</strong> {{ $prescription->doctor_name ?? '-' }}</p>
-            <p><strong>Doctor Title:</strong> {{ $prescription->doctor_title ?? '-' }}</p>
+            <p><strong>Title:</strong> {{ $prescription->doctor_title ?? '-' }}</p>
             <p><strong>Message:</strong> {{ $prescription->message ?? '-' }}</p>
             <p><strong>File:</strong></p>
             @if ($prescription->file_path)
@@ -28,8 +30,9 @@
                 N/A
             @endif
         </div>
-        <div class="card-footer">
+        <div class="card-footer text-center">
             <a class="btn btn-secondary" href="{{ route('admin.prescriptions.index') }}">Back to List</a>
         </div>
+
     </div>
 @endsection
