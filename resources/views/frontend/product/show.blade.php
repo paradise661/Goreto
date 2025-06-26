@@ -73,11 +73,10 @@
 
                             <!-- ✅ Checkout Redirect Form -->
                             <form id="redirect-cart-form" action="{{ route('cart.add') }}" method="POST">
-
                                 @csrf
+
                                 <div class="mb-3 d-flex align-items-center">
                                     <label class="me-2 fw-semibold mb-0" for="quantity">Quantity:</label>
-
                                     <div class="input-group input-group-sm w-25">
                                         <button class="btn btn-outline-secondary btn-minus" type="button"
                                             aria-label="Decrease quantity">−</button>
@@ -86,7 +85,6 @@
                                         <button class="btn btn-outline-secondary btn-plus" type="button"
                                             aria-label="Increase quantity">+</button>
                                     </div>
-
                                 </div>
 
                                 <input type="hidden" name="id" value="{{ $product->id }}">
@@ -94,9 +92,15 @@
                                 <input type="hidden" name="price" value="{{ $product->price }}">
                                 <input type="hidden" name="image" value="{{ $product->image }}">
 
-                                <button class="book-now-btn btn btn-primary w-100" type="submit">
-                                    Proceed to Checkout <i class="ri-arrow-right-line"></i>
-                                </button>
+                                <!-- Button Row -->
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary w-50" id="addToCartBtn" type="submit">
+                                        Add to Cart
+                                    </button>
+                                    <button class="btn btn-primary w-50" id="checkoutBtn" type="submit">
+                                        Proceed to Checkout <i class="ri-arrow-right-line"></i>
+                                    </button>
+                                </div>
                             </form>
 
                         </div>
@@ -119,6 +123,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+            // Quantity buttons
             $('.btn-plus').click(function() {
                 const input = $(this).siblings('input[name="qty"]');
                 let currentVal = parseInt(input.val()) || 1;
@@ -133,9 +138,19 @@
                 }
             });
 
-            // Override default form submit to manually redirect only from this page
+            let redirectToCart = false;
+
+            $('#addToCartBtn').click(function() {
+                redirectToCart = false;
+            });
+
+            $('#checkoutBtn').click(function() {
+                redirectToCart = true;
+            });
+
             $('#redirect-cart-form').submit(function(e) {
-                e.preventDefault(); // stop normal form submission
+                e.preventDefault();
+
                 const form = $(this);
 
                 $.ajax({
@@ -143,10 +158,15 @@
                     method: form.attr('method'),
                     data: form.serialize(),
                     success: function(res) {
-                        // After successful add to cart, redirect to /cart
-                        window.location.href = '/cart';
+                        if (redirectToCart) {
+                            window.location.href = '/cart';
+                        } else {
+                            const toastEl = new bootstrap.Toast(document.getElementById(
+                                'cartToast'));
+                            toastEl.show();
+                        }
                     },
-                    error: function(err) {
+                    error: function() {
                         alert('Failed to add product to cart.');
                     }
                 });
