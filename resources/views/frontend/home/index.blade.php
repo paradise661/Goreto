@@ -241,7 +241,6 @@
                             </h2>
                         </div>
 
-                        <!-- Swiper Wrapper -->
                         <div class="swiper packageSwiper p-4">
                             <div class="swiper-wrapper">
                                 @foreach ($setting['product'] as $pd)
@@ -250,8 +249,10 @@
                                     @endphp
                                     @if ($prd)
                                         <div class="swiper-slide py-5">
-                                            <div class="product-card shadow p-3 position-relative">
-                                                <div class="ribbon">20% Offer</div>
+                                            <div class="product-card shadow p-3 position-relative"
+                                                onclick="window.location='{{ route('frontend.productsingle') }}'"
+                                                style="cursor: pointer;">
+
                                                 <div class="product-card-img">
                                                     <img class="product-img"
                                                         src="{{ get_image_url($prd->image, 'home-banner-slider') }}"
@@ -281,22 +282,21 @@
                                                                 data-id="{{ $prd->id }}"
                                                                 data-name="{{ $prd->name }}"
                                                                 data-price="{{ $prd->price }}"
-                                                                data-image="{{ $prd->image }}" type="button">
+                                                                data-image="{{ $prd->image }}" type="button"
+                                                                onclick="event.stopPropagation();">
                                                                 <span class="scale-text">Add to Cart</span>
                                                             </button>
-
                                                         </div>
                                                         <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                     </div>
                                                 </div>
-                                                {{-- <a class="stretched-link" href="#"></a> --}}
+
                                             </div>
                                         </div>
                                     @endif
                                 @endforeach
                             </div>
 
-                            <!-- Swiper Navigation -->
                             <div class="swiper-pagination"></div>
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
@@ -318,6 +318,21 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ✅ JS for Add to Cart logic and toast -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            // 🛒 Your existing add-to-cart logic goes here (AJAX or not)
+
+                            // ✅ Show toast
+                            const toast = new bootstrap.Toast(document.getElementById('cartToast'));
+                            toast.show();
+                        });
+                    });
+                });
+            </script>
         @endif
 
         <!-- product package end -->
