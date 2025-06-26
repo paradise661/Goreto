@@ -72,7 +72,8 @@
                             </div>
 
                             <!-- ✅ Checkout Redirect Form -->
-                            <form action="{{ route('cart.add') }}" method="POST">
+                            <form id="redirect-cart-form" action="{{ route('cart.add') }}" method="POST">
+
                                 @csrf
                                 <div class="mb-3 d-flex align-items-center">
                                     <label class="me-2 fw-semibold mb-0" for="quantity">Quantity:</label>
@@ -130,6 +131,25 @@
                 if (currentVal > 1) {
                     input.val(currentVal - 1);
                 }
+            });
+
+            // Override default form submit to manually redirect only from this page
+            $('#redirect-cart-form').submit(function(e) {
+                e.preventDefault(); // stop normal form submission
+                const form = $(this);
+
+                $.ajax({
+                    url: form.attr('action'),
+                    method: form.attr('method'),
+                    data: form.serialize(),
+                    success: function(res) {
+                        // After successful add to cart, redirect to /cart
+                        window.location.href = '/cart';
+                    },
+                    error: function(err) {
+                        alert('Failed to add product to cart.');
+                    }
+                });
             });
         });
     </script>
