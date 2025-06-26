@@ -401,8 +401,100 @@
                 </div>
             </div>
         </section>
+        @if (!empty($products) && $products->count())
+            <section class="py-5">
+                <div class="position-relative section-three">
+                    <!-- Background image -->
+                    <img class="w-100 bg-img" src="{{ asset('frontend/assets/images/background.jpg') }}"
+                        alt="Background" style="height: 408px; object-fit: cover;">
+
+                    <!-- Content Over Image -->
+                    <div class="card-container-three w-100 h-100 d-flex align-items-end">
+                        <div class="container-fluid">
+                            <div class="pt-5 mt-5">
+                                <div>
+                                    <h3 class="text-white text-center heading-title">New Products</h3>
+                                </div>
+
+                                <div class="swiper packageSwiper p-4">
+                                    <div class="swiper-wrapper">
+                                        @foreach ($products as $product)
+                                            <div class="swiper-slide">
+                                                <div class="product-card shadow p-3 position-relative">
+                                                    <div class="ribbon">20% Offer</div>
+
+                                                    <a href="{{ url('product/' . $product->slug) }}"
+                                                        style="text-decoration: none; color: inherit; display: block;">
+                                                        <div class="product-card-img">
+                                                            <img class="product-img"
+                                                                src="{{ get_image_url($product->image, 'home-banner-slider') }}"
+                                                                alt="{{ $product->name }}">
+                                                        </div>
+                                                        <div class="product-card-content pt-3">
+                                                            <h3 class="line-clamp-3">{{ $product->name }}</h3>
+                                                            <div class="price-container d-flex justify-content-between">
+                                                                <div>
+                                                                    <p>Nrs {{ $product->price }}</p>
+                                                                    @if ($product->price && $product->mrp)
+                                                                        <p class="cross-price underline">Nrs
+                                                                            <del>{{ $product->mrp }}</del>
+                                                                        </p>
+                                                                    @endif
+                                                                </div>
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center py-2">
+                                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                                        alt="Rating">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+
+                                                    <div
+                                                        class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                        <div>
+                                                            <button class="scale-button add-to-cart-btn"
+                                                                data-id="{{ $product->id }}"
+                                                                data-name="{{ $product->name }}"
+                                                                data-price="{{ $product->price }}"
+                                                                data-image="{{ $product->image }}" type="button">
+                                                                <span class="scale-text">Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                    <!-- Swiper Navigation -->
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Toast Feedback -->
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+                <div class="toast align-items-center text-white bg-success border-0" id="cartToast" role="alert"
+                    aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            Product added to cart!
+                        </div>
+                        <button class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" type="button"
+                            aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <!-- product package start -->
-        <section class="py-5 ">
+        {{-- <section class="py-5 ">
             <div class="position-relative section-three">
                 <!-- Background image in HTML -->
                 <img class="w-100 bg-img" src="{{ asset('frontend/assets/images/background.jpg') }}" alt="Background"
@@ -649,7 +741,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         {{-- categories section start --}}
 
         <!-- Banner3 start -->
@@ -698,39 +790,49 @@
                                             <div class="swiper-slide py-5">
                                                 <div class="product-card shadow p-3 position-relative">
                                                     <div class="ribbon">20% Offer</div>
-                                                    <div class="product-card-img">
-                                                        <img class="product-img"
-                                                            src="{{ get_image_url($product->image, 'home-banner-slider') }}"
-                                                            alt="{{ $product->name }}">
-                                                    </div>
-                                                    <div class="product-card-content pt-3">
-                                                        <h3 class="line-clamp-3">{{ $product->name }}</h3>
-                                                        <div class="price-container d-flex justify-content-between">
-                                                            <div>
-                                                                <p>Nrs {{ $product->price }}</p>
-                                                                <p class="cross-price underline">Nrs
-                                                                    {{ $product->mrp }}
-                                                                </p>
-                                                            </div>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center py-2">
-                                                                <img src="{{ asset('frontend/assets/images/rating.png') }}"
-                                                                    alt="">
+
+                                                    <a href="{{ url('product/' . $product->slug) }}"
+                                                        style="text-decoration: none; color: inherit; display: block;">
+                                                        <div class="product-card-img">
+                                                            <img class="product-img"
+                                                                src="{{ get_image_url($product->image, 'home-banner-slider') }}"
+                                                                alt="{{ $product->name }}">
+                                                        </div>
+                                                        <div class="product-card-content pt-3">
+                                                            <h3 class="line-clamp-3">{{ $product->name }}</h3>
+                                                            <div class="price-container d-flex justify-content-between">
+                                                                <div>
+                                                                    <p>Nrs {{ $product->price }}</p>
+                                                                    @if ($product->price && $product->mrp)
+                                                                        <p class="cross-price underline">Nrs
+                                                                            <del>{{ $product->mrp }}</del>
+                                                                        </p>
+                                                                    @endif
+                                                                </div>
+                                                                <div
+                                                                    class="d-flex justify-content-between align-items-center py-2">
+                                                                    <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                                        alt="">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="cart-section justify-content-between align-items-center d-flex py-2">
-                                                            <div>
-                                                                <a href="">
-                                                                    <button class="scale-button">
-                                                                        <span class="scale-text">Add to Cart</span>
-                                                                    </button>
-                                                                </a>
-                                                            </div>
-                                                            <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                                    </a>
+
+                                                    <div
+                                                        class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                        <div>
+                                                            <button class="scale-button add-to-cart-btn"
+                                                                data-id="{{ $product->id }}"
+                                                                data-name="{{ $product->name }}"
+                                                                data-price="{{ $product->price }}"
+                                                                data-image="{{ $product->image }}" type="button">
+                                                                <span class="scale-text">Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div>
+                                                            <i class="ri-heart-fill product-heart-icon"></i>
                                                         </div>
                                                     </div>
-                                                    <a class="stretched-link" href=""></a>
                                                 </div>
                                             </div>
                                         @endforeach

@@ -18,6 +18,8 @@ class FrontendController extends Controller
     public function home()
 {
     $sliders = Sliders::oldest('order')->get();
+    $products = Product::orderBy('created_at', 'desc')->get();
+
 
     $categories = Category::whereNull('parent_id')
         ->with('children.children')
@@ -33,7 +35,7 @@ class FrontendController extends Controller
         ->get();
         $adv_single = Advertise::where('status', 1)->whereLocation(2)->oldest('order')->first();
 
-    return view('frontend.home.index', compact('sliders', 'categories', 'divisions', 'adv_single'));
+    return view('frontend.home.index', compact('sliders', 'categories', 'divisions', 'adv_single','products'));
 }
 
     function product()
