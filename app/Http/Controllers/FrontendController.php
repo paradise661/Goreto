@@ -40,9 +40,10 @@ class FrontendController extends Controller
     {
         return view('frontend.product.index');
     }
-    function productsingle()
+    function productsingle($slug)
     {
-        return view('frontend.product.show');
+        $product = Product::where('slug', $slug)->firstOrFail();
+        return view('frontend.product.show', compact('product'));
     }
     function prescription()
     {

@@ -1,5 +1,138 @@
 @extends('layouts.frontend.master')
 @section('content')
+    <section>
+        <div class="container-fluid py-5">
+            <div class="row">
+                <div class="col-lg-6 position-relative">
+                    <div class="sidebar-content">
+                        <div class="gallery-container shadow p-3 position-relative bg-white rounded">
+                            <div class="swiper gallerySwiper2"
+                                style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff">
+                                <div class="swiper-wrapper gallery-swiper">
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('frontend/assets/images/product.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('frontend/assets/images/product11.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('frontend/assets/images/product17.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('frontend/assets/images/product15.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="{{ asset('frontend/assets/images/product16.jpeg') }}" />
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                            <div class="swiper gallerySwiper" thumbsSlider="">
+                                <div class="swiper-wrapper gallery-lower-part p-3">
+                                    <div class="swiper-slide border">
+                                        <img src="{{ asset('frontend/assets/images/product.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide border">
+                                        <img src="{{ asset('frontend/assets/images/product11.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide border">
+                                        <img src="{{ asset('frontend/assets/images/product17.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide border">
+                                        <img src="{{ asset('frontend/assets/images/product15.jpeg') }}" />
+                                    </div>
+                                    <div class="swiper-slide border">
+                                        <img src="{{ asset('frontend/assets/images/product16.jpeg') }}" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="package-content-part">
+                        <div class="package-detail-banner shadow pb-3">
+                            <ul>
+                                <li class="">Home</li>
+                                <li><i class="ri-arrow-right-s-line"></i></li>
+                                <li>product</li>
+                                <li><i class="ri-arrow-right-s-line"></i></li>
+                                <li class="active">product detail</li>
+                            </ul>
+                            <h4>BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH : RICE + B5 50 ML</h4>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicingLorem ipsum dolor sit adipisicing.</p>
+
+                            <div class="bg-white rounded p-3">
+                                <!-- Pricing Section -->
+                                <div class="pricing-part mb-3">
+                                    <h5>
+                                        <span class="text-danger text-decoration-line-through">Nrs 7000</span>
+                                        <span class="ms-2 text-success fw-bold">Nrs 5000</span>
+                                    </h5>
+                                </div>
+
+                                <!-- ✅ Checkout Redirect Form -->
+                                <form action="{{ route('checkout.index') }}" method="GET">
+                                    <!-- Quantity -->
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="me-2 fw-semibold mb-0" for="quantity">Quantity:</label>
+                                        <input class="form-control form-control-sm w-25" id="quantity" name="quantity"
+                                            type="number" placeholder="Qty" min="1" value="1" required>
+                                    </div>
+
+                                    <!-- Optional Hidden Inputs -->
+                                    <input type="hidden" name="product_id" value="123"> {{-- Replace 123 with dynamic value if available --}}
+                                    <input type="hidden" name="product_name"
+                                        value="BEAUTY OF JOSEON RELIEF SUN AQUA-FRESH">
+
+                                    <!-- Delivery Date -->
+                                    <div class="mb-2">
+                                        <label class="d-block fw-semibold">Delivery Date</label>
+                                        <p class="mb-0 text-primary">Within 3-5 business days</p>
+                                    </div>
+
+                                    <!-- Manufacturer -->
+                                    <div class="mb-3">
+                                        <label class="d-block fw-semibold">Manufactured By</label>
+                                        <p class="mb-0 text-secondary">EventCraft Decorators Pvt. Ltd.</p>
+                                    </div>
+
+                                    <!-- Book Now Button -->
+                                    <button class="book-now-btn btn btn-primary w-100" type="submit">
+                                        Proceed to Checkout <i class="ri-arrow-right-line"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="why-chose-us-container py-3">
+                            <div class="why-us-card rounded bg-white p-4">
+                                <h4>Features</h4>
+                                <div class="custom-list">
+                                    <ul>
+                                        <li><strong>Unmatched Creativity - </strong>we craft themes that leave a lasting
+                                            impression.</li>
+                                        <li><strong>Luxurious Quality - </strong>We use only the finest materials, from
+                                            premium floral arrangements to sophisticated lighting</li>
+                                        <li><strong>Unmatched Creativity - </strong>we craft themes that leave a lasting
+                                            impression.</li>
+                                        <li><strong>Luxurious Quality - </strong>We use only the finest materials, from
+                                            premium floral arrangements to sophisticated lighting</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection
+
+@extends('layouts.frontend.master')
+@section('content')
     <section class="main-section-home">
         {{-- Home bannner first start --}}
         <section class="py-3">
@@ -35,28 +168,25 @@
                                         $prd = getProductByID($pd);
                                     @endphp
                                     @if ($prd)
-                                        <a class="text-decoration-none text-dark" href="{{ url('product/' . $prd->slug) }}">
-                                            <div class="trending-item-content p-3 hover-shadow rounded">
-                                                <div class="row">
-                                                    <div class="col-4">
-                                                        <img class="img-fluid"
-                                                            src="{{ get_image_url($prd->image, 'home-banner-slider') }}"
-                                                            alt="{{ $prd->name }}">
-                                                    </div>
-                                                    <div class="col-8 trending-conent">
-                                                        <h6 class="line-clamp-2 mb-1">{{ $prd->name ?? '' }}</h6>
-                                                        <div class="d-flex gap-2">
-                                                            <p class="mb-0">Nrs {{ $prd->price ?? '' }}</p>
-                                                            @if ($prd->price && $prd->mrp)
-                                                                <p class="cross-price underline mb-0">Nrs
-                                                                    <del>{{ $prd->mrp }}</del>
-                                                                </p>
-                                                            @endif
-                                                        </div>
+                                        <div class="trending-item-content p-3">
+                                            <div class="row">
+                                                <div class="col-4">
+                                                    <img src="{{ get_image_url($prd->image, 'home-banner-slider') }}"
+                                                        alt="">
+                                                </div>
+                                                <div class="col-8 trending-conent">
+                                                    <h6 class="line-clamp-2">{{ $prd->name ?? '' }}</h6>
+                                                    <div class="d-flex gap-2">
+                                                        <p>Nrs {{ $prd->price ?? '' }}</p>
+                                                        @if ($prd->price && $prd->mrp)
+                                                            <p class="cross-price underline">Nrs
+                                                                <del>{{ $prd->mrp }}</del>
+                                                            </p>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
-                                        </a>
+                                        </div>
                                     @endif
                                 @endforeach
 
@@ -164,8 +294,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival1.png') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival1.png') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -173,8 +303,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival2.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival2.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -182,8 +312,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival3.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival3.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -191,8 +321,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival4.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival4.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -200,8 +330,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival6.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival6.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -209,8 +339,8 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
-                                    <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival6.jpeg') }}"
-                                        alt="">
+                                    <img class="arrival-card-img"
+                                        src="{{ asset('frontend/assets/images/arrival6.jpeg') }}" alt="">
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
@@ -244,7 +374,6 @@
                             </h2>
                         </div>
 
-                        <!-- Swiper Wrapper -->
                         <div class="swiper packageSwiper p-4">
                             <div class="swiper-wrapper">
                                 @foreach ($setting['product'] as $pd)
@@ -253,64 +382,58 @@
                                     @endphp
                                     @if ($prd)
                                         <div class="swiper-slide py-5">
-                                            <div class="product-card shadow p-3 position-relative">
+                                            <div class="product-card shadow p-3 position-relative"
+                                                onclick="window.location='{{ route('frontend.productsingle', ['slug' => $prd->slug]) }}'"
+                                                style="cursor: pointer;">
 
-                                                <div class="ribbon">20% Offer</div>
-
-                                                <a href="{{ url('product/' . $prd->slug) }}"
-                                                    style="text-decoration: none; color: inherit; display: block;">
-                                                    <div class="product-card-img">
-                                                        <img class="product-img"
-                                                            src="{{ get_image_url($prd->image, 'home-banner-slider') }}"
-                                                            alt="{{ $prd->name }}">
-                                                    </div>
-                                                    <div class="product-card-content pt-3">
-                                                        <h3 class="line-clamp-3">{{ $prd->name ?? '' }}</h3>
-                                                        <div class="price-container d-flex justify-content-between">
-                                                            <div>
-                                                                <p>Nrs {{ $prd->price ?? '' }}</p>
-                                                                @if ($prd->price && $prd->mrp)
-                                                                    <p class="cross-price underline">Nrs
-                                                                        <del>{{ $prd->mrp }}</del>
-                                                                    </p>
-                                                                @endif
-                                                            </div>
-                                                            <div
-                                                                class="d-flex justify-content-between align-items-center py-2">
-                                                                <img src="{{ asset('frontend/assets/images/rating.png') }}"
-                                                                    alt="Rating">
-                                                            </div>
+                                                <div class="product-card-img">
+                                                    <img class="product-img"
+                                                        src="{{ get_image_url($prd->image, 'home-banner-slider') }}"
+                                                        alt="">
+                                                </div>
+                                                <div class="product-card-content pt-3">
+                                                    <h3 class="line-clamp-3">{{ $prd->name ?? '' }}</h3>
+                                                    <div class="price-container d-flex justify-content-between">
+                                                        <div>
+                                                            <p>Nrs {{ $prd->price ?? '' }}</p>
+                                                            @if ($prd->price && $prd->mrp)
+                                                                <p class="cross-price underline">Nrs
+                                                                    <del>{{ $prd->mrp }}</del>
+                                                                </p>
+                                                            @endif
+                                                        </div>
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center py-2">
+                                                            <img src="{{ asset('frontend/assets/images/rating.png') }}"
+                                                                alt="">
                                                         </div>
                                                     </div>
-                                                </a>
-
-                                                <div
-                                                    class="cart-section justify-content-between align-items-center d-flex py-2">
-                                                    <div>
-                                                        <button class="scale-button add-to-cart-btn"
-                                                            data-id="{{ $prd->id }}"
-                                                            data-name="{{ $prd->name }}"
-                                                            data-price="{{ $prd->price }}"
-                                                            data-image="{{ $prd->image }}" type="button">
-                                                            <span class="scale-text">Add to Cart</span>
-                                                        </button>
+                                                    <div
+                                                        class="cart-section justify-content-between align-items-center d-flex py-2">
+                                                        <div>
+                                                            <button class="scale-button add-to-cart-btn"
+                                                                data-id="{{ $prd->id }}"
+                                                                data-name="{{ $prd->name }}"
+                                                                data-price="{{ $prd->price }}"
+                                                                data-image="{{ $prd->image }}" type="button"
+                                                                onclick="event.stopPropagation();">
+                                                                <span class="scale-text">Add to Cart</span>
+                                                            </button>
+                                                        </div>
+                                                        <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                     </div>
-                                                    <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                                 </div>
 
                                             </div>
-
                                         </div>
                                     @endif
                                 @endforeach
                             </div>
 
-                            <!-- Swiper Navigation -->
                             <div class="swiper-pagination"></div>
                             <div class="swiper-button-next"></div>
                             <div class="swiper-button-prev"></div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -328,7 +451,58 @@
                     </div>
                 </div>
             </div>
+
+            <!-- ✅ JS for Add to Cart logic and toast -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                        button.addEventListener('click', function() {
+                            // 🛒 Your existing add-to-cart logic goes here (AJAX or not)
+
+                            // ✅ Show toast
+                            const toast = new bootstrap.Toast(document.getElementById('cartToast'));
+                            toast.show();
+                        });
+                    });
+                });
+            </script>
         @endif
+        <script>
+            $(document).ready(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $(document).on('click', '.add-to-cart-btn', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation(); // ✅ Important to prevent card click redirect
+
+                    const btn = $(this);
+
+                    @auth('customer')
+                        $.post("{{ route('cart.add') }}", {
+                            id: btn.data('id'),
+                            name: btn.data('name'),
+                            price: btn.data('price'),
+                            image: btn.data('image'),
+                            qty: 1 // Always 1 from homepage
+                        }, function(response) {
+                            if (response.totalUniqueItems) {
+                                $('#cart-count').text(response.totalUniqueItems); // optional
+                            }
+                            new bootstrap.Toast($('#cartToast')[0]).show(); // ✅ show toast
+                        }).fail(function(xhr) {
+                            alert('Something went wrong!');
+                            console.log(xhr.responseText);
+                        });
+                    @else
+                        new bootstrap.Modal($('#loginModal')).show();
+                    @endauth
+                });
+            });
+        </script>
 
         <!-- product package end -->
         <!-- Banner2 start -->

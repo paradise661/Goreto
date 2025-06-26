@@ -112,6 +112,7 @@ Route::post('/cart/decrease/{id}', [CartController::class, 'cartItemsDecrease'])
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
 Route::get('/view-order/checkout/{deliverycharge}', [CheckoutController::class, 'OrderItems'])->name('order.view');
 
+
 Route::middleware('auth:customer')->group(function () {
     Route::post('/checkout/store', [CheckoutController::class, 'store'])->name('checkout.store');
 });
@@ -120,6 +121,7 @@ Route::get('/confirmation/{order_number}', [CheckoutController::class, 'thankyou
 Auth::routes(['register' => false]);
 
 Route::get('/admin/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
 
 /*
 |--------------------------------------------------------------------------

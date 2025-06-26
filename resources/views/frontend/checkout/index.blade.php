@@ -144,7 +144,7 @@
                                 <strong>Your Order</strong>
                             </div>
                             <div class="card-body" id="order-view">
-                                {{-- AJAX content loads here --}}
+
                             </div>
                         </div>
                     </div>

@@ -38,6 +38,12 @@ class ProductController extends Controller
         $divisionProducts = [];
         return view('admin.product.create', compact('brands', 'categories', 'brandProducts', 'categoryProducts', 'divisions', 'divisionProducts'));
     }
+    public function show($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('frontend.product.show', compact('product'));
+    }
+    
 
     /**
      * Helper function to get all category IDs with ancestors.
