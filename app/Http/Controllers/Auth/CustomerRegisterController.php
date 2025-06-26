@@ -17,36 +17,39 @@ class CustomerRegisterController extends Controller
     }
 
     public function register(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:customers,email',
-            'password' => 'required|string|min:6|confirmed',
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'name'     => 'required|string|max:255',
+        'email'    => 'required|email|unique:customers,email',
+        'phone'    => 'required|string|max:20',
+        'password' => 'required|string|min:6|confirmed',
+    ]);
 
-        if ($validator->fails()) {
-            if ($request->expectsJson()) {
-                return response()->json(['errors' => $validator->errors()], 422);
-            }
-
-            return back()->withErrors($validator)->withInput();
-        }
-
-        $customer = Customer::create([
-            'name'     => $request->name,
-            'email'    => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        Auth::guard('customer')->login($customer);
-
+    if ($validator->fails()) {
         if ($request->expectsJson()) {
-            return response()->json([
-                'message' => 'Registration successful',
-                'redirect' => route('customer.dashboard')
-            ]);
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        return redirect()->route('customer.dashboard');
+        return back()->withErrors($validator)->withInput();
     }
+
+    $customer = Customer::create([
+        'name'     => $request->name,
+        'email'    => $request->email,
+        'phone'    => $request->phone, // ✅ fixed here
+        'password' => Hash::make($request->password),
+    ]);
+
+    Auth::guard('customer')->login($customer);
+
+    if ($request->expectsJson()) {
+        return response()->json([
+            'message'  => 'Registration successful',
+            'redirect' => route('customer.dashboard')
+        ]);
+    }
+
+    return redirect()->route('customer.dashboard');
+}
+
 }

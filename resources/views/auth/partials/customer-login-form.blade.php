@@ -162,26 +162,32 @@
                                 <div class="mb-3">
                                     <label class="form-label" for="registerName">Full Name *</label>
                                     <input class="form-control form-control-lg" id="registerName" type="text"
-                                        required placeholder="Enter your full name" />
+                                        name="name" required placeholder="Enter your full name" />
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="registerEmail">Email address *</label>
                                     <input class="form-control form-control-lg" id="registerEmail" type="email"
-                                        required placeholder="Enter your email" />
+                                        name="email" required placeholder="Enter your email" />
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="registerphone">Phone *</label>
+                                    <input class="form-control form-control-lg" id="registerphone" type="phone"
+                                        name="phone" required placeholder="Enter your Number" />
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="registerPassword">Password *</label>
                                     <input class="form-control form-control-lg" id="registerPassword" type="password"
-                                        required placeholder="Enter a password" />
+                                        name="password" required placeholder="Enter a password" />
                                 </div>
 
                                 <div class="mb-3">
                                     <label class="form-label" for="registerPasswordConfirm">Confirm Password
                                         *</label>
                                     <input class="form-control form-control-lg" id="registerPasswordConfirm"
-                                        type="password" required placeholder="Confirm your password" />
+                                        name="password" type="password" required
+                                        placeholder="Confirm your password" />
                                 </div>
 
                                 <div class="d-grid mb-3">
@@ -294,6 +300,64 @@
                 } catch (error) {
                     loginError.innerHTML = '<div>Something went wrong. Please try again.</div>';
                     loginError.classList.remove('d-none');
+                    console.error(error);
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('registerForm');
+            const registerError = document.getElementById('registerError');
+
+            registerForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                // Reset error box
+                registerError.classList.add('d-none');
+                registerError.innerHTML = '';
+
+                const name = document.getElementById('registerName').value;
+                const email = document.getElementById('registerEmail').value;
+                const phone = document.getElementById('registerphone').value;
+                const password = document.getElementById('registerPassword').value;
+                const confirmPassword = document.getElementById('registerPasswordConfirm').value;
+
+                try {
+                    const response = await fetch("{{ route('customer.register.submit') }}", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')
+                                .getAttribute('content'),
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            name,
+                            email,
+                            phone,
+                            password,
+                            password_confirmation: confirmPassword
+                        })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        // Redirect or show success toast
+                        window.location.href = "{{ route('customer.dashboard') }}";
+                    } else {
+                        if (data.errors) {
+                            const messages = Object.values(data.errors).flat();
+                            registerError.innerHTML = messages.map(m => `<div>${m}</div>`).join('');
+                        } else if (data.message) {
+                            registerError.innerHTML = `<div>${data.message}</div>`;
+                        }
+                        registerError.classList.remove('d-none');
+                    }
+                } catch (error) {
+                    registerError.innerHTML = '<div>Something went wrong. Please try again.</div>';
+                    registerError.classList.remove('d-none');
                     console.error(error);
                 }
             });

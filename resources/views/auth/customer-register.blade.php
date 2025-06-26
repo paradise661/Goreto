@@ -14,6 +14,10 @@
                 <label>Email Address</label>
                 <input class="form-control" type="email" name="email" required>
             </div>
+            <div class="form-group mb-3">
+                <label>Phone</label>
+                <input class="form-control" type="number" name="number" required>
+            </div>
 
             <div class="form-group mb-3">
                 <label>Password</label>
