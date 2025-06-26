@@ -55,6 +55,13 @@
                 </li>
             </ul>
         </li>
+        <li class="menu-item @if (Request::segment(2) == 'prescriptions') {{ 'active open' }} @endif"">
+            <a class="menu-link {{ Request::segment(2) == 'prescriptions' ? 'active' : '' }}"
+                href="{{ route('admin.prescriptions.index') }}">
+                <i class="menu-icon tf-icons bx bx-file-blank"></i>
+                <div data-i18n="Accordion">Prescriptions</div>
+            </a>
+        </li>
 
         <!-- CMS -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">CMS</span></li>
