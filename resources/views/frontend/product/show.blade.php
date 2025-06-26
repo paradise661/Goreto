@@ -1,5 +1,10 @@
 @extends('layouts.frontend.master')
+
 @section('content')
+    @php
+        $isCustomerLoggedIn = Auth::guard('customer')->check();
+    @endphp
+
     <section>
         <div class="container-fluid py-5">
             <div class="row">
@@ -13,29 +18,8 @@
                                         <img src="{{ get_image_url($product->image, 'home-banner-slider') }}"
                                             alt="{{ $product->name }}">
                                     </div>
-
                                 </div>
-
                             </div>
-                            {{-- <div class="swiper gallerySwiper" thumbsSlider="">
-                                <div class="swiper-wrapper gallery-lower-part p-3">
-                                    <div class="swiper-slide border">
-                                        <img src="{{ asset('frontend/assets/images/product.jpeg') }}" />
-                                    </div>
-                                    <div class="swiper-slide border">
-                                        <img src="{{ asset('frontend/assets/images/product11.jpeg') }}" />
-                                    </div>
-                                    <div class="swiper-slide border">
-                                        <img src="{{ asset('frontend/assets/images/product17.jpeg') }}" />
-                                    </div>
-                                    <div class="swiper-slide border">
-                                        <img src="{{ asset('frontend/assets/images/product15.jpeg') }}" />
-                                    </div>
-                                    <div class="swiper-slide border">
-                                        <img src="{{ asset('frontend/assets/images/product16.jpeg') }}" />
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -50,12 +34,11 @@
                                 <li><i class="ri-arrow-right-s-line"></i></li>
                                 <li class="active">{{ $product->name }}</li>
                             </ul>
+
                             <h4>{{ $product->name }}</h4>
                             <p>{{ $product->short_description ?? '' }}</p>
 
                             <div class="bg-white rounded p-3">
-                                <!-- Pricing Section -->
-
                                 <div class="pricing-part mb-3">
                                     @if ($product->mrp && $product->mrp > $product->price)
                                         <h5>
@@ -68,10 +51,8 @@
                                         <h5 class="fw-bold">Nrs {{ number_format($product->price) }}</h5>
                                     @endif
                                 </div>
-
                             </div>
 
-                            <!-- ✅ Checkout Redirect Form -->
                             <form id="redirect-cart-form" action="{{ route('cart.add') }}" method="POST">
                                 @csrf
 
@@ -92,14 +73,19 @@
                                 <input type="hidden" name="price" value="{{ $product->price }}">
                                 <input type="hidden" name="image" value="{{ $product->image }}">
 
-                                <!-- Button Row -->
                                 <div class="d-flex gap-2">
-                                    <button class="btn btn-outline-primary w-50" id="addToCartBtn" type="submit">
-                                        Add to Cart
-                                    </button>
-                                    <button class="btn btn-primary w-50" id="checkoutBtn" type="submit">
-                                        Proceed to Checkout <i class="ri-arrow-right-line"></i>
-                                    </button>
+                                    @if ($isCustomerLoggedIn)
+                                        <button class="btn btn-outline-primary w-50" id="addToCartBtn" type="submit">Add to
+                                            Cart</button>
+                                        <button class="btn btn-primary w-50" id="checkoutBtn" type="submit">Proceed to
+                                            Checkout <i class="ri-arrow-right-line"></i></button>
+                                    @else
+                                        <button class="btn btn-outline-primary w-50" data-bs-toggle="modal"
+                                            data-bs-target="#loginModal" type="button">Add to Cart</button>
+                                        <button class="btn btn-primary w-50" data-bs-toggle="modal"
+                                            data-bs-target="#loginModal" type="button">Proceed to Checkout <i
+                                                class="ri-arrow-right-line"></i></button>
+                                    @endif
                                 </div>
                             </form>
 
@@ -111,7 +97,6 @@
                                 <div class="custom-list">
                                     {!! $product->description ?? '<p>No description available.</p>' !!}
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -120,22 +105,21 @@
         </div>
     </section>
 @endsection
+
 @push('scripts')
     <script>
         $(document).ready(function() {
             // Quantity buttons
             $('.btn-plus').click(function() {
                 const input = $(this).siblings('input[name="qty"]');
-                let currentVal = parseInt(input.val()) || 1;
-                input.val(currentVal + 1);
+                let val = parseInt(input.val()) || 1;
+                input.val(val + 1);
             });
 
             $('.btn-minus').click(function() {
                 const input = $(this).siblings('input[name="qty"]');
-                let currentVal = parseInt(input.val()) || 1;
-                if (currentVal > 1) {
-                    input.val(currentVal - 1);
-                }
+                let val = parseInt(input.val()) || 1;
+                if (val > 1) input.val(val - 1);
             });
 
             let redirectToCart = false;
@@ -152,7 +136,6 @@
                 e.preventDefault();
 
                 const form = $(this);
-
                 $.ajax({
                     url: form.attr('action'),
                     method: form.attr('method'),
@@ -161,9 +144,9 @@
                         if (redirectToCart) {
                             window.location.href = '/cart';
                         } else {
-                            const toastEl = new bootstrap.Toast(document.getElementById(
+                            const toast = new bootstrap.Toast(document.getElementById(
                                 'cartToast'));
-                            toastEl.show();
+                            toast.show();
                         }
                     },
                     error: function() {
