@@ -6,6 +6,8 @@ use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'home'])->name('frontend.home');
+Route::get('/{slug}', [FrontendController::class, 'pagesingle'])->name('pagesingle');
+
 
 Route::get('/product', [FrontendController::class, 'product'])->name('frontend.product');
 Route::get('/product/{slug}', [FrontendController::class, 'productsingle'])->name('frontend.productsingle');

@@ -84,7 +84,7 @@
                                     <option class="p-3" value="9">Contact Us</option>
                                     <option class="p-3" value="14">All Products</option>
                                     <option class="p-3" value="15">Product Category</option>
-                                    <option class="p-3" value="3">Teams</option>
+                                    <option class="p-3" value="3">Privacy Policy</option>
                                     <option class="p-3" value="4">Reviews</option>
                                     <option class="p-3" value="5">Faqs</option>
                                     <option class="p-3" value="6">Partners</option>

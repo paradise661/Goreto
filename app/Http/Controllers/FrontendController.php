@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Page;
 use App\Models\Sliders;
 use App\Models\Division;
 use App\Models\Product;
@@ -130,6 +131,30 @@ class FrontendController extends Controller
 
     return response()->json($suggestions);
 }
+public function pagesingle($slug, Request $request)
+    {
+        $content = Page::where('slug', $slug)->where('status', 1)->first();
+        if ($content) {
+            if ($content->template == 1) {
+
+                return view('frontend.page.side', compact('content'));
+            } elseif ($content->template == 2) {
+                // $teams = Member::oldest('order')->limit(4)->get();
+                // $departments = Department::whereStatus(1)->oldest('order')->limit(4)->get();
+                return view('frontend.page.about', compact(['content']));
+            }elseif ($content->template == 9) {
+
+                return view('frontend.page.contact', compact('content'));
+            }elseif ($content->template == 3) {
+
+                return view('frontend.page.privacy', compact(['content']));
+        }
+        else {
+            return view('errors.404');
+        }
+    }
+    }
+
 
 
 }
