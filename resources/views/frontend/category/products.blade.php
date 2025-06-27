@@ -22,37 +22,47 @@
             <div class="swiper packageSwiper p-4">
                 <div class="swiper-wrapper">
                     @forelse($products as $product)
-                        <div class="swiper-slide">
+                        <div class="swiper-slide py-5">
                             <div class="product-card shadow p-3 position-relative">
+
                                 <div class="ribbon">20% Offer</div>
-                                <div class="product-card-img">
-                                    <img class="product-img"
-                                        src="{{ get_image_url($product->image, 'home-banner-slider') }}"
-                                        alt="{{ $product->name }}">
-                                </div>
-                                <div class="product-card-content pt-3">
-                                    <h3 class="line-clamp-3">{{ $product->name }}</h3>
-                                    <div class="price-container d-flex justify-content-between">
-                                        <div>
-                                            <p>Nrs {{ $product->price }}</p>
-                                            <p class="cross-price underline">Nrs {{ $product->mrp }}</p>
-                                        </div>
-                                        <div class="d-flex justify-content-between align-items-center py-2">
-                                            <img src="{{ asset('frontend/assets/images/rating.png') }}" alt="">
+
+                                <a href="{{ url('product/' . $product->slug) }}"
+                                    style="text-decoration: none; color: inherit; display: block;">
+                                    <div class="product-card-img">
+                                        <img class="product-img"
+                                            src="{{ get_image_url($product->image, 'home-banner-slider') }}"
+                                            alt="{{ $product->name }}">
+                                    </div>
+                                    <div class="product-card-content pt-3">
+                                        <h3 class="line-clamp-3">{{ $product->name }}</h3>
+                                        <div class="price-container d-flex justify-content-between">
+                                            <div>
+                                                <p>Nrs {{ $product->price }}</p>
+                                                @if ($product->price && $product->mrp && $product->mrp > $product->price)
+                                                    <p class="cross-price underline">Nrs
+                                                        <del>{{ $product->mrp }}</del>
+                                                    </p>
+                                                @endif
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center py-2">
+                                                <img src="{{ asset('frontend/assets/images/rating.png') }}" alt="Rating">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="cart-section justify-content-between align-items-center d-flex py-2">
-                                        <div>
-                                            <a href="#">
-                                                <button class="scale-button">
-                                                    <span class="scale-text">Add to Cart</span>
-                                                </button>
-                                            </a>
-                                        </div>
-                                        <div><i class="ri-heart-fill product-heart-icon"></i></div>
+                                </a>
+
+                                <div class="cart-section justify-content-between align-items-center d-flex py-2">
+                                    <div>
+                                        <button class="scale-button add-to-cart-btn" data-id="{{ $product->id }}"
+                                            data-name="{{ $product->name }}" data-price="{{ $product->price }}"
+                                            data-image="{{ $product->image }}" type="button">
+                                            <span class="scale-text">Add to Cart</span>
+                                        </button>
                                     </div>
+                                    <div><i class="ri-heart-fill product-heart-icon"></i></div>
                                 </div>
-                                <a class="stretched-link" href="#"></a>
+
                             </div>
                         </div>
                     @empty
@@ -60,6 +70,7 @@
                     @endforelse
                 </div>
 
+                <!-- Swiper Navigation -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>

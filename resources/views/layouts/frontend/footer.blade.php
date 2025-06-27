@@ -16,7 +16,7 @@
                          <img src="{{ asset('frontend/assets/images/award.png') }}" alt="">
                          <div class="text-white">
                              <h5>Genuine Products</h5>
-                             <p>Safe and secure payments</p>
+                             <p>Verified and quality Products</p>
                          </div>
                      </div>
                  </div>
@@ -25,7 +25,7 @@
                          <img src="{{ asset('frontend/assets/images/payements.png') }}" alt="">
                          <div class="text-white">
                              <h5>1500 Brands</h5>
-                             <p>Safe and secure payments</p>
+                             <p>1500+ trusted brands</p>
                          </div>
                      </div>
                  </div>
@@ -33,8 +33,8 @@
                      <div class="fotter-items d-flex justify-center align-items-center gap-3">
                          <img src="{{ asset('frontend/assets/images/award.png') }}" alt="">
                          <div class="text-white">
-                             <h5>Payment Options</h5>
-                             <p>Safe and secure payments</p>
+                             <h5>Fast Delivery</h5>
+                             <p>Reliable Delivery across Nepal</p>
                          </div>
                      </div>
                  </div>
