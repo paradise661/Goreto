@@ -90,15 +90,12 @@
                                     <option class="p-3" value="6">Partners</option>
                                     <option class="p-3" value="10">Blogs</option>
                                     <option class="p-3" value="11">Services</option>
-                                    <option class="p-3" value="13">Booking</option>
+                                    <option class="p-3" value="13">Terms Conditions</option>
                                     <option class="p-3" value="17">Brands</option>
                                     <option class="p-3" value="19">Blog Category</option>
                                     <option class="p-3" value="20">Departmets</option>
                                     <option class="p-3" value="21">Gallery</option>
                                     <option class="p-3" value="22">Videos</option>
-                                    <option class="p-3" value="23">Ebook</option>
-                                    <option class="p-3" value="24">Ohm Bytes</option>
-                                    <option class="p-3" value="25">Ohm Sikauchha</option>
                                     <option class="p-3" value="26">Divisions</option>
                                     <option class="p-3" value="16">Sitemap</option>
                                 </select>

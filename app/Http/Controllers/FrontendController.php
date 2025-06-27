@@ -148,7 +148,10 @@ public function pagesingle($slug, Request $request)
             }elseif ($content->template == 3) {
 
                 return view('frontend.page.privacy', compact(['content']));
-        }
+        }elseif ($content->template == 13) {
+
+            return view('frontend.page.term', compact(['content']));
+    }
         else {
             return view('errors.404');
         }

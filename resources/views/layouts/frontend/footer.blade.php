@@ -79,7 +79,7 @@
                      <h5 class="fotter-headings">Get to Know Us</h5>
                      <ul class="nav flex-column fotter-text fotter-css">
                          <li class="nav-item mb-2">
-                             <a class="nav-link p-0" href="">Terms & Conditions</a>
+                             <a class="nav-link p-0" href="/terms">Terms & Conditions</a>
                          </li>
                          <li class="nav-item mb-2">
                              <a class="nav-link p-0" href="/privacy-policy">Policies</a>
