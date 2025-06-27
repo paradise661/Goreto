@@ -127,7 +127,7 @@
         });
     </script>
 
-    @push('scripts')
+    {{-- @push('scripts')
         <script>
             let file = null;
 
@@ -201,7 +201,7 @@
                 bootstrap.Modal.getInstance(document.getElementById('doctorModal')).hide();
             });
         </script>
-    @endpush
+    @endpush --}}
 
     <script>
         $(document).ready(function() {

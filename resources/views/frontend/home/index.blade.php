@@ -104,50 +104,6 @@
                 </div>
             </section>
         @endif
-        {{-- categories section end --}}
-        {{-- Home bannner first end --}}
-        <!-- Banner2 start -->
-
-        <!-- Banner2 end -->
-        <!-- categories section start -->
-        {{-- <div class="category-section py-4">
-            <div class="container-fluid">
-                <div class="row d-flex flex-wrap">
-                    <div class="col-3 col-md-2 custom-col py-3">
-                        <div class="category-wrapper text-center">
-                            <img src="{{ asset('frontend/assets/images/cate1.jpg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-3 col-md-2 custom-col py-3">
-                        <div class="category-wrapper text-center">
-                            <img src="{{ asset('frontend/assets/images/cate2.jpg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-3 col-md-2 custom-col py-3">
-                        <div class="category-wrapper text-center">
-                            <img src="{{ asset('frontend/assets/images/cate3.jpg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-3 col-md-2 custom-col py-3">
-                        <div class="category-wrapper text-center">
-                            <img src="{{ asset('frontend/assets/images/cate2.jpg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-3 col-md-2 custom-col py-3">
-                        <div class="category-wrapper text-center">
-                            <img src="{{ asset('frontend/assets/images/cate4.jpg') }}" alt="">
-                        </div>
-                    </div>
-                    <div class="col-3 col-md-2 custom-col py-3">
-                        <div class="category-wrapper text-center">
-                            <img src="{{ asset('frontend/assets/images/cate4.jpg') }}" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-        {{-- new arrival sectio start --}}
-        {{-- categories section end --}}
 
         <section class="new-arrival-section">
             <div class="container-fluid">
