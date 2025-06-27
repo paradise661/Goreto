@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Edit ' . $social->name . ' - Adventures Planner')
+@section('title', 'Edit ' . $social->name . ' - Goreto')
 
 @section('content')
     @include('admin.includes.message')

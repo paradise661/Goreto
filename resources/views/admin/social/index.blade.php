@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Social Links - Adventures Planner')
+@section('title', 'Social Links - Goreto')
 
 @section('content')
     @include('admin.includes.message')

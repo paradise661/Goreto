@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Edit ' . $faq->name . ' - Ohm Pharmaceuticals')
+@section('title', 'Edit ' . $faq->name . ' - Goreto')
 
 @section('content')
     @include('admin.includes.message')

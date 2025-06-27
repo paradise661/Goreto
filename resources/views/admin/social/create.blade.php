@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Create New Icon - Adventures Planner')
+@section('title', 'Create New Icon - Goreto')
 
 @section('content')
     @include('admin.includes.message')

@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'All Brands - Ohm Pharmaceuticals')
+@section('title', 'All Brands - Goreto')
 
 @section('content')
     @include('admin.includes.message')

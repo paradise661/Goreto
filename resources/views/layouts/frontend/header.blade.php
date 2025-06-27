@@ -61,17 +61,17 @@
                             </li>
                         @else
                             <li>
-                                <a class="premium-dropdown-item" href="#">
+                                <a class="premium-dropdown-item" href="/about-us">
                                     <i class="bi bi-info-circle"></i> About Us
                                 </a>
                             </li>
                             <li>
-                                <a class="premium-dropdown-item" href="#">
+                                <a class="premium-dropdown-item" href="/contact">
                                     <i class="bi bi-envelope"></i> Contact Us
                                 </a>
                             </li>
                             <li>
-                                <a class="premium-dropdown-item" href="#">
+                                <a class="premium-dropdown-item" href="/terms">
                                     <i class="bi bi-file-earmark-text"></i> Terms & Conditions
                                 </a>
                             </li>

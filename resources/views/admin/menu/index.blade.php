@@ -1,6 +1,6 @@
 @extends('layouts.admin.master')
 
-@section('title', 'Website Menu - Ohm Pharmaceuticals')
+@section('title', 'Website Menu - Goreto')
 
 @section('content')
 
@@ -232,7 +232,6 @@
                                         </div>
                                     </li>
                                 @endif
-
 
                                 @if (count($services) != 0)
                                     <li class="panel panel-default list-group-item">
@@ -614,7 +613,8 @@
                                                     @if ($desiredMenu->location == 3) checked @endif> Footer Two</label>
                                             <label><input type="radio" name="location" value="4"
                                                     @if ($desiredMenu->location == 4) checked @endif> Footer Three</label>
-                                            <label><input type="radio" name="location" value="5" @if ($desiredMenu->location == 5) checked @endif> Top Bar</label>
+                                            <label><input type="radio" name="location" value="5"
+                                                    @if ($desiredMenu->location == 5) checked @endif> Top Bar</label>
                                         </div>
                                         <div class="d-flex gap-3 my-2">
                                             <div class="text-right">

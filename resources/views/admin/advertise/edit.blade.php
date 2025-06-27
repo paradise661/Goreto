@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Edit ' . $advertise->name . ' - Urban Sole')
+@section('title', 'Edit ' . $advertise->name . ' - ')
 
 @section('content')
     @include('admin.includes.message')
