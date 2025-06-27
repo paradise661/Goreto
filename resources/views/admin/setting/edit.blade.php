@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Website Settings - Ohm Pharmaceuticals')
+@section('title', 'Website Settings - Goreto')
 
 @section('content')
     @include('admin.includes.message')
