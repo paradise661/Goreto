@@ -27,11 +27,18 @@
                                     </div>
                                 </label>
                             </form>
+
+                            <!-- ✅ Success message -->
+                            <div class="alert alert-success mt-4 d-none" id="successMessage" role="alert">
+                                ✅ Prescription uploaded successfully. We will reach out shortly.
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
 
     <!-- Modal: Doctor Info with Preview -->
@@ -75,6 +82,7 @@
                                 <textarea class="form-control" id="message" rows="3"></textarea>
                             </div>
                         </div>
+
                     </div>
                 </div>
                 <div class="modal-footer border-0 pt-0">

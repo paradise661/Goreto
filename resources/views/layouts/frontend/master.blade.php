@@ -127,82 +127,6 @@
         });
     </script>
 
-    {{-- @push('scripts')
-        <script>
-            let file = null;
-
-            document.getElementById('fileInput').addEventListener('change', function(e) {
-                file = e.target.files[0];
-
-                // Show image preview or PDF icon
-                const imagePreview = document.getElementById('previewImage');
-                const pdfPreview = document.getElementById('pdfPreview');
-                const pdfFilename = document.getElementById('pdfFilename');
-
-                if (!file) return;
-
-                const fileType = file.type;
-
-                if (fileType === 'application/pdf') {
-                    imagePreview.style.display = 'none';
-                    pdfPreview.style.display = 'block';
-                    pdfFilename.textContent = file.name;
-                } else if (fileType.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        imagePreview.src = e.target.result;
-                        imagePreview.style.display = 'block';
-                        pdfPreview.style.display = 'none';
-                    };
-                    reader.readAsDataURL(file);
-                }
-
-                new bootstrap.Modal(document.getElementById('doctorModal')).show();
-            });
-
-            document.getElementById('confirmBtn').addEventListener('click', function() {
-                if (!file) {
-                    alert('No file selected');
-                    return;
-                }
-
-                const formData = new FormData();
-                formData.append('file', file);
-                formData.append('doctor_name', document.getElementById('doctorName').value);
-                formData.append('doctor_title', document.getElementById('doctorTitle').value);
-                formData.append('message', document.getElementById('message').value);
-
-                fetch("{{ route('prescription.upload') }}", {
-                        method: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                        },
-                        body: formData
-                    })
-                    .then(response => {
-                        if (!response.ok) throw new Error('Upload failed');
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.success) {
-                            alert('Prescription uploaded successfully!');
-                            location.reload();
-                        } else {
-                            alert('Upload failed');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('An error occurred. Try again.');
-                    });
-            });
-
-            document.getElementById('modalCancelBtn').addEventListener('click', () => {
-                bootstrap.Modal.getInstance(document.getElementById('doctorModal')).hide();
-            });
-        </script>
-    @endpush --}}
-
     <script>
         $(document).ready(function() {
             $.ajaxSetup({
@@ -469,10 +393,20 @@
                         })
                         .then(data => {
                             if (data.success) {
-                                cartToastBody.textContent = "✅ Prescription uploaded successfully!";
-                                toast.show();
                                 clearModal();
-                                setTimeout(() => location.reload(), 1500);
+
+                                // Hide the form
+                                document.getElementById('prescriptionForm').classList.add('d-none');
+
+                                // Show success message
+                                const successMsg = document.getElementById('successMessage');
+                                successMsg.classList.remove('d-none');
+
+                                // Scroll to top (instead of to footer)
+                                window.scrollTo({
+                                    top: 0,
+                                    behavior: 'smooth'
+                                });
                             } else {
                                 cartToastBody.textContent = "❌ Upload failed.";
                                 toast.show();
