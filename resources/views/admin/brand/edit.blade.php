@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Edit ' . $brand->name . ' - Ohm Pharmaceuticals')
+@section('title', 'Edit ' . $brand->name . ' - Goreto')
 
 @section('content')
     @include('admin.includes.message')

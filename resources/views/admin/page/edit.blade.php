@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Edit ' . $page->name . ' - Ohm Pharmaceuticals')
+@section('title', 'Edit ' . $page->name . ' - Goreto')
 
 @section('content')
     @include('admin.includes.message')
@@ -164,7 +164,7 @@
                                     <option class="p-3"@if ($page->template == 15) selected @endif
                                         value="15">Product Category</option>
                                     <option class="p-3"@if ($page->template == 3) selected @endif
-                                        value="3">Teams</option>
+                                        value="3">Privacy Policy</option>
                                     <option class="p-3"@if ($page->template == 4) selected @endif
                                         value="4">Reviews</option>
                                     <option class="p-3"@if ($page->template == 5) selected @endif
@@ -176,7 +176,7 @@
                                     <option class="p-3"@if ($page->template == 11) selected @endif
                                         value="11">Services</option>
                                     <option class="p-3"@if ($page->template == 13) selected @endif
-                                        value="13">Booking</option>
+                                        value="13">Terms Conditions</option>
                                     <option class="p-3"@if ($page->template == 17) selected @endif
                                         value="17">Brands</option>
                                     <option class="p-3"@if ($page->template == 19) selected @endif

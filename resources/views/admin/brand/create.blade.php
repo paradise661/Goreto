@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Create New Category - Ohm Pharmaceuticals')
+@section('title', 'Create New Category - Goreto')
 
 @section('content')
     @include('admin.includes.message')

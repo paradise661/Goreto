@@ -33,14 +33,14 @@
             </a>
         </li>
 
-        <li class="menu-item @if (Request::segment(2) == 'menus') {{ 'active open' }} @endif"">
+        {{-- <li class="menu-item @if (Request::segment(2) == 'menus') {{ 'active open' }} @endif"">
             <a class="menu-link {{ Request::segment(2) == 'menus' ? 'active' : '' }}"
                 href="{{ route('admin.menu.index') }}">
                 <i class="menu-icon tf-icons bx bx-menu-alt-right"></i>
                 <div data-i18n="Accordion">Menu</div>
             </a>
-        </li>
-        <li class="menu-item @if (Request::segment(2) == 'contacts') {{ 'active open' }} @endif">
+        </li> --}}
+        {{-- <li class="menu-item @if (Request::segment(2) == 'contacts') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-notepad"></i>
                 <div data-i18n="General Setting">Form</div>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
             </ul>
-        </li>
+        </li> --}}
         <li class="menu-item @if (Request::segment(2) == 'prescriptions') {{ 'active open' }} @endif"">
             <a class="menu-link {{ Request::segment(2) == 'prescriptions' ? 'active' : '' }}"
                 href="{{ route('admin.prescriptions.index') }}">
@@ -66,60 +66,7 @@
         <!-- CMS -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">CMS</span></li>
         <!-- Cards -->
-        <li class="menu-item @if (Request::segment(2) == 'blog' ||
-                Request::segment(2) == 'blogcategory' ||
-                Request::segment(2) == 'ebook' ||
-                Request::segment(2) == 'sikauchha' ||
-                Request::segment(2) == 'bytes') {{ 'active open' }} @endif">
-            <a class="menu-link menu-toggle" href="javascript:void(0)">
-                <i class="menu-icon tf-icons bx bx-news"></i>
-                <div data-i18n="General Setting">Posts</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'blog' && Request::segment(3) == '' ? 'active' : '' }}"
-                        href="{{ route('blog.index') }}">
-                        <i class="menu-icon tf-icons bx bx-news"></i>
-                        <div data-i18n="Accordion">All Posts</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'blog' && Request::segment(3) == 'create' ? 'active' : '' }}"
-                        href="{{ route('blog.create') }}">
-                        <i class="menu-icon tf-icons bx bxs-file-plus"></i>
-                        <div data-i18n="Accordion">Create Post</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'blogcategory' ? 'active' : '' }}"
-                        href="{{ route('blogcategory.index') }}">
-                        <i class="menu-icon tf-icons bx bxs-file"></i>
-                        <div data-i18n="Accordion">Categories</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'ebook' ? 'active' : '' }}"
-                        href="{{ route('ebook.index') }}">
-                        <i class="menu-icon tf-icons bx bxs-file"></i>
-                        <div data-i18n="Accordion">Ohm Insights</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'bytes' ? 'active' : '' }}"
-                        href="{{ route('bytes.index') }}">
-                        <i class="menu-icon tf-icons bx bxs-file"></i>
-                        <div data-i18n="Accordion">Ohm Bytes</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'sikauchha' ? 'active' : '' }}"
-                        href="{{ route('sikauchha.index') }}">
-                        <i class="menu-icon tf-icons bx bxs-file"></i>
-                        <div data-i18n="Accordion">Ohm Sikauchha</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
+
         <li class="menu-item @if (Request::segment(2) == 'page') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-file"></i>
@@ -142,10 +89,19 @@
                 </li>
             </ul>
         </li>
-        <li class="menu-item @if (Request::segment(2) == 'products' ||
-                Request::segment(2) == 'brand' ||
-                Request::segment(2) == 'category' ||
-                Request::segment(2) == 'division') {{ 'active open' }} @endif">
+        <li class="menu-item {{ Request::segment(2) == 'category' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('category.index') }}">
+                <i class="menu-icon tf-icons bx bxs-category"></i>
+                <div data-i18n="Basic">Category</div>
+            </a>
+        </li>
+        <li class="menu-item {{ Request::segment(2) == 'division' ? 'active' : '' }}">
+            <a class="menu-link" href="{{ route('division.index') }}">
+                <i class="menu-icon tf-icons bx bxs-category"></i>
+                <div data-i18n="Basic">Divisions</div>
+            </a>
+        </li>
+        <li class="menu-item @if (Request::segment(2) == 'products' || Request::segment(2) == 'brand' || Request::segment(2) == '') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-package"></i>
                 <div data-i18n="General Setting">Products</div>
@@ -165,13 +121,7 @@
                         <div data-i18n="Accordion">Create Product</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'category' ? 'active' : '' }}"
-                        href="{{ route('category.index') }}">
-                        <i class="menu-icon tf-icons bx bxs-category"></i>
-                        <div data-i18n="Accordion">Category</div>
-                    </a>
-                </li>
+
                 <li class="menu-item">
                     <a class="menu-link {{ Request::segment(2) == 'brand' ? 'active' : '' }}"
                         href="{{ route('brand.index') }}">
@@ -179,27 +129,23 @@
                         <div data-i18n="Accordion">Brand</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'division' ? 'active' : '' }}"
-                        href="{{ route('division.index') }}">
-                        <i class="menu-icon tf-icons bx bxs-category"></i>
-                        <div data-i18n="Accordion">Divisions</div>
-                    </a>
-                </li>
+
             </ul>
         </li>
+
         <li class="menu-item {{ Request::segment(2) == 'orders' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('orders.index') }}">
                 <i class="menu-icon tf-icons bx bx-cart"></i>
                 <div data-i18n="Basic">Orders</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::segment(2) == 'coupons' ? 'active' : '' }}">
+
+        {{-- <li class="menu-item {{ Request::segment(2) == 'coupons' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('coupons.index') }}">
                 <i class="menu-icon tf-icons bx bxs-coupon"></i>
                 <div data-i18n="Basic">Coupons</div>
             </a>
-        </li>
+        </li> --}}
         <li class="menu-item {{ Request::segment(2) == 'delivery' ? 'active' : '' }}">
             <a class="menu-link" href="{{ route('delivery.index') }}">
                 <i class="menu-icon tf-icons bx bx-money"></i>
@@ -207,7 +153,7 @@
             </a>
         </li>
 
-        <li class="menu-item @if (Request::segment(2) == 'department') {{ 'active open' }} @endif">
+        {{-- <li class="menu-item @if (Request::segment(2) == 'department') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-building-house"></i>
                 <div data-i18n="General Setting">Departments</div>
@@ -220,16 +166,16 @@
                         <div data-i18n="Accordion">All Departments</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a class="menu-link {{ Request::segment(2) == 'department' && Request::segment(3) == 'create' ? 'active' : '' }}"
-                        href="{{ route('department.create') }}">
-                        <i class="menu-icon tf-icons bx bxs-file-plus"></i>
-                        <div data-i18n="Accordion">Create Department</div>
-                    </a>
-                </li>
-            </ul>
+        <li class="menu-item">
+            <a class="menu-link {{ Request::segment(2) == 'department' && Request::segment(3) == 'create' ? 'active' : '' }}"
+                href="{{ route('department.create') }}">
+                <i class="menu-icon tf-icons bx bxs-file-plus"></i>
+                <div data-i18n="Accordion">Create Department</div>
+            </a>
         </li>
-        <li class="menu-item @if (Request::segment(2) == 'review') {{ 'active open' }} @endif">
+    </ul>
+    </li> --}}
+        {{-- <li class="menu-item @if (Request::segment(2) == 'review') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bxs-quote-alt-left"></i>
                 <div data-i18n="General Setting">Reviews</div>
@@ -250,8 +196,8 @@
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="menu-item @if (Request::segment(2) == 'members') {{ 'active open' }} @endif">
+        </li> --}}
+        {{-- <li class="menu-item @if (Request::segment(2) == 'members') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-user-pin"></i>
                 <div data-i18n="General Setting">Teams</div>
@@ -272,8 +218,8 @@
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="menu-item @if (Request::segment(2) == 'services') {{ 'active open' }} @endif">
+        </li> --}}
+        {{-- <li class="menu-item @if (Request::segment(2) == 'services') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-analyse"></i>
                 <div data-i18n="General Setting">Services</div>
@@ -294,8 +240,8 @@
                     </a>
                 </li>
             </ul>
-        </li>
-        <li class="menu-item @if (Request::segment(2) == 'partner') {{ 'active open' }} @endif">
+        </li> --}}
+        {{-- <li class="menu-item @if (Request::segment(2) == 'partner') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-group"></i>
                 <div data-i18n="General Setting">Partners</div>
@@ -340,7 +286,7 @@
                 </li>
 
             </ul>
-        </li>
+        </li> --}}
 
         <li class="menu-item @if (Request::segment(2) == 'slider') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
@@ -366,7 +312,7 @@
             </ul>
         </li>
 
-        <li class="menu-item @if (Request::segment(2) == 'videos') {{ 'active open' }} @endif">
+        {{-- <li class="menu-item @if (Request::segment(2) == 'videos') {{ 'active open' }} @endif">
             <a class="menu-link menu-toggle" href="javascript:void(0)">
                 <i class="menu-icon tf-icons bx bx-video"></i>
                 <div data-i18n="General Setting">Videos</div>
@@ -388,7 +334,7 @@
                 </li>
 
             </ul>
-        </li>
+        </li> --}}
 
         <!-- General Settings  -->
         <li class="menu-item @if (Request::segment(2) == 'setting' ||
