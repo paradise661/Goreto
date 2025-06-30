@@ -1,11 +1,11 @@
 @extends('layouts.admin.master')
-@section('title', 'All Ohm Bytes - Goreto')
+@section('title', 'Goreto')
 
 @section('content')
     @include('admin.includes.message')
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Ohm Bytes ({{ $byte->total() }})</h5>
+            <h5 class="mb-0">Goreto ({{ $byte->total() }})</h5>
             <small class="text-muted float-end">
                 <a class="btn btn-primary" href="{{ route('bytes.create') }}"><i class="fa-solid fa-plus"></i>
                     Create</a>
