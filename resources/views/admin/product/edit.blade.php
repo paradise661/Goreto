@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Edit ' . $product->name . ' - Ohm Pharmaceuticals')
+@section('title', 'Edit ' . $product->name . ' - Goreto')
 @section('content')
     @include('admin.includes.message')
     <div class="col-xl">
