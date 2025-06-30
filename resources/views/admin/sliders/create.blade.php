@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Create New Slider - Ohm Pharmaceuticals')
+@section('title', 'Create New Slider - Goreto')
 
 @section('content')
     @include('admin.includes.message')
