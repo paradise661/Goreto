@@ -1,5 +1,5 @@
 @extends('layouts.admin.master')
-@section('title', 'Create New Review - Ohm Pharmaceuticals')
+@section('title', 'Create New Review - Goreto')
 
 @section('content')
     @include('admin.includes.message')
