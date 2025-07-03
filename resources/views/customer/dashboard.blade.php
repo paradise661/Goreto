@@ -71,11 +71,11 @@
                                 <i class="bi bi-speedometer2 me-2"></i> Dashboard
                             </span>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <span class="nav-link nav-link-custom" onclick="showContent('orders', this)">
                                 <i class="bi bi-bag-check me-2"></i> My Orders
                             </span>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <span class="nav-link nav-link-custom" onclick="showContent('cart', this)">
                                 <i class="bi bi-cart me-2"></i> My Cart
@@ -112,12 +112,12 @@
                         <div class="col-md-6 mb-3">
                             <div class="card border-0 bg-light">
                                 <div class="card-body">
-                                    <h5 class="card-title"><i class="bi bi-bag-check text-success-custom me-2"></i> Recent
-                                        Orders</h5>
-                                    <p class="card-text text-muted">View your recent purchases and order history</p>
-                                    <button class="btn btn-success-custom btn-sm"
-                                        onclick="showContent('orders', document.querySelector('[onclick*=orders]'))">View
-                                        Orders</button>
+                                    <h5 class="card-title">
+                                        <i class="bi bi-bag-check text-success-custom me-2"></i> Buy More
+                                    </h5>
+                                    <p class="card-text text-muted">Discover more great products you'll love</p>
+                                    <a class="btn btn-success-custom btn-sm" href="{{ url('/') }}">Continue
+                                        Shopping</a>
                                 </div>
                             </div>
                         </div>
@@ -208,17 +208,63 @@
                     @endif
                 </div>
 
-                <!-- Address -->
-                {{-- <div class="content-section" id="address">
-                    <h4>Address</h4>
-                    <p>Manage your saved addresses.</p>
-                </div> --}}
-
                 <!-- Account -->
                 <div class="content-section" id="account">
-                    <h4>Account Details</h4>
-                    <p>Update your personal information.</p>
+                    <h4>Change Password</h4>
+
+                    @if (session('status') === 'password-updated')
+                        <div class="alert alert-success">Password updated successfully!</div>
+                    @endif
+
+                    <form method="POST" action="{{ route('profile.password.update') }}">
+                        @csrf
+
+                        <div class="mb-3 position-relative">
+                            <label class="form-label" for="current_password">Current Password</label>
+                            <div class="input-group">
+                                <input class="form-control @error('current_password') is-invalid @enderror"
+                                    id="current_password" type="password" name="current_password" required>
+                                <button class="btn btn-outline-secondary toggle-password" data-target="current_password"
+                                    type="button">
+                                    <i class="bi bi-eye-slash"></i>
+                                </button>
+                            </div>
+                            @error('current_password')
+                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <label class="form-label" for="new_password">New Password</label>
+                            <div class="input-group">
+                                <input class="form-control @error('new_password') is-invalid @enderror" id="new_password"
+                                    type="password" name="new_password" required>
+                                <button class="btn btn-outline-secondary toggle-password" data-target="new_password"
+                                    type="button">
+                                    <i class="bi bi-eye-slash"></i>
+                                </button>
+                            </div>
+                            @error('new_password')
+                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3 position-relative">
+                            <label class="form-label" for="new_password_confirmation">Confirm New Password</label>
+                            <div class="input-group">
+                                <input class="form-control" id="new_password_confirmation" type="password"
+                                    name="new_password_confirmation" required>
+                                <button class="btn btn-outline-secondary toggle-password"
+                                    data-target="new_password_confirmation" type="button">
+                                    <i class="bi bi-eye-slash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Update Password</button>
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>
@@ -254,5 +300,39 @@
         document.addEventListener('DOMContentLoaded', () => {
             showContent('dashboard', document.querySelector('[onclick*="dashboard"]'));
         });
+
+        document.querySelectorAll('.toggle-password').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const input = document.getElementById(targetId);
+                const icon = this.querySelector('i');
+
+                if (input.type === "password") {
+                    input.type = "text";
+                    icon.classList.remove('bi-eye-slash');
+                    icon.classList.add('bi-eye');
+                } else {
+                    input.type = "password";
+                    icon.classList.remove('bi-eye');
+                    icon.classList.add('bi-eye-slash');
+                }
+            });
+        });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Default tab is dashboard
+            let activeTab = 'dashboard';
+
+            @if (session('active_tab'))
+                activeTab = @json(session('active_tab'));
+            @endif
+
+            // Find the nav-link with onclick matching activeTab and pass it
+            const activeElement = document.querySelector(`[onclick="showContent('${activeTab}', this)"]`);
+
+            showContent(activeTab, activeElement);
+        });
+    </script>
+
 @endsection

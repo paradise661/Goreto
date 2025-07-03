@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -57,4 +58,29 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    public function changePasswordForm(): View
+{
+    return view('profile.change-password');
+}
+
+public function changePassword(Request $request): RedirectResponse
+{
+    $request->validate([
+        'current_password' => ['required'],
+        'new_password' => ['required', 'string', 'min:8', 'confirmed'],
+    ]);
+
+    $user = $request->user();
+
+    if (!Hash::check($request->current_password, $user->password)) {
+        return back()->withErrors(['current_password' => 'Current password does not match']);
+    }
+
+    $user->update([
+        'password' => Hash::make($request->new_password),
+    ]);
+
+    return redirect()->route('customer.dashboard')->with('status', 'password-updated')->with('active_tab', 'account');
+
+}
 }

@@ -40,15 +40,15 @@
                                 </a>
                             </li>
                             <li>
-                                <a class="premium-dropdown-item" href="#">
-                                    <i class="bi bi-person-circle"></i> Profile
+                                <a class="premium-dropdown-item" href="/cart">
+                                    <i class="bi bi-person-circle"></i> My Cart
                                 </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a class="premium-dropdown-item" href="#">
                                     <i class="bi bi-bag-check"></i> Orders
                                 </a>
-                            </li>
+                            </li> --}}
                             <li>
                                 <form method="POST" action="{{ route('customer.logout') }}">
                                     @csrf

@@ -39,6 +39,7 @@ use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\DeliveryChargeController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\Admin\PrescriptionController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -86,6 +87,7 @@ use App\Http\Controllers\Admin\PrescriptionController;
 
     Route::get('register', [CustomerRegisterController::class, 'showRegisterForm'])->name('customer.register');
     Route::post('register', [CustomerRegisterController::class, 'register'])->name('customer.register.submit');
+    
 });
 
 Route::post('/customer/logout', [CustomerLoginController::class, 'logout'])->name('customer.logout');
@@ -95,6 +97,11 @@ Route::middleware('auth:customer')->prefix('customer')->group(function () {
         return view('customer.dashboard');
     })->name('customer.dashboard');
 });
+Route::middleware('auth:customer')->prefix('customer')->group(function () {
+    Route::get('profile/change-password', [ProfileController::class, 'changePasswordForm'])->name('profile.password.change');
+    Route::post('profile/change-password', [ProfileController::class, 'changePassword'])->name('profile.password.update');
+});
+
 Route::post('applycoupon', [CartController::class, 'applyCoupon'])->name('coupon');
 
 Route::post('/upload-prescription', [PrescriptionController::class, 'uploadPrescription'])
