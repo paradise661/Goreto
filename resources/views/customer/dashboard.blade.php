@@ -321,17 +321,25 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Default tab is dashboard
-            let activeTab = 'dashboard';
+            // Default tab
+            let defaultTab = 'dashboard';
 
-            @if (session('active_tab'))
-                activeTab = @json(session('active_tab'));
-            @endif
+            // Check URL hash (e.g. #account)
+            const hash = window.location.hash.substring(1); // remove '#'
+            if (hash && document.getElementById(hash)) {
+                defaultTab = hash;
+            }
 
-            // Find the nav-link with onclick matching activeTab and pass it
-            const activeElement = document.querySelector(`[onclick="showContent('${activeTab}', this)"]`);
+            // OR check URL query param (e.g. ?tab=account)
+            const params = new URLSearchParams(window.location.search);
+            const tabParam = params.get('tab');
+            if (tabParam && document.getElementById(tabParam)) {
+                defaultTab = tabParam;
+            }
 
-            showContent(activeTab, activeElement);
+            // Show correct content and highlight nav item
+            const activeNavBtn = document.querySelector(`[onclick*="${defaultTab}"]`);
+            showContent(defaultTab, activeNavBtn);
         });
     </script>
 

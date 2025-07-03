@@ -44,11 +44,12 @@
                                     <i class="bi bi-person-circle"></i> My Cart
                                 </a>
                             </li>
-                            {{-- <li>
-                                <a class="premium-dropdown-item" href="#">
-                                    <i class="bi bi-bag-check"></i> Orders
+                            <li>
+                                <a class="premium-dropdown-item" href="{{ url('customer/dashboard#account') }}">
+                                    <i class="bi bi-bag-check"></i> Account
                                 </a>
-                            </li> --}}
+                            </li>
+
                             <li>
                                 <form method="POST" action="{{ route('customer.logout') }}">
                                     @csrf
