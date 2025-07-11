@@ -180,13 +180,22 @@
         </section>
         {{-- new arrival sectio end --}}
         <!-- categories section end -->
-        <div class="container-fluid py-0 py-md-5">
-            <div class="row">
-                <div class="banner-2">
-                    <img src="{{ asset('frontend/assets/images/banner1.jpeg') }}" alt="">
-                </div>
+        @if ($adv_top)
+            <div class="container-fluid py-0 py-md-5">
+                <section class="discount-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="wrap">
+                                    {!! get_image($adv_top->image) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </div>
+        @endif
+
         <!-- product package start -->
         @if ($setting['product'])
             <div class="product-section py-5">
