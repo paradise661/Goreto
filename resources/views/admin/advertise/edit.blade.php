@@ -102,11 +102,11 @@
                                 <select class="form-select ms-5" id="location" name="location">
                                     <option class="p-3">Select Ads Location</option>
                                     <option class="p-3" value="1" @if ($advertise->location == 1) selected @endif>
-                                        Top 3-Row</option>
+                                        Top </option>
                                     <option class="p-3" value="2" @if ($advertise->location == 2) selected @endif>
-                                        Single Full Content</option>
+                                        Center</option>
                                     <option class="p-3" value="3" @if ($advertise->location == 3) selected @endif>
-                                        Bottom left</option>
+                                        Bottom </option>
                                     <option class="p-3" value="4" @if ($advertise->location == 4) selected @endif>
                                         Bottom Center Full</option>
                                     <option class="p-3" value="5" @if ($advertise->location == 5) selected @endif>

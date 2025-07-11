@@ -1,7 +1,7 @@
 <div class="form-group">
     <div class="panel panel-default">
         <div class="panel-header">
-            <h4>Brands</h4>
+            <h4>Deals</h4>
         </div>
 
         <div class="panel-body card-pannel">

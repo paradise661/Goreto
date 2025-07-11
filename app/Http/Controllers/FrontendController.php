@@ -24,7 +24,9 @@ class FrontendController extends Controller
     ->whereLocation(1)
     ->oldest('order')
     ->first();
-    $adv_bottom_left = Advertise::where('status', 1)->whereLocation(3)->oldest('order')->first();
+    $adv_single = Advertise::where('status', 1)->whereLocation(2)->oldest('order')->first();
+
+    $adv_bottom = Advertise::where('status', 1)->whereLocation(3)->oldest('order')->first();
 
 
     $categories = Category::whereNull('parent_id')
@@ -39,9 +41,8 @@ class FrontendController extends Controller
         }])
         ->take(3)
         ->get();
-        $adv_single = Advertise::where('status', 1)->whereLocation(2)->oldest('order')->first();
 
-    return view('frontend.home.index', compact('sliders', 'categories', 'divisions', 'adv_single','products','adv_top'));
+    return view('frontend.home.index', compact('sliders', 'categories', 'divisions', 'adv_single','products','adv_top','adv_bottom'));
 }
 
     function product()

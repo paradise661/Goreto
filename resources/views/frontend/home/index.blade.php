@@ -710,13 +710,22 @@
         {{-- categories section start --}}
 
         <!-- Banner3 start -->
-        <div class="container-fluid py-0 py-md-5">
-            <div class="row">
-                <div class="banner-2">
-                    <img src="{{ asset('frontend/assets/images/banner3.jpg') }}" alt="">
-                </div>
+
+        @if ($adv_bottom)
+            <div class="container-fluid py-0 py-md-5">
+                <section class="discount-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="wrap">
+                                    {!! get_image($adv_bottom->image) !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </div>
+        @endif
         <!-- Banner3 end -->
         @foreach ($divisions as $division)
             @if ($division->products->count() > 0)

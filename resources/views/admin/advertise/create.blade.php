@@ -77,9 +77,9 @@
                                 <label class="m-0 p-0">Location</label>
                                 <select class="form-select ms-5" id="location" name="location">
                                     <option class="p-3">Select Ads Location</option>
-                                    <option class="p-3" value="1">Top 3-Row</option>
-                                    <option class="p-3" value="2">Single Full Content</option>
-                                    <option class="p-3" value="3">Bottom left</option>
+                                    <option class="p-3" value="1">Top </option>
+                                    <option class="p-3" value="2">Center</option>
+                                    <option class="p-3" value="3">Bottom </option>
                                     <option class="p-3" value="4">Bottom Center Full</option>
                                     <option class="p-3" value="5">Bottom Right</option>
                                 </select>
