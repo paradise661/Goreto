@@ -311,7 +311,7 @@
             </div>
         </div> --}}
         <!-- Banner2 end -->
-        <section>
+        {{-- <section>
             <div class="container ">
                 <div class="swiper reviewSwiper swiper-two-container p-0 p-md-4 ">
                     <div class="swiper-wrapper  pb-5">
@@ -356,7 +356,7 @@
                     <div class="swiper-button-prev"></div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         @if (!empty($products) && $products->count())
             <section class="py-5">
                 <div class="position-relative section-three">
