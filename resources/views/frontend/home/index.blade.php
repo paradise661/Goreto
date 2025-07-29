@@ -117,7 +117,7 @@
                 <div class="swiper offerSwiper p-4">
                     <div class="swiper-wrapper">
                         <!-- Card 1 -->
-                        <div class="swiper-slide py-5">
+                        {{-- <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
                                     <img class="arrival-card-img" src="{{ asset('frontend/assets/images/arrival1.png') }}"
@@ -125,7 +125,7 @@
                                 </div>
                                 <a class=" stretched-link" href=""></a>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="swiper-slide py-5">
                             <div class="product-card">
                                 <div class="arrival-card">
@@ -220,7 +220,7 @@
                                         <div class="swiper-slide py-5">
                                             <div class="product-card shadow p-3 position-relative">
 
-                                                <div class="ribbon">20% Offer</div>
+                                                {{-- <div class="ribbon">20% Offer</div> --}}
 
                                                 <a href="{{ url('product/' . $prd->slug) }}"
                                                     style="text-decoration: none; color: inherit; display: block;">
@@ -386,7 +386,7 @@
                                         @foreach ($products as $product)
                                             <div class="swiper-slide">
                                                 <div class="product-card shadow p-3 position-relative">
-                                                    <div class="ribbon">20% Offer</div>
+                                                    {{-- <div class="ribbon">20% Offer</div> --}}
 
                                                     <a href="{{ url('product/' . $product->slug) }}"
                                                         style="text-decoration: none; color: inherit; display: block;">
@@ -763,7 +763,7 @@
                                         @foreach ($division->products as $product)
                                             <div class="swiper-slide py-5">
                                                 <div class="product-card shadow p-3 position-relative">
-                                                    <div class="ribbon">20% Offer</div>
+                                                    {{-- <div class="ribbon">20% Offer</div> --}}
 
                                                     <a href="{{ url('product/' . $product->slug) }}"
                                                         style="text-decoration: none; color: inherit; display: block;">

@@ -5,7 +5,7 @@
     @include('admin.includes.message')
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h5 class="mb-0">Brands</h5>
+            <h5 class="mb-0">Deals</h5>
             <small class="text-muted float-end">
                 <a class="btn btn-primary" href="{{ route('brand.create') }}"><i class="fa-solid fa-plus"></i>
                     Create</a>

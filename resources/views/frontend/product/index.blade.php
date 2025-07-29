@@ -173,13 +173,13 @@
     <div class="decoration-section py-5">
         <div class="container-fluid">
             <div class="home-title-heading text-start title-border">
-                <h3>Featured  products</h3>
+                <h3>Featured products</h3>
             </div>
             <!-- for desktop view -->
             <div class="row ">
                 <div class="col-lg custom-col-width py-3">
                     <div class="product-card shadow p-3 position-relative">
-                        <div class="ribbon">20% Offer</div>
+                        {{-- <div class="ribbon">20% Offer</div> --}}
                         <div class="product-card-img">
                             <img class="product-img" src="{{ asset('frontend/assets/images/product.jpeg') }}"
                                 alt="">
@@ -212,7 +212,7 @@
                 </div>
                 <div class="col-lg custom-col-width py-3">
                     <div class="product-card shadow p-3 position-relative">
-                        <div class="ribbon">20% Offer</div>
+                        {{-- <div class="ribbon">20% Offer</div> --}}
                         <div class="product-card-img">
                             <img class="product-img" src="{{ asset('frontend/assets/images/product.jpeg') }}"
                                 alt="">
@@ -245,7 +245,7 @@
                 </div>
                 <div class="col-lg custom-col-width py-3">
                     <div class="product-card shadow p-3 position-relative">
-                        <div class="ribbon">20% Offer</div>
+                        {{-- <div class="ribbon">20% Offer</div> --}}
                         <div class="product-card-img">
                             <img class="product-img" src="{{ asset('frontend/assets/images/product.jpeg') }}"
                                 alt="">
@@ -278,7 +278,7 @@
                 </div>
                 <div class="col-lg custom-col-width py-3">
                     <div class="product-card shadow p-3 position-relative">
-                        <div class="ribbon">20% Offer</div>
+                        {{-- <div class="ribbon">20% Offer</div> --}}
                         <div class="product-card-img">
                             <img class="product-img" src="{{ asset('frontend/assets/images/product.jpeg') }}"
                                 alt="">
@@ -311,7 +311,7 @@
                 </div>
                 <div class="col-lg custom-col-width py-3">
                     <div class="product-card shadow p-3 position-relative">
-                        <div class="ribbon">20% Offer</div>
+                        {{-- <div class="ribbon">20% Offer</div> --}}
                         <div class="product-card-img">
                             <img class="product-img" src="{{ asset('frontend/assets/images/product.jpeg') }}"
                                 alt="">

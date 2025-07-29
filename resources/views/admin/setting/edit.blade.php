@@ -323,7 +323,7 @@
                                                     <button class="nav-link" id="pills-activity-tab"
                                                         data-bs-toggle="pill" data-bs-target="#pills-activity"
                                                         type="button" role="tab" aria-controls="pills-activity"
-                                                        aria-selected="false">Brands</button>
+                                                        aria-selected="false">Deals</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="pills-products-tab"
