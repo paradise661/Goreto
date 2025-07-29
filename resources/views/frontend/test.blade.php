@@ -594,7 +594,7 @@
                                     <!-- Example Card -->
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
-                                            <div class="ribbon">20% Offer</div>
+                                            {{-- <div class="ribbon">20% Offer</div> --}}
                                             <div class="product-card-img">
                                                 <img class="product-img"
                                                     src="{{ asset('frontend/assets/images/product.jpeg') }}"
@@ -631,7 +631,7 @@
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
-                                            <div class="ribbon">20% Offer</div>
+                                            {{-- <div class="ribbon">20% Offer</div> --}}
                                             <div class="product-card-img">
                                                 <img class="product-img"
                                                     src="{{ asset('frontend/assets/images/product1.jpeg') }}"
@@ -668,7 +668,7 @@
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
-                                            <div class="ribbon">20% Offer</div>
+                                            {{-- <div class="ribbon">20% Offer</div> --}}
                                             <div class="product-card-img">
                                                 <img class="product-img"
                                                     src="{{ asset('frontend/assets/images/product3.jpeg') }}"
@@ -705,7 +705,7 @@
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
-                                            <div class="ribbon">20% Offer</div>
+                                            {{-- <div class="ribbon">20% Offer</div> --}}
                                             <div class="product-card-img">
                                                 <img class="product-img"
                                                     src="{{ asset('frontend/assets/images/product.jpeg') }}"
@@ -742,7 +742,7 @@
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
-                                            <div class="ribbon">20% Offer</div>
+                                            {{-- <div class="ribbon">20% Offer</div> --}}
                                             <div class="product-card-img">
                                                 <img class="product-img"
                                                     src="{{ asset('frontend/assets/images/product1.jpeg') }}"
@@ -779,7 +779,7 @@
                                     </div>
                                     <div class="swiper-slide ">
                                         <div class="product-card shadow p-3 position-relative">
-                                            <div class="ribbon">20% Offer</div>
+                                            {{-- <div class="ribbon">20% Offer</div> --}}
                                             <div class="product-card-img">
                                                 <img class="product-img"
                                                     src="{{ asset('frontend/assets/images/product3.jpeg') }}"
@@ -871,7 +871,7 @@
                                         @foreach ($division->products as $product)
                                             <div class="swiper-slide py-5">
                                                 <div class="product-card shadow p-3 position-relative">
-                                                    <div class="ribbon">20% Offer</div>
+                                                    {{-- <div class="ribbon">20% Offer</div> --}}
                                                     <div class="product-card-img">
                                                         <img class="product-img"
                                                             src="{{ get_image_url($product->image, 'home-banner-slider') }}"

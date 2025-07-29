@@ -25,7 +25,7 @@
                         <div class="swiper-slide py-5">
                             <div class="product-card shadow p-3 position-relative">
 
-                                <div class="ribbon">20% Offer</div>
+                                {{-- <div class="ribbon">20% Offer</div> --}}
 
                                 <a href="{{ url('product/' . $product->slug) }}"
                                     style="text-decoration: none; color: inherit; display: block;">
